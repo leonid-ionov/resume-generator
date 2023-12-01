@@ -1,0 +1,48 @@
+{
+  "name": "resume-generator",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "author": {
+    "name": "Leonid Ionov",
+    "url": "https://github.com/Neonrul"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.15.0"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint src/**/*.ts src/**/*.tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src/**/*.ts src/**/*.tsx --report-unused-disable-directives --max-warnings 0 --fix",
+    "prepare": "husky install",
+    "prettier": "prettier --check . --ignore-unknown --ignore-path .gitignore",
+    "prettier:fix": "prettier --write . --ignore-unknown --ignore-path .gitignore",
+    "preview": "vite preview",
+    "tsc": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.69.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.10.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
+    "prettier": "3.1.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
+  }
+}
