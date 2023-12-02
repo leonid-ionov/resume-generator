@@ -1,0 +1,70 @@
+@import '../../styles/common';
+
+.mainContainer {
+  @extend .flexColumnContainer;
+  justify-content: flex-start;
+  background-color: #1a1a1a;
+}
+.titleSection {
+  @extend .flexContainer;
+  padding: 0 100px;
+  height: 250px;
+}
+.personData {
+  @extend .flexColumnContainer;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+
+  &_name {
+    margin: 0;
+  }
+
+  &_job {
+    margin: 0;
+  }
+}
+
+.contacts {
+  @extend .personData;
+  align-items: flex-end;
+
+  &_element {
+    @extend .flexContainer;
+    align-items: center;
+    gap: 8px;
+
+    &_info {
+      color: red;
+      margin: 0;
+    }
+
+    &_icon {
+    }
+  }
+}
+
+.profileSection {
+  @extend .flexContainer;
+  height: 250px;
+  background-color: grey;
+}
+
+.profile {
+  @extend .flexColumnContainer;
+  padding: 0 20px 0 100px;
+  &_description {
+  }
+}
+.photo {
+  min-width: 250px;
+  height: 250px;
+  background-color: darkred;
+}
+
+.sectionTitle {
+}
+
+.experienceSection {
+}

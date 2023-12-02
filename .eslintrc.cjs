@@ -1,10 +1,7 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules'],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -22,7 +19,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: "**/*.+(ts|tsx)",
+      files: '**/*.+(ts|tsx)',
       extends: [
         'eslint:recommended',
         'plugin:react/recommended',
@@ -38,6 +35,6 @@ module.exports = {
         tsconfigRootDir: '.',
       },
       plugins: ['react-refresh', '@typescript-eslint', 'prettier'],
-    }
-  ]
+    },
+  ],
 };

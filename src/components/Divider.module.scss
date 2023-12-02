@@ -1,0 +1,19 @@
+@import '../styles/_colors.scss';
+@import '../styles/_helpers.scss';
+
+.Divider {
+  margin: 0;
+  height: spacing(0.375);
+  width: spacing(6);
+  background-color: $black;
+  border: none;
+
+  &__white {
+    background-color: $white;
+  }
+
+  &__large {
+    height: spacing(0.5);
+    width: spacing(9);
+  }
+}

@@ -1,0 +1,21 @@
+@import '../../../../styles/common';
+@import '../../ResumeRreview.module.scss';
+
+.ContactsSection {
+  @extend .personData;
+  align-items: flex-end;
+}
+
+.ContactElement {
+  @extend .flexContainer;
+  align-items: center;
+  gap: 8px;
+
+  &_info {
+    color: red;
+    margin: 0;
+  }
+
+  &_icon {
+  }
+}

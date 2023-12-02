@@ -1,0 +1,27 @@
+@import '../../../../styles/common';
+@import '../../../../styles/_helpers';
+@import '../../../../styles/_colors';
+
+.UserSection {
+  @extend .flexColumnContainer;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: center;
+  gap: spacing(2);
+
+  &_name {
+    font-size: 2rem;
+    color: $white;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  &_job {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $white;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}
