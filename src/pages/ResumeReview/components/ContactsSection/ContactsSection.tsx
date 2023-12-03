@@ -7,10 +7,10 @@ export interface IContactElement {
 }
 
 const ContactElement: FC<IContactElement> = ({ info, icon }) => (
-  <div className={styles.ContactElement}>
+  <article className={styles.ContactElement}>
     <p className={styles.ContactElement_info}>{info}</p>
-    <div className={styles.ContactElement_icon}>{icon}</div>
-  </div>
+    <figure className={styles.ContactElement_icon}>{icon}</figure>
+  </article>
 );
 
 export interface IContactsSection {
@@ -18,9 +18,9 @@ export interface IContactsSection {
 }
 
 export const ContactsSection: FC<IContactsSection> = ({ contacts }) => (
-  <div className={styles.ContactsSection}>
+  <section className={styles.ContactsSection}>
     {contacts.map(element => (
       <ContactElement key={element.info} info={element.info} icon={element.icon} />
     ))}
-  </div>
+  </section>
 );

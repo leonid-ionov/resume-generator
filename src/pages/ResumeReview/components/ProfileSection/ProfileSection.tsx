@@ -8,10 +8,10 @@ export interface IPersonProfile {
 
 export const ProfileSection: FC<IPersonProfile> = ({ profile }) => {
   return (
-    <div className={styles.ProfileSection}>
+    <section className={styles.ProfileSection}>
       <h4 className={styles.ProfileSection_title}>Profile</h4>
       <Divider />
-      <p className={styles.ProfileSection_profile}>{profile}</p>
-    </div>
+      <article className={styles.ProfileSection_profile}>{profile}</article>
+    </section>
   );
 };

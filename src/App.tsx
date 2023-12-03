@@ -10,6 +10,7 @@ function App() {
     userInfo: {
       userName: 'Leonid Ionov',
       desiredJob: 'Software Engineer',
+      photoLink: './public/pirate.png',
       profile:
         'I am deeply passionate about my work - I rejoice in every success in the project and use every opportunity for\n' +
         'professional growth. And I think that development is quite an exciting! Moreover, I have a great technical\n' +

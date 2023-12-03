@@ -1,4 +1,16 @@
+@import 'styles/_helpers';
+
 .PhotoSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: spacing(52);
+  height: spacing(37);
+  overflow: hidden;
+
   &_photo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }

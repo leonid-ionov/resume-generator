@@ -9,8 +9,8 @@ export interface IUserSectionProps {
 
 export const UserSection: FC<IUserSectionProps> = ({ userName, desiredJob }) => (
   <section className={styles.UserSection}>
-    <p className={styles.UserSection_name}>{userName}</p>
-    <p className={styles.UserSection_job}>{desiredJob}</p>
+    <h2 className={styles.UserSection_name}>{userName}</h2>
+    <h3 className={styles.UserSection_job}>{desiredJob}</h3>
     <Divider white large />
   </section>
 );
