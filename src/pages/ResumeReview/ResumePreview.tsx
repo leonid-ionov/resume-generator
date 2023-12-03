@@ -1,32 +1,23 @@
 import styles from './ResumeRreview.module.scss';
-import { Divider } from '../../components/Divider.tsx';
 import { IUserSectionProps, UserSection } from './components/UserSection/UserSection.tsx';
 import { FC } from 'react';
-import { ContactsSection } from './components/ContactsSection/ContactsSection.tsx';
+import { ContactsSection, IContactElement } from './components/ContactsSection/ContactsSection.tsx';
+import { IPersonProfile, ProfileSection } from './components/ProfileSection/ProfileSection.tsx';
 
 export interface IResumePreviewProps {
-  userInfo: IUserSectionProps;
+  userInfo: IUserSectionProps & IPersonProfile;
+  contacts: IContactElement[];
 }
 
-export const ResumePreview: FC<IResumePreviewProps> = ({ userInfo }) => {
+export const ResumePreview: FC<IResumePreviewProps> = ({ userInfo, contacts }) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.titleSection}>
         <UserSection userName={userInfo.userName} desiredJob={userInfo.desiredJob} />
-        <ContactsSection />
+        <ContactsSection contacts={contacts} />
       </div>
       <div className={styles.profileSection}>
-        <div className={styles.profile}>
-          <h4 className={styles.sectionTitle}>Profile</h4>
-          <Divider />
-          <p className={styles.profile_description}>
-            I am deeply passionate about my work - I rejoice in every success in the project and use every opportunity
-            for professional growth. And I think that development is quite an exciting! Moreover, I have a great
-            technical background - 6 years of experience in the field of technical engineering, practical experience as
-            a senior engineer at a previous job. In addition, I am super-friendly, open-minded and optimistic. You will
-            enjoy working with me.
-          </p>
-        </div>
+        <ProfileSection profile={userInfo.profile} />
         <div className={styles.photo}>some photo</div>
       </div>
       <div className={styles.flexContainer}>

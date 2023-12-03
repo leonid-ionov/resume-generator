@@ -1,0 +1,14 @@
+@import 'styles/common';
+@import 'styles/_helpers';
+
+.ProfileSection {
+  @extend .flexColumnContainer;
+  padding: 0 spacing(7) 0 spacing(16);
+
+  &_title {
+    @extend .title;
+  }
+
+  &_profile {
+  }
+}

@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import styles from './ContactsSection.module.scss';
 
-/*interface IContactElement {
+export interface IContactElement {
   info: string;
   icon: ReactNode;
 }
@@ -11,17 +11,16 @@ const ContactElement: FC<IContactElement> = ({ info, icon }) => (
     <p className={styles.ContactElement_info}>{info}</p>
     <div className={styles.ContactElement_icon}>{icon}</div>
   </div>
-);*/
+);
 
-export const ContactsSection: FC = () => (
+export interface IContactsSection {
+  contacts: IContactElement[];
+}
+
+export const ContactsSection: FC<IContactsSection> = ({ contacts }) => (
   <div className={styles.ContactsSection}>
-    <div className={styles.ContactElement}>
-      <p className={styles.ContactElement_info}>CALL +995 59117 80 45</p>
-      <div className={styles.ContactElement_icon}>some icon</div>
-    </div>
-    <div className={styles.ContactElement}>
-      <p className={styles.ContactElement_info}>leonid8ionov@gmail.com</p>
-      <div className={styles.ContactElement_icon}>some icon</div>
-    </div>
+    {contacts.map(element => (
+      <ContactElement key={element.info} info={element.info} icon={element.icon} />
+    ))}
   </div>
 );

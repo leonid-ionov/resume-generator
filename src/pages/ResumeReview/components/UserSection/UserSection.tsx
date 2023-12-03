@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './UserSection.module.scss';
-import { Divider } from '../../../../components/Divider.tsx';
+import { Divider } from '../../../../components/Divider/Divider.tsx';
 
 export interface IUserSectionProps {
   userName: string;

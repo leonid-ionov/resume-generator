@@ -1,13 +1,17 @@
-@import '../../styles/common';
+@import 'styles/common';
+@import 'styles/_helpers';
+@import 'styles/_colors';
 
 .mainContainer {
   @extend .flexColumnContainer;
   justify-content: flex-start;
-  background-color: #1a1a1a;
+  width: 1224px;
+  height: 1718px;
+  background-color: $backGroundDark;
 }
 .titleSection {
   @extend .flexContainer;
-  padding: 0 100px;
+  padding: 0 spacing(16);
   height: 250px;
 }
 .personData {
@@ -26,40 +30,14 @@
   }
 }
 
-.contacts {
-  @extend .personData;
-  align-items: flex-end;
-
-  &_element {
-    @extend .flexContainer;
-    align-items: center;
-    gap: 8px;
-
-    &_info {
-      color: red;
-      margin: 0;
-    }
-
-    &_icon {
-    }
-  }
-}
-
 .profileSection {
   @extend .flexContainer;
-  height: 250px;
   background-color: grey;
 }
 
-.profile {
-  @extend .flexColumnContainer;
-  padding: 0 20px 0 100px;
-  &_description {
-  }
-}
 .photo {
-  min-width: 250px;
-  height: 250px;
+  min-width: spacing(52);
+  height: spacing(37);
   background-color: darkred;
 }
 
