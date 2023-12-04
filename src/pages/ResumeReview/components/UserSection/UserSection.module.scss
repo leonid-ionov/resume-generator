@@ -1,13 +1,9 @@
-@import 'styles/common';
 @import 'styles/_helpers';
 @import 'styles/_colors';
 
 .UserSection {
-  @extend .flexColumnContainer;
-  flex: 1;
-  align-items: flex-start;
-  justify-content: center;
-  gap: spacing(2);
+  @include FlexColumn;
+  gap: spacing(4);
 
   &_name {
     font-size: 2rem;

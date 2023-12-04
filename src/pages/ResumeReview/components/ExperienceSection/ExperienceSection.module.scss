@@ -1,0 +1,18 @@
+@import 'styles/_helpers';
+
+.ExperienceSection {
+  ul {
+    li {
+      list-style-image: url('./public/marker.png');
+    }
+    li::marker {
+      line-height: 14px;
+    }
+  }
+}
+
+.PositionItem {
+  &_title {
+    @include Flex(null, space-between);
+  }
+}

@@ -1,55 +1,49 @@
-@import 'styles/common';
+@import 'styles/_constants';
 @import 'styles/_helpers';
 @import 'styles/_colors';
 
-.mainContainer {
-  @extend .flexColumnContainer;
-  justify-content: flex-start;
-  width: 1224px;
-  height: 1718px;
+.ResumePreview {
+  display: grid;
+  grid-template-rows: $firstSectionHeight $secondSectionHeight $thirdSectionHeight;
+  grid-template-columns: auto $fourthSectionWidth;
+  width: $resumeWidth;
+  height: $resumeHeight;
   background-color: $backgroundDark;
-}
-.titleSection {
-  @extend .flexContainer;
-  height: spacing(39);
-  padding: 0 spacing(16);
-}
-.personData {
-  @extend .flexColumnContainer;
-  flex: 1;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 20px;
 
-  &_name {
-    margin: 0;
+  .Row1 {
+    grid-column: 1 / -1;
+    padding: spacing(6, 16);
+    @include Flex(flex-end);
+
+    &_content {
+      @include Flex(flex-start, space-between);
+      flex-grow: 1;
+    }
   }
 
-  &_job {
-    margin: 0;
+  .Row2 {
+    padding-left: spacing(16);
+    grid-column: 1 / -1;
+    background-color: $backgroundGrey;
+
+    @include Flex;
   }
-}
 
-.profileSection {
-  @extend .flexContainer;
-  background-color: $backgroundGrey;
-}
+  .Row3_Col1 {
+    padding: spacing(0, 7, 0, 16);
+    grid-row: 3;
+    grid-column: 1;
+    background-color: $white;
 
-.sectionTitle {
-}
-.someSection {
-  @extend .flexColumnContainer;
-  flex: 1;
-}
+    @include FlexColumn;
+    flex: 1;
+  }
 
-.experienceSection {
-  background-color: $white;
-  height: spacing(133);
-  padding: 0 spacing(16);
-}
+  .Row3_Col2 {
+    grid-row: 3;
+    grid-column: 2;
+    background-color: $backgroundGrey;
 
-.skillsSection {
-  @extend .flexColumnContainer;
-  background-color: $backgroundGrey;
-  width: spacing(52);
+    @include FlexColumn;
+  }
 }

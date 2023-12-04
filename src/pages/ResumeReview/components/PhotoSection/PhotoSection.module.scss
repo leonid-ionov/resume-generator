@@ -1,11 +1,9 @@
 @import 'styles/_helpers';
+@import 'styles/_constants';
 
 .PhotoSection {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: spacing(52);
-  height: spacing(37);
+  @include Flex(center, center);
+  min-width: $fourthSectionWidth;
   overflow: hidden;
 
   &_photo {

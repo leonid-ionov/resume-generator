@@ -1,15 +1,13 @@
-@import 'styles/common';
 @import 'styles/_colors';
-@import '../../ResumeRreview.module.scss';
+@import 'styles/_helpers';
 
 .ContactsSection {
-  @extend .personData;
-  align-items: flex-end;
+  @include FlexColumn(flex-end);
+  gap: spacing(2.5);
 }
 
 .ContactElement {
-  @extend .flexContainer;
-  align-items: center;
+  @include Flex(center);
   gap: 8px;
 
   &_info {

@@ -1,0 +1,10 @@
+@import 'styles/_helpers';
+
+.SectionTitle {
+  @include FlexColumn;
+  gap: spacing(2);
+
+  &_title {
+    margin: 0;
+  }
+}

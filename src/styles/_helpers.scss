@@ -1,3 +1,24 @@
-@function spacing($size) {
-  @return $size * calc(1rem / 2);
+@function spacing($values...) {
+  $result: ();
+  @each $value in $values {
+    $result: append($result, $value * calc(1rem / 2), space);
+  }
+  @return $result;
+}
+
+@mixin Flex($align: null, $justify: null) {
+  display: flex;
+
+  @if $justify != null {
+    justify-content: $justify;
+  }
+
+  @if $align != null {
+    align-items: $align;
+  }
+}
+
+@mixin FlexColumn($align: null, $justify: null) {
+  @include Flex($align, $justify);
+  flex-direction: column;
 }
