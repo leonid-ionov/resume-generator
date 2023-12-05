@@ -3,7 +3,7 @@
 
 .PhotoSection {
   @include Flex(center, center);
-  min-width: $fourthSectionWidth;
+  max-width: $fourthSectionWidth;
   overflow: hidden;
 
   &_photo {

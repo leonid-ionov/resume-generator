@@ -11,10 +11,12 @@
   gap: 8px;
 
   &_info {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 17px;
+    letter-spacing: 3px;
     color: $white;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0;
   }
 
   &_icon {

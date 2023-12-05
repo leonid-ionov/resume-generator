@@ -5,6 +5,11 @@
   gap: spacing(2);
 
   &_title {
-    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 14px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
   }
 }

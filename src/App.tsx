@@ -17,12 +17,17 @@ function App() {
         'background - 6 years of experience in the field of technical engineering, practical experience as a senior\n' +
         'engineer at a previous job. In addition, I am super-friendly, open-minded and optimistic. You will enjoy working\n' +
         'with me.',
+      info: [
+        { type: 'dayOfBirth', value: '18/04/199' },
+        { type: 'city', value: 'Tbilisi' },
+        { type: 'languages', value: 'English, Russian' },
+      ],
     },
     contacts: [
-      { info: 'CALL +995 591 17 80 45', icon: <PhoneIcon /> },
+      { info: 'CALL +995 591 178 045', icon: <PhoneIcon /> },
       { info: 'leonid8ionov@gmail.com', icon: <EmailIcon /> },
       { info: 'github.com/Neonrul', icon: <GitHubIcon /> },
-      { info: 'linkedin.com /in/leonid-8-ionov', icon: <LinkedInIcon /> },
+      { info: 'linkedin.com/in/leonid-8-ionov', icon: <LinkedInIcon /> },
     ],
     experience: [
       {
@@ -48,6 +53,61 @@ function App() {
           'for different browsers and devices;\n' +
           '• Micro frontend development using web components, also responsive and accessible;\n' +
           '• Novice skills on Node.js.',
+      },
+    ],
+    skills: [
+      {
+        name: 'LANGUAGES',
+        details: [
+          {
+            variant: 'JAVASCRIPT, TYPESCRIPT, HTML, CSS, SASS/SCSS',
+            level: '85%',
+          },
+        ],
+      },
+      {
+        name: 'LIBRARIES',
+        details: [
+          {
+            variant: 'REACT JS, REDUX',
+            level: '90%',
+          },
+          {
+            variant: 'REDUX SAGA, REACT ROUTER, REDUX THUNK, FORMICK, RXJS',
+            level: '85%',
+          },
+        ],
+      },
+      {
+        name: 'FRAMEWORK',
+        details: [
+          {
+            variant: 'NEXT.JS',
+            level: '45%',
+          },
+          {
+            variant: 'ANGULAR',
+            level: '25%',
+          },
+        ],
+      },
+      {
+        name: 'TESTING TOOLS',
+        details: [
+          {
+            variant: 'JEST, REACT TESTING LIBRARY, MSW , STORYBOOK',
+            level: '70%',
+          },
+        ],
+      },
+      {
+        name: 'STYLE FRAMEWORKS',
+        details: [
+          {
+            variant: 'STYLED COMPONENTS, ANT DESIGN, MATERIAL DESIGN, CSS MODULES',
+            level: '80%',
+          },
+        ],
       },
     ],
   };

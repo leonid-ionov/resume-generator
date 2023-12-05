@@ -1,6 +1,7 @@
 @import 'styles/_helpers';
 
 .ExperienceSection {
+  padding-top: spacing(3);
   ul {
     li {
       list-style-image: url('./public/marker.png');
