@@ -1,7 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,300&family=Open+Sans:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 16px;
 }
 
-h5 {
+html,
+body {
+  height: 100%;
   margin: 0;
+}
+
+body {
+  line-height: initial;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  margin: 0;
+}
+
+#root {
+  isolation: isolate;
+  height: 100%;
 }
