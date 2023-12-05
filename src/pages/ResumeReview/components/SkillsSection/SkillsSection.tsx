@@ -3,8 +3,8 @@ import { SectionTitle } from '../../../../components/SectionTitle/SectionTitle.t
 import styles from './SkillsSection.module.scss';
 
 interface ISkillDetails {
-  variant?: string;
-  level: string;
+  variant?: string; // different variants of a skill
+  level: string; // level in percentages
 }
 export interface IUserSkill {
   name: string;
@@ -28,7 +28,7 @@ const SkillItem: FC<IUserSkill> = ({ name, details }) => {
       <p className={styles.SkillItem_name}>{name}</p>
       {details.map(item => (
         <>
-          <p className={styles.SkillItem_description}>{item.variant}</p>
+          {item.variant && <p className={styles.SkillItem_description}>{item.variant}</p>}
           <SkillLevel level={item.level} />
         </>
       ))}

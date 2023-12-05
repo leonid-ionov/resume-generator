@@ -2,119 +2,55 @@ import './App.scss';
 import { IResumePreviewProps, ResumePreview } from './pages/ResumeReview/ResumePreview.tsx';
 import { EmailIcon } from './components/Icons/EmailIcon.tsx';
 import { PhoneIcon } from './components/Icons/PhoneIcon.tsx';
-import { GitHubIcon } from './components/Icons/GitHubIcon.tsx';
-import { LinkedInIcon } from './components/Icons/LinkedInIcon.tsx';
 
 function App() {
-  const initialResume: IResumePreviewProps = {
+  const pirateResume: IResumePreviewProps = {
     userInfo: {
-      userName: 'Leonid Ionov',
-      desiredJob: 'Software Engineer',
-      photoLink: './public/pirate.png',
+      userName: 'Blackbeard',
+      desiredJob: 'Flight attendant',
       profile:
-        'I am deeply passionate about my work - I rejoice in every success in the project and use every opportunity for\n' +
-        'professional growth. And I think that development is quite an exciting! Moreover, I have a great technical\n' +
-        'background - 6 years of experience in the field of technical engineering, practical experience as a senior\n' +
-        'engineer at a previous job. In addition, I am super-friendly, open-minded and optimistic. You will enjoy working\n' +
-        'with me.',
+        'Ahoy, ye scallywags! I be Blackbeard, the most fearsome pirate to sail the Seven Seas. I like me rum, I loves me ship and I sails under no flag but me own! With me trusty sword and cunning mind, I seek to carve me name into the annals of pirate legend.',
+      photoLink: './public/pirate.png',
       info: [
-        { type: 'dayOfBirth', value: '18/04/199' },
-        { type: 'city', value: 'Tbilisi' },
-        { type: 'languages', value: 'English, Russian' },
+        { type: 'dayOfBirth', value: 'Somewhere in 1680' },
+        { type: 'city', value: 'The High Seas' },
+        { type: 'languages', value: 'Pirate Speak, English' },
       ],
     },
+
     contacts: [
-      { info: 'CALL +995 591 178 045', icon: <PhoneIcon /> },
-      { info: 'leonid8ionov@gmail.com', icon: <EmailIcon /> },
-      { info: 'github.com/Neonrul', icon: <GitHubIcon /> },
-      { info: 'linkedin.com/in/leonid-8-ionov', icon: <LinkedInIcon /> },
+      { info: 'blackbeard@pirate.com', icon: <EmailIcon /> },
+      { info: '+1 800 PIR-RATE', icon: <PhoneIcon /> },
     ],
     experience: [
       {
-        positionName: 'Software Engineer',
-        companyName: 'EPAM',
-        workingPeriod: '02.2021-Current',
+        positionName: 'Captain',
+        companyName: "The Queen Anne's Revenge",
+        workingPeriod: '1716 - 1718',
         description:
-          'In my current role, I develop and maintain two micro-frontends for a .NET application\n' +
-          'using the React library - a scheduler and a assessment manager.\n' +
-          'Here the most important achievements:\n' +
-          '• Implement responsive and accessible the micro-frontend, allowing seamless\n' +
-          'interaction and optimal user experience across different devices and accessibility\n' +
-          'needs;\n' +
-          '• Participated and assisted in the development of a Material UI based UI component library;\n' +
-          '• Display practical knowledge in working with time zones;\n' +
-          '• Practical experience in writing unit tests and E2E tests;\n' +
-          '• Collaborate with a cross-functional team of designers, backend developers, and product\n' +
-          'managers to understand requirements and implement features what align with project\n' +
-          'goals.\n' +
-          'In addition to the scheduler, I also implemented several small micro-frontends, as well as\n' +
-          'worked on existing parts of the application:\n' +
-          '• Hands-on expertise with legacy code (JavaScript ES5, jQuery, first Angular) and optimization\n' +
-          'for different browsers and devices;\n' +
-          '• Micro frontend development using web components, also responsive and accessible;\n' +
-          '• Novice skills on Node.js.',
+          'Commanding the most dread pirate ship ever, brought fear to hearts, and gold to me pockets! Led a fearsome crew, engaged in epic sea battles, and amassed a legendary treasure hoard. Known for strategic brilliance and ruthless tactics.',
+      },
+      {
+        positionName: 'First Mate',
+        companyName: 'The Jolly Roger',
+        workingPeriod: '1660 - 1680',
+        description:
+          "Served under the infamous Captain Kidd, learning the ways of the pirate's life. Mastered the art of navigation and plundering.",
       },
     ],
     skills: [
-      {
-        name: 'LANGUAGES',
-        details: [
-          {
-            variant: 'JAVASCRIPT, TYPESCRIPT, HTML, CSS, SASS/SCSS',
-            level: '85%',
-          },
-        ],
-      },
-      {
-        name: 'LIBRARIES',
-        details: [
-          {
-            variant: 'REACT JS, REDUX',
-            level: '90%',
-          },
-          {
-            variant: 'REDUX SAGA, REACT ROUTER, REDUX THUNK, FORMICK, RXJS',
-            level: '85%',
-          },
-        ],
-      },
-      {
-        name: 'FRAMEWORK',
-        details: [
-          {
-            variant: 'NEXT.JS',
-            level: '45%',
-          },
-          {
-            variant: 'ANGULAR',
-            level: '25%',
-          },
-        ],
-      },
-      {
-        name: 'TESTING TOOLS',
-        details: [
-          {
-            variant: 'JEST, REACT TESTING LIBRARY, MSW , STORYBOOK',
-            level: '70%',
-          },
-        ],
-      },
-      {
-        name: 'STYLE FRAMEWORKS',
-        details: [
-          {
-            variant: 'STYLED COMPONENTS, ANT DESIGN, MATERIAL DESIGN, CSS MODULES',
-            level: '80%',
-          },
-        ],
-      },
+      { name: 'Swashbuckling', details: [{ level: '80%' }] },
+      { name: 'Buccaneering', details: [{ level: '67%' }] },
+      { name: 'Sea Shanties', details: [{ level: '85%' }] },
+      { name: 'Treasure Hunting', details: [{ level: '95%' }] },
+      { name: 'Sword Fighting', details: [{ level: '90%' }] },
+      { name: 'Jolly Roger Hoisting', details: [{ level: '73%' }] },
     ],
   };
 
   return (
     <section className="App">
-      <ResumePreview {...initialResume} />
+      <ResumePreview {...pirateResume} />
     </section>
   );
 }
