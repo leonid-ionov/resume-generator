@@ -33,6 +33,7 @@ export const ResumePreview: FC<IResumePreviewProps> = ({ userInfo, contacts, exp
       <div className={styles.Row3_Col1}>
         <ExperienceSection experience={experience} />
         <EducationSection educations={education} />
+        <div>INTERESTS</div>
       </div>
       <div className={styles.Row3_Col2}>
         <InfoSection userInfo={userInfo.info} />

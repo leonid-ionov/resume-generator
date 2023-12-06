@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import { SectionTitle } from '../../../../components/SectionTitle/SectionTitle.tsx';
 import styles from './SkillsSection.module.scss';
 
@@ -26,11 +26,11 @@ const SkillItem: FC<IUserSkill> = ({ name, details }) => {
   return (
     <article className={styles.SkillItem}>
       <p className={styles.SkillItem_name}>{name}</p>
-      {details.map(item => (
-        <>
+      {details.map((item, index) => (
+        <Fragment key={index}>
           {item.variant && <p className={styles.SkillItem_description}>{item.variant}</p>}
           <SkillLevel level={item.level} />
-        </>
+        </Fragment>
       ))}
     </article>
   );
