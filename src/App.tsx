@@ -66,6 +66,16 @@ function App() {
       { name: 'Sword Fighting', details: [{ level: '90%' }] },
       { name: 'Jolly Roger Hoisting', details: [{ level: '73%' }] },
     ],
+    interests: [
+      {
+        name: 'some interest',
+        icon: 'some icon',
+      },
+      {
+        name: 'some interest',
+        icon: <EmailIcon />,
+      },
+    ],
   };
 
   return (

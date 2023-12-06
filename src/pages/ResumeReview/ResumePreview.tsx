@@ -8,6 +8,7 @@ import { ExperienceSection, IPositionExplore } from './components/ExperienceSect
 import { IInfoItem, InfoSection } from './components/InfoSection/InfoSection.tsx';
 import { IUserSkill, SkillsSection } from './components/SkillsSection/SkillsSection.tsx';
 import { EducationSection, IUserEducation } from './components/EducationSection/EducationSection.tsx';
+import { InterestsSection, IUserInterest } from './components/InterestsSection/InterestsSection.tsx';
 
 export interface IResumePreviewProps {
   userInfo: IUserSectionProps & IPersonProfile & IPersonPhoto & { info: IInfoItem[] };
@@ -15,9 +16,17 @@ export interface IResumePreviewProps {
   experience: IPositionExplore[];
   skills: IUserSkill[];
   education: IUserEducation[];
+  interests: IUserInterest[];
 }
 
-export const ResumePreview: FC<IResumePreviewProps> = ({ userInfo, contacts, experience, education, skills }) => {
+export const ResumePreview: FC<IResumePreviewProps> = ({
+  userInfo,
+  contacts,
+  experience,
+  education,
+  skills,
+  interests,
+}) => {
   return (
     <div className={styles.ResumePreview}>
       <div className={styles.Row1}>
@@ -33,7 +42,7 @@ export const ResumePreview: FC<IResumePreviewProps> = ({ userInfo, contacts, exp
       <div className={styles.Row3_Col1}>
         <ExperienceSection experience={experience} />
         <EducationSection educations={education} />
-        <div>INTERESTS</div>
+        <InterestsSection interests={interests} />
       </div>
       <div className={styles.Row3_Col2}>
         <InfoSection userInfo={userInfo.info} />
