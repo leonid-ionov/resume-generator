@@ -1,0 +1,12 @@
+@import 'styles/_helpers';
+
+.List {
+  @include FlexColumn;
+  gap: spacing(3);
+
+  ul {
+    @include FlexColumn;
+    gap: spacing(1.5);
+    margin: 0;
+  }
+}

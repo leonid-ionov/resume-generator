@@ -7,15 +7,17 @@ import { IPersonPhoto, PhotoSection } from './components/PhotoSection/PhotoSecti
 import { ExperienceSection, IPositionExplore } from './components/ExperienceSection/ExperienceSection.tsx';
 import { IInfoItem, InfoSection } from './components/InfoSection/InfoSection.tsx';
 import { IUserSkill, SkillsSection } from './components/SkillsSection/SkillsSection.tsx';
+import { EducationSection, IUserEducation } from './components/EducationSection/EducationSection.tsx';
 
 export interface IResumePreviewProps {
   userInfo: IUserSectionProps & IPersonProfile & IPersonPhoto & { info: IInfoItem[] };
   contacts: IContactElement[];
   experience: IPositionExplore[];
   skills: IUserSkill[];
+  education: IUserEducation[];
 }
 
-export const ResumePreview: FC<IResumePreviewProps> = ({ userInfo, contacts, experience, skills }) => {
+export const ResumePreview: FC<IResumePreviewProps> = ({ userInfo, contacts, experience, education, skills }) => {
   return (
     <div className={styles.ResumePreview}>
       <div className={styles.Row1}>
@@ -30,6 +32,7 @@ export const ResumePreview: FC<IResumePreviewProps> = ({ userInfo, contacts, exp
       </div>
       <div className={styles.Row3_Col1}>
         <ExperienceSection experience={experience} />
+        <EducationSection educations={education} />
       </div>
       <div className={styles.Row3_Col2}>
         <InfoSection userInfo={userInfo.info} />

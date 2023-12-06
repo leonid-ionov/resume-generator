@@ -1,0 +1,37 @@
+@import 'styles/_colors';
+@import 'styles/_helpers';
+
+.ListItem {
+  list-style-type: none;
+  position: relative;
+  @include FlexColumn;
+  gap: spacing(1);
+
+  &::before {
+    content: '\2022';
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background-color: $black;
+    position: absolute;
+    left: -39px;
+    top: 2px;
+  }
+
+  &_title {
+    @include Flex(null, space-between);
+  }
+
+  &_text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &__bold {
+      font-weight: 600;
+      letter-spacing: 4px;
+    }
+  }
+}
