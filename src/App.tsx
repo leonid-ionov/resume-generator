@@ -2,6 +2,11 @@ import './App.scss';
 import { IResumePreviewProps, ResumePreview } from './pages/ResumeReview/ResumePreview.tsx';
 import { EmailIcon } from './components/Icons/EmailIcon.tsx';
 import { PhoneIcon } from './components/Icons/PhoneIcon.tsx';
+import { useContext } from 'react';
+import { AppContext } from './context/AppContext.tsx';
+import { TPages } from './types/TPages.ts';
+import { ResumeFormPage } from './pages/ResumeForm/ResumeFormPage.tsx';
+import { MainPage } from './pages/Main/MainPage.tsx';
 
 function App() {
   const pirateResume: IResumePreviewProps = {
@@ -78,11 +83,17 @@ function App() {
     ],
   };
 
-  return (
-    <section className="App">
-      <ResumePreview {...pirateResume} />
-    </section>
-  );
+  const appContext = useContext(AppContext);
+
+  switch (appContext.page) {
+    case TPages.FORM:
+      return <ResumeFormPage />;
+    case TPages.PREVIEW:
+      return <ResumePreview {...pirateResume} />;
+    case TPages.MAIN:
+    default:
+      return <MainPage />;
+  }
 }
 
 export default App;
