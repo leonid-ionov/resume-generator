@@ -1,12 +1,13 @@
-import './App.scss';
+import styles from './App.module.scss';
 import { IResumePreviewProps, ResumePreview } from './pages/ResumeReview/ResumePreview.tsx';
 import { EmailIcon } from './components/Icons/EmailIcon.tsx';
 import { PhoneIcon } from './components/Icons/PhoneIcon.tsx';
-import { useContext } from 'react';
-import { AppContext } from './context/AppContext.tsx';
+import { useContext, useMemo } from 'react';
+import { AppContext, IAppContext } from './context/AppContext.tsx';
 import { TPages } from './types/TPages.ts';
 import { ResumeFormPage } from './pages/ResumeForm/ResumeFormPage.tsx';
 import { MainPage } from './pages/Main/MainPage.tsx';
+import { Navbar } from './components/Navbar/Navbar.tsx';
 
 function App() {
   const pirateResume: IResumePreviewProps = {
@@ -73,27 +74,34 @@ function App() {
     ],
     interests: [
       {
-        name: 'some interest',
+        name: 'some interest 1',
         icon: 'some icon',
       },
       {
-        name: 'some interest',
+        name: 'some interest 2',
         icon: <EmailIcon />,
       },
     ],
   };
 
-  const appContext = useContext(AppContext);
-
-  switch (appContext.page) {
-    case TPages.FORM:
-      return <ResumeFormPage />;
-    case TPages.PREVIEW:
-      return <ResumePreview {...pirateResume} />;
-    case TPages.MAIN:
-    default:
-      return <MainPage />;
-  }
+  const { page } = useContext<IAppContext>(AppContext);
+  const component = useMemo(() => {
+    switch (page) {
+      case TPages.FORM:
+        return <ResumeFormPage />;
+      case TPages.PREVIEW:
+        return <ResumePreview {...pirateResume} />;
+      case TPages.MAIN:
+      default:
+        return <MainPage />;
+    }
+  }, [page]);
+  return (
+    <div className={styles.App}>
+      <Navbar />
+      <section className={styles.content}>{component}</section>
+    </div>
+  );
 }
 
 export default App;

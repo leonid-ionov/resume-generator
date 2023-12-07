@@ -4,7 +4,7 @@ import { TPages } from '../types/TPages.ts';
 
 export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [page, setPage] = useState(TPages.MAIN);
-
+  console.log(page);
   const appContext = useMemo<IAppContext>(
     () => ({
       page,
