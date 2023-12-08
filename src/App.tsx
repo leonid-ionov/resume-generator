@@ -5,7 +5,7 @@ import { PhoneIcon } from './components/Icons/PhoneIcon.tsx';
 import { useContext, useMemo } from 'react';
 import { AppContext, IAppContext } from './context/AppContext.tsx';
 import { TPages } from './types/TPages.ts';
-import { ResumeFormPage } from './pages/ResumeForm/ResumeFormPage.tsx';
+import { ResumeForm } from './pages/ResumeForm/ResumeForm.tsx';
 import { MainPage } from './pages/Main/MainPage.tsx';
 import { Navbar } from './components/Navbar/Navbar.tsx';
 
@@ -88,7 +88,7 @@ function App() {
   const component = useMemo(() => {
     switch (page) {
       case TPages.FORM:
-        return <ResumeFormPage />;
+        return <ResumeForm />;
       case TPages.PREVIEW:
         return <ResumePreview {...pirateResume} />;
       case TPages.MAIN:

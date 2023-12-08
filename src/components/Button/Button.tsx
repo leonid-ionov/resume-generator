@@ -5,8 +5,10 @@ interface IButtonProps extends PropsWithChildren {
   onClick?: () => void;
 }
 
-export const Button: FC<IButtonProps> = ({ onClick, children }) => (
+const Button: FC<IButtonProps> = ({ onClick, children }) => (
   <button className={styles.Button} onClick={onClick}>
     {children}
   </button>
 );
+
+export default Button;
