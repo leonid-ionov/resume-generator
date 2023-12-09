@@ -1,10 +1,15 @@
 import { createContext } from 'react';
 import { TPages } from '../types/TPages.ts';
 
+export interface IResumeData {
+  userName: string;
+}
+
 export interface IAppContext {
   page: TPages;
   navigate: (page: TPages) => void;
-  resumeData: object;
+  resumeData?: IResumeData;
+  publishResume: (data: IResumeData) => void;
 }
 
 const stubFunction = () => {
@@ -14,7 +19,7 @@ const stubFunction = () => {
 const initialAppContext: IAppContext = {
   page: TPages.MAIN,
   navigate: stubFunction,
-  resumeData: {},
+  publishResume: stubFunction,
 };
 
 export const AppContext = createContext<IAppContext>(initialAppContext);

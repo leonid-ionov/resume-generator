@@ -1,13 +1,13 @@
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 import { TPages } from '../../types/TPages.ts';
-import { AppContext } from '../../context/AppContext.tsx';
+import useAppContext from '../../context/useAppContext.tsx';
 
 export const MainPage: FC = () => {
-  const appContext = useContext(AppContext);
+  const { navigate } = useAppContext();
   return (
     <section>
       <div>MainPage</div>
-      <button onClick={() => appContext.navigate(TPages.PREVIEW)}>to preview</button>
+      <button onClick={() => navigate(TPages.PREVIEW)}>to preview</button>
     </section>
   );
 };

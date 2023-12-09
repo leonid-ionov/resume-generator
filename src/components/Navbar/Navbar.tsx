@@ -1,11 +1,11 @@
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 import styles from './Navbar.module.scss';
-import { AppContext } from '../../context/AppContext.tsx';
 import { TPages } from '../../types/TPages.ts';
 import Button from '../Button/Button.tsx';
+import useAppContext from '../../context/useAppContext.tsx';
 
 export const Navbar: FC = () => {
-  const { page, navigate } = useContext(AppContext);
+  const { page, navigate } = useAppContext();
 
   return (
     <div className={styles.Navbar}>

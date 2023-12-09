@@ -9,6 +9,7 @@ import { IInfoItem, InfoSection } from './components/InfoSection/InfoSection.tsx
 import { IUserSkill, SkillsSection } from './components/SkillsSection/SkillsSection.tsx';
 import { EducationSection, IUserEducation } from './components/EducationSection/EducationSection.tsx';
 import { InterestsSection, IUserInterest } from './components/InterestsSection/InterestsSection.tsx';
+import useAppContext from '../../context/useAppContext.tsx';
 
 export interface IResumePreviewProps {
   userInfo: IUserSectionProps & IPersonProfile & IPersonPhoto & { info: IInfoItem[] };
@@ -27,11 +28,12 @@ export const ResumePreview: FC<IResumePreviewProps> = ({
   skills,
   interests,
 }) => {
+  const { resumeData } = useAppContext();
   return (
     <div className={styles.ResumePreview}>
       <div className={styles.Row1}>
         <div className={styles.Row1_content}>
-          <UserSection userName={userInfo.userName} desiredJob={userInfo.desiredJob} />
+          <UserSection userName={resumeData?.userName ?? userInfo.userName} desiredJob={userInfo.desiredJob} />
           <ContactsSection contacts={contacts} />
         </div>
       </div>
