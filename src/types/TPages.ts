@@ -1,5 +1,5 @@
 export enum TPages {
-  MAIN = 'main',
-  FORM = 'form',
-  PREVIEW = 'preview',
+  MAIN = '/',
+  FORM = '/form',
+  PREVIEW = '/preview',
 }
