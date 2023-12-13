@@ -1,8 +1,9 @@
 import { FC, PropsWithChildren, useMemo, useState } from 'react';
-import { AppContext, IAppContext, IResumeData } from './AppContext.tsx';
+import { AppContext, IAppContext } from './AppContext.tsx';
+import { TResumeData } from '../pages/ResumeReview/ResumePreview.tsx';
 
 export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [resumeData, setResumeData] = useState<IResumeData>();
+  const [resumeData, setResumeData] = useState<TResumeData>();
   const appContext = useMemo<IAppContext>(
     () => ({
       resumeData,

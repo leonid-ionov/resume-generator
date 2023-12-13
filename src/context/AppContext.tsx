@@ -1,12 +1,9 @@
 import { createContext } from 'react';
-
-export interface IResumeData {
-  userName: string;
-}
+import { TResumeData } from '../pages/ResumeReview/ResumePreview.tsx';
 
 export interface IAppContext {
-  resumeData?: IResumeData;
-  publishResume: (data: IResumeData) => void;
+  resumeData?: TResumeData;
+  publishResume: (data: TResumeData) => void;
 }
 
 const stubFunction = () => {

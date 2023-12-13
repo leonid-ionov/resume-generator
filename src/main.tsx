@@ -8,7 +8,6 @@ import { TPages } from './types/TPages.ts';
 import { MainPage } from './pages/Main/MainPage.tsx';
 import { ResumeForm } from './pages/ResumeForm/ResumeForm.tsx';
 import { ResumePreview } from './pages/ResumeReview/ResumePreview.tsx';
-import { resumePreviewData } from './constants/resumePreviewData.tsx';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: TPages.PREVIEW,
-        element: <ResumePreview {...resumePreviewData} />,
+        element: <ResumePreview />,
       },
     ],
   },

@@ -1,26 +1,18 @@
-import { IResumePreviewProps } from '../pages/ResumeReview/ResumePreview.tsx';
+import { TResumeData } from '../pages/ResumeReview/ResumePreview.tsx';
 import { EmailIcon } from '../components/Icons/EmailIcon.tsx';
 import { PhoneIcon } from '../components/Icons/PhoneIcon.tsx';
 
-export const resumePreviewData: IResumePreviewProps = {
-  userInfo: {
-    userName: 'Blackbeard',
-    desiredJob: 'Flight attendant',
-    // profile:
-    //   'Ahoy, ye scallywags! I be Blackbeard, the most fearsome pirate to sail the Seven Seas. I like me rum, I loves me ship and I sails under no flag but me own! With me trusty sword and cunning mind, I seek to carve me name into the annals of pirate legend.',
-    profile:
-      'I am deeply passionate about my work - I rejoice in every success in the project and use every opportunity for\n' +
-      'professional growth. And I think that development is quite an exciting! Moreover, I have a great technical\n' +
-      'background - 6 years of experience in the field of technical engineering, practical experience as a senior\n' +
-      'engineer at a previous job. In addition, I am super-friendly, open-minded and optimistic. You will enjoy working\n' +
-      'with me.',
-    photoLink: './public/pirate.png',
-    info: [
-      { type: 'dayOfBirth', value: 'Somewhere in 1680' },
-      { type: 'city', value: 'The High Seas' },
-      { type: 'languages', value: 'Pirate Speak, English' },
-    ],
-  },
+export const resumePreviewData: TResumeData = {
+  userName: 'Blackbeard',
+  desiredJob: 'Flight attendant',
+  profile:
+    'Ahoy, ye scallywags! I be Blackbeard, the most fearsome pirate to sail the Seven Seas. I like me rum, I loves me ship and I sails under no flag but me own! With me trusty sword and cunning mind, I seek to carve me name into the annals of pirate legend.',
+  photoLink: './public/pirate.png',
+  info: [
+    { type: 'dayOfBirth', value: 'Somewhere in 1680' },
+    { type: 'city', value: 'The High Seas' },
+    { type: 'languages', value: 'Pirate Speak, English' },
+  ],
 
   contacts: [
     { info: 'blackbeard@pirate.com', icon: <EmailIcon /> },

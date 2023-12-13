@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Input from '../../components/Input/Input.tsx';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import useAppContext from '../../context/useAppContext.tsx';
-import { IResumeData } from '../../context/AppContext.tsx';
+import { TResumeData } from '../ResumeReview/ResumePreview.tsx';
 
 export const ResumeForm: FC = () => {
   const { resumeData, publishResume } = useAppContext();
@@ -10,10 +10,10 @@ export const ResumeForm: FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IResumeData>({
+  } = useForm<TResumeData>({
     defaultValues: { ...resumeData },
   });
-  const onSubmit: SubmitHandler<IResumeData> = data => publishResume(data);
+  const onSubmit: SubmitHandler<TResumeData> = data => publishResume(data);
   return (
     <div>
       <h2>Resume form</h2>

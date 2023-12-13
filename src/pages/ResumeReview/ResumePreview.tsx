@@ -10,45 +10,46 @@ import { IUserSkill, SkillsSection } from './components/SkillsSection/SkillsSect
 import { EducationSection, IUserEducation } from './components/EducationSection/EducationSection.tsx';
 import { InterestsSection, IUserInterest } from './components/InterestsSection/InterestsSection.tsx';
 import useAppContext from '../../context/useAppContext.tsx';
+import { useLocation } from 'react-router-dom';
+import { resumePreviewData } from '../../constants/resumePreviewData.tsx';
 
-export interface IResumePreviewProps {
-  userInfo: IUserSectionProps & IPersonProfile & IPersonPhoto & { info: IInfoItem[] };
-  contacts: IContactElement[];
-  experience: IPositionExplore[];
-  skills: IUserSkill[];
-  education: IUserEducation[];
-  interests: IUserInterest[];
-}
+export type TResumeData = IUserSectionProps &
+  IPersonProfile &
+  IPersonPhoto & {
+    info: IInfoItem[];
+    contacts: IContactElement[];
+    experience: IPositionExplore[];
+    skills: IUserSkill[];
+    education: IUserEducation[];
+    interests: IUserInterest[];
+  };
 
-export const ResumePreview: FC<IResumePreviewProps> = ({
-  userInfo,
-  contacts,
-  experience,
-  education,
-  skills,
-  interests,
-}) => {
-  const { resumeData } = useAppContext();
+export const ResumePreview: FC = () => {
+  const location = useLocation();
+  const appContext = useAppContext();
+  const state = location.state as { isPreview?: boolean };
+  const resumeData = state.isPreview ? resumePreviewData : { ...resumePreviewData, ...appContext.resumeData };
+  console.log(resumeData);
   return (
     <div className={styles.ResumePreview}>
       <div className={styles.Row1}>
         <div className={styles.Row1_content}>
-          <UserSection userName={resumeData?.userName ?? userInfo.userName} desiredJob={userInfo.desiredJob} />
-          <ContactsSection contacts={contacts} />
+          <UserSection userName={resumeData.userName} desiredJob={resumeData.desiredJob} />
+          <ContactsSection contacts={resumeData.contacts} />
         </div>
       </div>
       <div className={styles.Row2}>
-        <ProfileSection profile={userInfo.profile} />
-        <PhotoSection photoLink={userInfo.photoLink} />
+        <ProfileSection profile={resumeData.profile} />
+        <PhotoSection photoLink={resumeData.photoLink} />
       </div>
       <div className={styles.Row3_Col1}>
-        <ExperienceSection experience={experience} />
-        <EducationSection educations={education} />
-        <InterestsSection interests={interests} />
+        <ExperienceSection experience={resumeData.experience} />
+        <EducationSection educations={resumeData.education} />
+        <InterestsSection interests={resumeData.interests} />
       </div>
       <div className={styles.Row3_Col2}>
-        <InfoSection userInfo={userInfo.info} />
-        <SkillsSection skills={skills} />
+        <InfoSection userInfo={resumeData.info} />
+        <SkillsSection skills={resumeData.skills} />
       </div>
     </div>
   );
