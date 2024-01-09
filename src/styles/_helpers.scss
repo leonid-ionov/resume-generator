@@ -1,19 +1,30 @@
 @function spacing($values...) {
   $result: ();
+  @if length($values) > 4 {
+    @error "Too many values. Maximum allowed is 4.";
+  }
   @each $value in $values {
     $result: append($result, $value * calc(1rem / 2), space);
   }
   @return $result;
 }
 
+@function radius($value: null) {
+  $defaultValue: 2px;
+  @if ($value == null) {
+    @return $defaultValue;
+  }
+  @return calc($defaultValue * $value);
+}
+
 @mixin Flex($align: null, $justify: null) {
   display: flex;
 
-  @if $justify != null {
+  @if $justify {
     justify-content: $justify;
   }
 
-  @if $align != null {
+  @if $align {
     align-items: $align;
   }
 }
@@ -21,4 +32,15 @@
 @mixin FlexColumn($align: null, $justify: null) {
   @include Flex($align, $justify);
   flex-direction: column;
+}
+
+@mixin font-size($size, $line-height: null, $letter-spacing: null) {
+  font-size: $size;
+  @if $line-height {
+    line-height: $line-height;
+  }
+
+  @if $letter-spacing {
+    letter-spacing: $letter-spacing;
+  }
 }

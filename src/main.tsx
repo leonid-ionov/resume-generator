@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { TPages } from './types/TPages.ts';
 import { MainPage } from './pages/Main/MainPage.tsx';
 import { ResumeForm } from './pages/ResumeForm/ResumeForm.tsx';
-import { ResumePreview } from './pages/ResumeReview/ResumePreview.tsx';
+import { ResumePreview } from './pages/ResumePreview/ResumePreview.tsx';
 
 const router = createBrowserRouter([
   {

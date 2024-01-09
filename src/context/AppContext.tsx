@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { TResumeData } from '../pages/ResumeReview/ResumePreview.tsx';
+import { TResumeData } from '../types/TResumeData.ts';
 
 export interface IAppContext {
   resumeData?: TResumeData;

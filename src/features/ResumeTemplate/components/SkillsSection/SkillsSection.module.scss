@@ -1,0 +1,38 @@
+@import 'styles/_colors';
+@import 'styles/_helpers';
+@import 'styles/typography';
+
+.SkillsSection {
+  @include FlexColumn;
+  gap: spacing(2);
+}
+
+.SkillItem {
+  @include FlexColumn;
+  gap: spacing(1.5);
+
+  &_name {
+    @extend %Montserrat, %bold;
+    @include font-size(14px, 11px, 3px);
+  }
+
+  &_description {
+    @extend %Montserrat, %italic, %light;
+    @include font-size(12px, 13px);
+  }
+}
+
+.SkillLevel {
+  width: spacing(29);
+  height: 11px;
+  overflow: hidden;
+  background-color: $greyDark;
+
+  &_fill {
+    --skill-level: 0%;
+
+    height: 100%;
+    background-color: $black;
+    width: var(--skill-level);
+  }
+}

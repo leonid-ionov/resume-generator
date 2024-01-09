@@ -1,0 +1,14 @@
+@import 'styles/_helpers';
+@import 'styles/typography';
+
+.ProfileSection {
+  @include FlexColumn;
+  flex: 1;
+  padding: spacing(5, 7, 5, 0);
+  gap: spacing(3);
+
+  &_profile {
+    @extend %OpenSans;
+    @include font-size(16px, 23px);
+  }
+}

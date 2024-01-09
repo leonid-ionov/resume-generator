@@ -1,27 +1,35 @@
 @import 'styles/_helpers';
+@import 'styles/_colors';
+@import 'styles/typography';
 
 .Button {
-  font-size: 1rem;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  @extend %Montserrat, %bold;
+  height: fit-content;
+  text-transform: none;
+  font-size: 16px;
   border: none;
-  padding: 1em 2em;
-  margin: 4px;
-  border-radius: 20px;
-  background-color: #ababab;
-  color: white;
+  padding: spacing(1, 2);
+  margin: spacing(0.5);
+  border-radius: radius(10);
+  background-color: $greyLight;
+  color: $white;
   cursor: pointer;
 
   &:hover {
-    background-color: #9b9b9b;
+    background-color: $grey;
   }
 
   &:focus,
   :focus-visible {
-    background-color: #8b8b8b;
+    background-color: $greyDark;
     outline: none;
     box-shadow:
-      0 0 0 2px white,
-      0 0 0 4px #969696;
+      0 0 0 2px $white,
+      0 0 0 4px $greyDark;
+  }
+
+  &_small {
+    font-size: 14px;
+    padding: spacing(0.5, 1);
   }
 }

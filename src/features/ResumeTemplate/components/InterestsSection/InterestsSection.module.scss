@@ -1,0 +1,41 @@
+@import 'styles/_helpers';
+@import 'styles/_colors';
+@import 'styles/typography';
+
+$iconContainerWidth: spacing(11.25);
+
+.InterestsSection {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-row-gap: spacing(2.5);
+
+  &_row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($iconContainerWidth, min-content));
+    grid-column-gap: spacing(3);
+  }
+
+  &_item {
+    @include FlexColumn(center);
+    gap: spacing(1.5);
+  }
+
+  &_text {
+    @extend %Montserrat;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  &_iconContainer {
+    width: $iconContainerWidth;
+    height: $iconContainerWidth;
+    @include Flex(center, center);
+    background-color: $iconBackground;
+    border-radius: 50%;
+
+    & :first-child {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}

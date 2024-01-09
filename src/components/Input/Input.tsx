@@ -1,35 +1,32 @@
 import { forwardRef } from 'react';
 import styles from './Input.module.scss';
-import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
+import cn from 'classnames';
+import { TFormElement } from '../../types/formTypes.ts';
 
-interface IInputProps extends ReturnType<UseFormRegister<FieldValues>> {
-  label: string;
-  description?: string;
-  placeholder?: string;
-  error?: FieldError;
-}
+type TInputProps = TFormElement<HTMLInputElement>;
 
-const Input = forwardRef<HTMLInputElement, IInputProps>(
-  ({ label, name, description, placeholder, error, ...overProps }, ref) => {
-    return (
-      <div className={styles.inputContainer}>
-        <label htmlFor={name}>{label}</label>
-        <input
-          type="text"
-          id={name}
-          name={name}
-          placeholder={placeholder}
-          className={error ? styles.inputError : ''}
-          {...overProps}
-          ref={ref}
-        />
-        {(description || error) && (
-          <small className={error ? styles.errorText : styles.helperText}>{error ? error.message : description}</small>
-        )}
-      </div>
-    );
-  }
-);
+const Input = forwardRef<HTMLInputElement, TInputProps>(({ label, name, description, error, ...overProps }, ref) => {
+  return (
+    <div className={styles.inputContainer}>
+      {label && (
+        <label className={styles.inputLabel} htmlFor={name}>
+          {label}
+        </label>
+      )}
+      <input
+        type="text"
+        id={name}
+        name={name}
+        className={cn(styles.inputControl, error && styles.inputControl_error)}
+        {...overProps}
+        ref={ref}
+      />
+      {(description || error) && (
+        <small className={error ? styles.inputError : styles.inputHelper}>{error ? error.message : description}</small>
+      )}
+    </div>
+  );
+});
 
 Input.displayName = 'Input';
 export default Input;

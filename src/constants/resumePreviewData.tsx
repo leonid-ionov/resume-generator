@@ -1,4 +1,4 @@
-import { TResumeData } from '../pages/ResumeReview/ResumePreview.tsx';
+import { TResumeData } from '../types/TResumeData.ts';
 import { EmailIcon } from '../components/Icons/EmailIcon.tsx';
 import { PhoneIcon } from '../components/Icons/PhoneIcon.tsx';
 
@@ -20,12 +20,6 @@ export const resumePreviewData: TResumeData = {
   ],
   experience: [
     {
-      positionName: 'Software Engineer',
-      companyName: 'EPAM',
-      workingPeriod: '02.2021-Current',
-      description: 'In my current role, I develop and maintain two micro-frontends for a .NET application',
-    },
-    {
       positionName: 'Captain',
       companyName: "The Queen Anne's Revenge",
       workingPeriod: '1716 - 1718',
@@ -35,17 +29,17 @@ export const resumePreviewData: TResumeData = {
     {
       positionName: 'First Mate',
       companyName: 'The Jolly Roger',
-      workingPeriod: '1660 - 1680',
+      workingPeriod: '1700 - 1716',
       description:
         "Served under the infamous Captain Kidd, learning the ways of the pirate's life. Mastered the art of navigation and plundering.",
     },
   ],
   education: [
     {
-      speciality: 'MASTER OF TECHNICAL PHYSICS',
-      educationPeriod: '2008-2014',
-      institution: 'SAINT-PETERSBURG STATE POLYTECHNICAL UNIVERSITY',
-      description: 'PHYSICS OF SEM ICONDUCTORS NANOELECTRONICS',
+      speciality: 'Master of Nautical Studies',
+      educationPeriod: '1690-1696',
+      institution: 'Pirate Academy of the Seven Seas',
+      description: 'Advanced Navigation, Looting Strategies, and Rum Connoisseurship',
     },
   ],
   skills: [
@@ -58,12 +52,12 @@ export const resumePreviewData: TResumeData = {
   ],
   interests: [
     {
-      name: 'some interest 1',
-      icon: 'some icon',
+      name: 'Navigating the High Seas',
+      icon: '🗺️',
     },
     {
-      name: 'some interest 2',
-      icon: <EmailIcon />,
+      name: 'Rum Tasting',
+      icon: '🍹',
     },
   ],
 };

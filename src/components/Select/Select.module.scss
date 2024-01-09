@@ -1,0 +1,40 @@
+@import 'styles/_colors';
+@import 'styles/controls';
+
+.selectContainer {
+  @extend %controlContainer;
+}
+
+.selectLabel {
+  @extend %label;
+}
+
+.selectControl {
+  @extend %control;
+  background-color: $white;
+
+  &_error {
+    border-color: $error;
+  }
+}
+
+.selectOption {
+  &:hover {
+    background-color: $greyLight;
+  }
+  &:focus {
+    background-color: $greyLight;
+  }
+  &[aria-selected='true']:not(&[disabled]) {
+    background-color: $greyLight;
+    color: $white;
+  }
+}
+
+.selectHelper {
+  @extend %helperText;
+}
+
+.selectError {
+  @extend %errorText;
+}

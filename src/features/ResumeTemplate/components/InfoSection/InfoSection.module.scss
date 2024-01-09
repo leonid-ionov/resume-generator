@@ -1,0 +1,31 @@
+@import 'styles/_helpers';
+@import 'styles/_colors';
+@import 'styles/typography';
+
+.InfoSection {
+  @include FlexColumn();
+  gap: spacing(3);
+  width: fit-content;
+
+  &_items {
+    @include FlexColumn();
+    gap: spacing(1.5);
+  }
+}
+
+.InfoItem {
+  @include Flex(null, space-between);
+  padding-bottom: spacing(1.5);
+  gap: spacing(3);
+
+  border-bottom: $black solid 1px;
+
+  &_text {
+    @extend %OpenSans;
+    @include font-size(16px, 14px);
+
+    &__bold {
+      @extend %extraBold;
+    }
+  }
+}

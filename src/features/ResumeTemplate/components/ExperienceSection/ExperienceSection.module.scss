@@ -1,0 +1,6 @@
+@import 'styles/typography';
+
+.Experience_description {
+  @extend %OpenSans;
+  font-size: 13px;
+}
