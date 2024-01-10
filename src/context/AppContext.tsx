@@ -1,9 +1,12 @@
 import { createContext } from 'react';
 import { TResumeData } from '../types/TResumeData.ts';
+import { IFormData } from '../types/formTypes.ts';
+import { initialFormData } from '../constants/formConstants.ts';
 
 export interface IAppContext {
+  formData: IFormData;
   resumeData?: TResumeData;
-  publishResume: (data: TResumeData) => void;
+  submitResume: (data: IFormData) => void;
 }
 
 const stubFunction = () => {
@@ -11,7 +14,8 @@ const stubFunction = () => {
 };
 
 const initialAppContext: IAppContext = {
-  publishResume: stubFunction,
+  formData: initialFormData,
+  submitResume: stubFunction,
 };
 
 export const AppContext = createContext<IAppContext>(initialAppContext);

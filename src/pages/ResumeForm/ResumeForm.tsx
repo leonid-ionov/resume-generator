@@ -4,26 +4,25 @@ import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 import useAppContext from '../../context/useAppContext.tsx';
 import Button from '../../components/Button/Button.tsx';
 import Select from '../../components/Select/Select.tsx';
-import { IconMap, IconsOptions, initialFormData } from '../../constants/formConstants.ts';
+import { IconsOptions } from '../../constants/formConstants.ts';
 import { IFormData } from '../../types/formTypes.ts';
 
 export const ResumeForm: FC = () => {
-  const { publishResume } = useAppContext();
+  const { submitResume, formData } = useAppContext();
   const {
     register,
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormData>({
-    defaultValues: { ...initialFormData },
+    defaultValues: formData,
   });
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'contacts',
   });
   const onSubmit: SubmitHandler<IFormData> = data => {
-    const newContacts = data.contacts.map(contact => ({ ...contact, icon: IconMap[contact.icon] }));
-    publishResume({ ...data, contacts: newContacts });
+    submitResume(data);
   };
 
   return (

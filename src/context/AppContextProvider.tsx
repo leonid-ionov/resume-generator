@@ -1,17 +1,28 @@
 import { FC, PropsWithChildren, useMemo, useState } from 'react';
 import { AppContext, IAppContext } from './AppContext.tsx';
 import { TResumeData } from '../types/TResumeData.ts';
+import { IFormData } from '../types/formTypes.ts';
+import { IconMap, initialFormData } from '../constants/formConstants.ts';
 
 export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [resumeData, setResumeData] = useState<TResumeData>();
+  const [formData, setFormData] = useState<IFormData>(initialFormData);
+
+  const normalizeFormData: (data: IFormData) => TResumeData = data => {
+    const { contacts, ...rest } = data;
+    return {
+      ...rest,
+      contacts: contacts.map(contact => ({ ...contact, icon: IconMap[contact.icon] })),
+    };
+  };
   const appContext = useMemo<IAppContext>(
     () => ({
-      resumeData,
-      publishResume: data => {
-        setResumeData(prevState => ({ ...prevState, ...data }));
+      resumeData: normalizeFormData(formData),
+      formData,
+      submitResume: data => {
+        setFormData(prevState => ({ ...prevState, ...data }));
       },
     }),
-    [setResumeData, resumeData]
+    [setFormData, formData]
   );
   return <AppContext.Provider value={appContext}>{children}</AppContext.Provider>;
 };
