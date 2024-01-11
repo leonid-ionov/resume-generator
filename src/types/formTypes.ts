@@ -9,18 +9,22 @@ interface IIconOption {
   label: string;
 }
 
-interface IFormData extends Omit<TResumeData, 'contacts'> {
+interface IFormData extends Omit<TResumeData, 'contacts' | 'photoLink'> {
+  photoLink: FileList;
   contacts: {
     icon: TIcon;
     info: string;
   }[];
 }
 
-type TFormElement<T extends HTMLElement> = ReturnType<UseFormRegister<IFormData>> &
-  Omit<HTMLProps<T>, 'name' | 'onBlur' | 'onChange' | 'ref'> & {
-    label?: string;
-    description?: string;
-    error?: FieldError;
-  };
+interface IFormAttributes {
+  label?: string;
+  description?: string;
+  error?: FieldError;
+}
 
-export type { TFormElement, TIcon, IIconOption, IFormData };
+type TFormElement<T extends HTMLElement> = ReturnType<UseFormRegister<IFormData>> &
+  Omit<HTMLProps<T>, 'name' | 'onBlur' | 'onChange' | 'ref'> &
+  IFormAttributes;
+
+export type { TFormElement, TIcon, IIconOption, IFormData, IFormAttributes };

@@ -1,14 +1,6 @@
 @import 'styles/_colors';
 @import 'styles/controls';
 
-.selectContainer {
-  @extend %controlContainer;
-}
-
-.selectLabel {
-  @extend %label;
-}
-
 .selectControl {
   @extend %control;
   background-color: $white;
@@ -29,12 +21,4 @@
     background-color: $greyLight;
     color: $white;
   }
-}
-
-.selectHelper {
-  @extend %helperText;
-}
-
-.selectError {
-  @extend %errorText;
 }

@@ -1,13 +1,6 @@
 @import 'styles/_colors';
 @import 'styles/controls';
-
-.inputContainer {
-  @extend %controlContainer;
-}
-
-.inputLabel {
-  @extend %label;
-}
+@import '../Button/Button.module.scss';
 
 .inputControl {
   @extend %control;
@@ -15,12 +8,8 @@
   &_error {
     border-color: $error;
   }
-}
 
-.inputHelper {
-  @extend %helperText;
-}
-
-.inputError {
-  @extend %errorText;
+  &[type='file']::file-selector-button {
+    @extend .Button, .Button_small;
+  }
 }

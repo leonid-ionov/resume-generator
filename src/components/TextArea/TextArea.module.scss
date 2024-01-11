@@ -1,0 +1,10 @@
+@import 'styles/_colors';
+@import 'styles/controls';
+
+.textareaControl {
+  @extend %control;
+
+  &_error {
+    border-color: $error;
+  }
+}

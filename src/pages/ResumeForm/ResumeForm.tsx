@@ -6,6 +6,7 @@ import Button from '../../components/Button/Button.tsx';
 import Select from '../../components/Select/Select.tsx';
 import { IconsOptions } from '../../constants/formConstants.ts';
 import { IFormData } from '../../types/formTypes.ts';
+import TextArea from '../../components/TextArea/TextArea.tsx';
 
 export const ResumeForm: FC = () => {
   const { submitResume, formData } = useAppContext();
@@ -22,6 +23,7 @@ export const ResumeForm: FC = () => {
     name: 'contacts',
   });
   const onSubmit: SubmitHandler<IFormData> = data => {
+    console.log(data);
     submitResume(data);
   };
 
@@ -98,6 +100,19 @@ export const ResumeForm: FC = () => {
               );
           }
         })}
+        <TextArea
+          label="About you"
+          rows={4}
+          description="Tell about yourself"
+          {...register('profile', { required: 'required' })}
+        />
+        <Input
+          label="Your Photo"
+          description="Photo must be 416x300"
+          type="file"
+          accept="image/*"
+          {...register('photoLink', { required: 'required' })}
+        />
         <Button type="submit">Submit</Button>
       </form>
     </div>

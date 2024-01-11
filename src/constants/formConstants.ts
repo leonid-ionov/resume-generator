@@ -54,7 +54,7 @@ const initialFormData: IFormData = {
   userName: '',
   desiredJob: '',
   profile: '',
-  photoLink: '',
+  photoLink: [new File([''], 'placeholder.jpg', { type: 'image/jpeg' })] as unknown as FileList,
   info: [],
   contacts: [
     {

@@ -2,12 +2,9 @@
 @import 'styles/typography';
 @import 'styles/_colors';
 
-%controlContainer {
-  margin-bottom: spacing(2);
-}
-
 %control {
-  @extend %OpenSans;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
   width: 100%;
   padding: spacing(1, 2);
   border: solid 2px $greyLight;
@@ -25,22 +22,4 @@
     outline: 2px solid $greyDark;
     border-color: $greyDark;
   }
-}
-
-%label {
-  @extend %OpenSans;
-  font-size: 14px;
-  display: block;
-  margin-bottom: spacing(0.5);
-}
-
-%helperText {
-  @extend %OpenSans;
-  font-size: 12px;
-  display: block;
-  margin-top: spacing(0.5);
-}
-
-%errorText {
-  color: $error;
 }

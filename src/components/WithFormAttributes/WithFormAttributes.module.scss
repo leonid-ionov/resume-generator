@@ -1,0 +1,25 @@
+@import 'styles/_colors';
+@import 'styles/typography';
+@import 'styles/_helpers';
+
+.controlContainer {
+  margin-bottom: spacing(2);
+}
+
+.controlLabel {
+  @extend %OpenSans;
+  font-size: 14px;
+  display: block;
+  margin-bottom: spacing(0.5);
+}
+
+.controlHelperText {
+  @extend %OpenSans;
+  font-size: 12px;
+  display: block;
+  margin-top: spacing(0.5);
+}
+
+.controlErrorText {
+  color: $error;
+}
