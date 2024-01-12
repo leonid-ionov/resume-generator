@@ -25,7 +25,7 @@ interface IPositionExplore {
   positionName: string;
   companyName: string;
   workingPeriod: string;
-  description: ReactNode;
+  description: string;
 }
 
 type TInfoTypes = 'dayOfBirth' | 'city' | 'languages';

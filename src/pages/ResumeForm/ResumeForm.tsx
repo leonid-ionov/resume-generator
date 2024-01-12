@@ -1,12 +1,60 @@
 import { FC } from 'react';
 import Input from '../../components/Input/Input.tsx';
-import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
+import { Control, SubmitHandler, useFieldArray, useForm, UseFormRegister } from 'react-hook-form';
 import useAppContext from '../../context/useAppContext.tsx';
 import Button from '../../components/Button/Button.tsx';
 import Select from '../../components/Select/Select.tsx';
 import { IconsOptions } from '../../constants/formConstants.ts';
 import { IFormData } from '../../types/formTypes.ts';
 import TextArea from '../../components/TextArea/TextArea.tsx';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+const SkillDetailsArray = ({
+  nestIndex,
+  control,
+  register,
+}: {
+  nestIndex: number;
+  control: Control<IFormData>;
+  register: UseFormRegister<IFormData>;
+}) => {
+  const skillDetailsField = useFieldArray({
+    control,
+    name: `skills.${nestIndex}.details`,
+  });
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          if (skillDetailsField.fields[0]?.variant === undefined) {
+            skillDetailsField.update(0, { variant: '', level: '50%' });
+          } else skillDetailsField.append({ variant: '', level: '50%' });
+        }}
+      >
+        Add variant to your skill
+      </Button>
+      {skillDetailsField.fields.map((field, index) => {
+        if (field.variant === undefined) return null;
+        return (
+          <div key={field.id}>
+            <Input
+              label="Name of variant"
+              placeholder="My awesome skill"
+              {...register(`skills.${nestIndex}.details.${index}.variant`)}
+            />
+            <Input
+              type="range"
+              label="Your skill variant level"
+              {...register(`skills.${nestIndex}.details.${index}.level`)}
+            />
+          </div>
+        );
+      })}
+    </>
+  );
+};
 
 export const ResumeForm: FC = () => {
   const { submitResume, formData } = useAppContext();
@@ -14,6 +62,8 @@ export const ResumeForm: FC = () => {
     register,
     control,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<IFormData>({
     defaultValues: formData,
@@ -26,9 +76,9 @@ export const ResumeForm: FC = () => {
     control,
     name: 'skills',
   });
-  const skillDetailsField = useFieldArray({
+  const experienceField = useFieldArray({
     control,
-    name: `skills.${skillsField.fields.length - 1}.details`,
+    name: 'experience',
   });
   const onSubmit: SubmitHandler<IFormData> = data => {
     console.log(data);
@@ -123,6 +173,7 @@ export const ResumeForm: FC = () => {
           <h3>Skills</h3>
           <Button onClick={() => skillsField.append({ name: '', details: [{ level: '50%' }] })}>Add new skill</Button>
           {skillsField.fields.map((field, skillIndex) => {
+            const isSkillHaveVariant = watch(`skills.${skillIndex}.details.0.variant`) !== undefined;
             return (
               <div key={field.id}>
                 <Input
@@ -131,35 +182,41 @@ export const ResumeForm: FC = () => {
                   error={errors.skills?.[skillIndex]?.name}
                   {...register(`skills.${skillIndex}.name`)}
                 />
-                {skillDetailsField.fields[0]?.variant === undefined && (
+                {!isSkillHaveVariant && (
                   <Input type="range" label="Your skill level" {...register(`skills.${skillIndex}.details.0.level`)} />
                 )}
-                <Button
-                  onClick={() => {
-                    console.log(skillDetailsField.fields);
-                    if (skillDetailsField.fields[0]?.variant === undefined) {
-                      skillDetailsField.update(0, { variant: '', level: '50%' });
-                    } else skillDetailsField.append({ variant: '', level: '50%' });
-                  }}
-                >
-                  Add variant to your skill
-                </Button>
-                {skillDetailsField.fields.map((field, index) => {
-                  return (
-                    <div key={field.id}>
-                      <Input
-                        label="Name of variant"
-                        placeholder="My awesome skill"
-                        {...register(`skills.${skillIndex}.details.${index}.variant`)}
-                      />
-                      <Input
-                        type="range"
-                        label="Your skill variant level"
-                        {...register(`skills.${skillIndex}.details.${index}.level`)}
-                      />
-                    </div>
-                  );
-                })}
+                <SkillDetailsArray nestIndex={skillIndex} control={control} register={register} />
+              </div>
+            );
+          })}
+        </span>
+        <span style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <h3>Experience</h3>
+          <Button
+            onClick={() =>
+              experienceField.append({ positionName: '', description: '', startDate: '', endDate: '', companyName: '' })
+            }
+          >
+            Tell about your experience
+          </Button>
+          {experienceField.fields.map((field, index) => {
+            register(`experience.${index}.description`);
+            const descriptionValue = watch(`experience.${index}.description`);
+            return (
+              <div key={field.id}>
+                <Input
+                  label="Position name"
+                  placeholder="Software Engineer"
+                  {...register(`experience.${index}.positionName`)}
+                />
+                <Input label="Company name" placeholder="Microsoft" {...register(`experience.${index}.companyName`)} />
+                <Input label="Start date of working" type="date" {...register(`experience.${index}.startDate`)} />
+                <Input label="End date of working" type="date" {...register(`experience.${index}.endDate`)} />
+                <ReactQuill
+                  theme="snow"
+                  value={descriptionValue}
+                  onChange={value => setValue(`experience.${index}.description`, value)}
+                />
               </div>
             );
           })}

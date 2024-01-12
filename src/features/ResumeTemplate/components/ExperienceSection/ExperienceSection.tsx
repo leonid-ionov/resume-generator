@@ -18,7 +18,7 @@ export const ExperienceSection: FC<IExperienceSection> = ({ experience }) => {
           timePeriod={item.workingPeriod}
           secondName={item.companyName}
         >
-          <p className={styles.Experience_description}>{item.description}</p>
+          <div className={styles.Experience_description} dangerouslySetInnerHTML={{ __html: item.description }} />
         </ListItem>
       ))}
     </ListWithTitle>
