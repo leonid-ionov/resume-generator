@@ -43,12 +43,12 @@ export const resumePreviewData: TResumeData = {
     },
   ],
   skills: [
-    { name: 'Swashbuckling', details: [{ level: '80%' }] },
-    { name: 'Buccaneering', details: [{ level: '67%' }] },
-    { name: 'Sea Shanties', details: [{ level: '85%' }] },
-    { name: 'Treasure Hunting', details: [{ level: '95%' }] },
-    { name: 'Sword Fighting', details: [{ level: '90%' }] },
-    { name: 'Jolly Roger Hoisting', details: [{ level: '73%' }] },
+    { name: 'Swashbuckling', details: [{ level: '80' }] },
+    { name: 'Buccaneering', details: [{ level: '67' }] },
+    { name: 'Sea Shanties', details: [{ level: '85' }] },
+    { name: 'Treasure Hunting', details: [{ level: '95' }] },
+    { name: 'Sword Fighting', details: [{ level: '90' }] },
+    { name: 'Jolly Roger Hoisting', details: [{ level: '73' }] },
   ],
   interests: [
     {
