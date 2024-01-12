@@ -18,9 +18,17 @@ export const ResumeForm: FC = () => {
   } = useForm<IFormData>({
     defaultValues: formData,
   });
-  const { fields, append, remove } = useFieldArray({
+  const contactsField = useFieldArray({
     control,
     name: 'contacts',
+  });
+  const skillsField = useFieldArray({
+    control,
+    name: 'skills',
+  });
+  const skillDetailsField = useFieldArray({
+    control,
+    name: `skills.${skillsField.fields.length - 1}.details`,
   });
   const onSubmit: SubmitHandler<IFormData> = data => {
     console.log(data);
@@ -36,20 +44,20 @@ export const ResumeForm: FC = () => {
           error={errors.userName}
           description="Write here your name"
           placeholder="John Doe"
-          {...register('userName', { required: 'required' })}
+          {...register('userName')}
         />
         <Input
           label="Desired Job"
           error={errors.desiredJob}
           description="Write here your desired job"
           placeholder="Software Engineer"
-          {...register('desiredJob', { required: 'required' })}
+          {...register('desiredJob')}
         />
         <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <h3>Contacts</h3>
-          <Button onClick={() => append({ info: '', icon: 'Select icon' })}>+</Button>
+          <Button onClick={() => contactsField.append({ info: '', icon: 'Select icon' })}>+</Button>
         </span>
-        {fields.map((field, index) => {
+        {contactsField.fields.map((field, index) => {
           switch (index) {
             case 0:
               return (
@@ -60,7 +68,7 @@ export const ResumeForm: FC = () => {
                   error={errors.contacts?.[index]?.info}
                   description="Add email address"
                   placeholder="example@example.com"
-                  {...register(`contacts.${index}.info`, { required: 'required' })}
+                  {...register(`contacts.${index}.info`)}
                 />
               );
             case 1:
@@ -72,7 +80,7 @@ export const ResumeForm: FC = () => {
                   error={errors.contacts?.[index]?.info}
                   description="Add phone number"
                   placeholder="123-456-7890"
-                  {...register(`contacts.${index}.info`, { required: 'required' })}
+                  {...register(`contacts.${index}.info`)}
                 />
               );
             default:
@@ -95,24 +103,67 @@ export const ResumeForm: FC = () => {
                     error={errors.contacts?.[index]?.icon}
                     {...register(`contacts.${index}.icon`)}
                   />
-                  <Button onClick={() => remove(index)}>-</Button>
+                  <Button onClick={() => contactsField.remove(index)}>-</Button>
                 </div>
               );
           }
         })}
-        <TextArea
-          label="About you"
-          rows={4}
-          description="Tell about yourself"
-          {...register('profile', { required: 'required' })}
-        />
+        <TextArea label="About you" rows={4} description="Tell about yourself" {...register('profile')} />
         <Input
           label="Your Photo"
           description="Photo must be 416x300"
           type="file"
           accept="image/*"
-          {...register('photoLink', { required: 'required' })}
+          {...register('photoLink')}
         />
+        <Input type="date" label="Your date of birth" {...register('dayOfBirth')} />
+        <Input label="Your city of residence" {...register('city')} />
+        <Input label="languages you speak" {...register('languages')} />
+        <span style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <h3>Skills</h3>
+          <Button onClick={() => skillsField.append({ name: '', details: [{ level: '50%' }] })}>Add new skill</Button>
+          {skillsField.fields.map((field, skillIndex) => {
+            return (
+              <div key={field.id}>
+                <Input
+                  label="Name of skill"
+                  placeholder="My awesome skill"
+                  error={errors.skills?.[skillIndex]?.name}
+                  {...register(`skills.${skillIndex}.name`)}
+                />
+                {skillDetailsField.fields[0]?.variant === undefined && (
+                  <Input type="range" label="Your skill level" {...register(`skills.${skillIndex}.details.0.level`)} />
+                )}
+                <Button
+                  onClick={() => {
+                    console.log(skillDetailsField.fields);
+                    if (skillDetailsField.fields[0]?.variant === undefined) {
+                      skillDetailsField.update(0, { variant: '', level: '50%' });
+                    } else skillDetailsField.append({ variant: '', level: '50%' });
+                  }}
+                >
+                  Add variant to your skill
+                </Button>
+                {skillDetailsField.fields.map((field, index) => {
+                  return (
+                    <div key={field.id}>
+                      <Input
+                        label="Name of variant"
+                        placeholder="My awesome skill"
+                        {...register(`skills.${skillIndex}.details.${index}.variant`)}
+                      />
+                      <Input
+                        type="range"
+                        label="Your skill variant level"
+                        {...register(`skills.${skillIndex}.details.${index}.level`)}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </span>
         <Button type="submit">Submit</Button>
       </form>
     </div>

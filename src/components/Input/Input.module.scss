@@ -3,13 +3,57 @@
 @import '../Button/Button.module.scss';
 
 .inputControl {
+  /********** Standard Input Styles **********/
   @extend %control;
 
   &_error {
     border-color: $error;
   }
 
+  /********** File Input Styles **********/
   &[type='file']::file-selector-button {
     @extend .Button, .Button_small;
+  }
+
+  /********** Range Input Styles **********/
+  &[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+
+    &::-webkit-slider-runnable-track,
+    &::-moz-range-track {
+      background-color: $greyLight;
+    }
+    &::-webkit-progress-value,
+    &::-moz-range-progress {
+      background-color: $grey;
+    }
+
+    &:hover:not(:focus) {
+      &::-webkit-slider-runnable-track,
+      &::-moz-range-track {
+        background-color: rgba(119, 113, 122, 0.7);
+      }
+      &::-webkit-progress-value,
+      &::-moz-range-progress {
+        background-color: rgba(57, 47, 61, 0.7);
+      }
+      &::-webkit-slider-thumb,
+      &::-moz-range-thumb {
+        background-color: $backgroundGrey;
+      }
+    }
+
+    &:focus {
+      outline-width: 0;
+      &::-webkit-slider-thumb,
+      &::-moz-range-thumb {
+        outline-offset: 5px;
+        outline: 2px solid $greyDark;
+      }
+    }
   }
 }

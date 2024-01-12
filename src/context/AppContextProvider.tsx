@@ -8,10 +8,15 @@ export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [formData, setFormData] = useState<IFormData>(initialFormData);
 
   const normalizeFormData: (data: IFormData) => TResumeData = data => {
-    const { contacts, photoLink, ...rest } = data;
+    const { contacts, photoLink, dayOfBirth, city, languages, ...rest } = data;
     return {
       ...rest,
       photoLink: URL.createObjectURL(photoLink[0]),
+      info: [
+        { type: 'dayOfBirth', value: dayOfBirth },
+        { type: 'city', value: city },
+        { type: 'languages', value: languages },
+      ],
       contacts: contacts.map(contact => ({ ...contact, icon: IconMap[contact.icon] })),
     };
   };

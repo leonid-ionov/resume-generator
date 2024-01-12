@@ -9,12 +9,15 @@ interface IIconOption {
   label: string;
 }
 
-interface IFormData extends Omit<TResumeData, 'contacts' | 'photoLink'> {
+interface IFormData extends Omit<TResumeData, 'contacts' | 'photoLink' | 'info'> {
   photoLink: FileList;
   contacts: {
     icon: TIcon;
     info: string;
   }[];
+  dayOfBirth: string;
+  city: string;
+  languages: string;
 }
 
 interface IFormAttributes {

@@ -5,7 +5,7 @@ import { ISkillDetails, IUserSkill } from '../../../../types/TResumeData.ts';
 
 const SkillLevel: FC<Pick<ISkillDetails, 'level'>> = ({ level }) => {
   const style: Record<string, string> = {
-    '--skill-level': level,
+    '--skill-level': `${level}%`,
   };
   return (
     <div className={styles.SkillLevel}>
