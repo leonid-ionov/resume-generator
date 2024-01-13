@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 interface IUserInterest {
   name: string;
-  icon: ReactNode;
+  icon: string;
 }
 
 interface IUserEducation {

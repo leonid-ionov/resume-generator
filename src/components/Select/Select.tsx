@@ -12,7 +12,7 @@ interface ISelectProps extends TFormElement<HTMLSelectElement> {
 
 const SelectComponent = forwardRef<HTMLSelectElement, ISelectProps>(
   ({ options, name, placeholder, error, ...overProps }, ref) => {
-    const selectValue = useWatch({ name, control: overProps.control, defaultValue: overProps.defaultValue }) as TIcon;
+    const selectValue = useWatch({ name, control: overProps.control }) as TIcon;
     return (
       <select
         id={name}

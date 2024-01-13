@@ -33,7 +33,7 @@ $iconContainerWidth: spacing(11.25);
     background-color: $iconBackground;
     border-radius: 50%;
 
-    & :first-child {
+    & img {
       width: 60px;
       height: 60px;
     }

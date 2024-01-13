@@ -80,6 +80,14 @@ export const ResumeForm: FC = () => {
     control,
     name: 'experience',
   });
+  const educationField = useFieldArray({
+    control,
+    name: 'education',
+  });
+  const interestsField = useFieldArray({
+    control,
+    name: 'interests',
+  });
   const onSubmit: SubmitHandler<IFormData> = data => {
     console.log(data);
     submitResume(data);
@@ -194,7 +202,13 @@ export const ResumeForm: FC = () => {
           <h3>Experience</h3>
           <Button
             onClick={() =>
-              experienceField.append({ positionName: '', description: '', startDate: '', endDate: '', companyName: '' })
+              experienceField.append({
+                positionName: '',
+                description: '',
+                startDate: '',
+                endDate: '',
+                companyName: '',
+              })
             }
           >
             Tell about your experience
@@ -221,6 +235,50 @@ export const ResumeForm: FC = () => {
             );
           })}
         </span>
+        <span style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <h3>Education</h3>
+          <Button
+            onClick={() =>
+              educationField.append({ speciality: '', institution: '', startDate: '', endDate: '', description: '' })
+            }
+          >
+            Tell about your education
+          </Button>
+          {educationField.fields.map((field, index) => {
+            return (
+              <div key={field.id}>
+                <Input
+                  label="Your institution name"
+                  placeholder="Harvard"
+                  {...register(`education.${index}.institution`)}
+                />
+                <Input
+                  label="Your speciality"
+                  placeholder="Master of finance"
+                  {...register(`education.${index}.speciality`)}
+                />
+                <Input label="Start date of education" type="date" {...register(`education.${index}.startDate`)} />
+                <Input label="End date of education" type="date" {...register(`education.${index}.endDate`)} />
+                <Input
+                  label="Add some description"
+                  placeholder="Department Name"
+                  {...register(`education.${index}.description`)}
+                />
+              </div>
+            );
+          })}
+        </span>
+        <span style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <h3>Interests</h3>
+          <Button onClick={() => interestsField.append({ name: '', icon: '' })}>Tell about your interests</Button>
+          {interestsField.fields.map((field, index) => (
+            <div key={field.id}>
+              <Input label="Name of interest" placeholder="Cooking" {...register(`interests.${index}.name`)} />
+              <Input label="Icon for interest" type="file" {...register(`interests.${index}.icon`)} />
+            </div>
+          ))}
+        </span>
+
         <Button type="submit">Submit</Button>
       </form>
     </div>

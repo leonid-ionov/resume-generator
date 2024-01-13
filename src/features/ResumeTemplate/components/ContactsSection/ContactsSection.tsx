@@ -15,8 +15,8 @@ export interface IContactsSection {
 
 export const ContactsSection: FC<IContactsSection> = ({ contacts }) => (
   <section className={styles.ContactsSection}>
-    {contacts.map(element => (
-      <ContactElement key={element.info} info={element.info} icon={element.icon} />
+    {contacts.map((element, index) => (
+      <ContactElement key={element.info || index} info={element.info} icon={element.icon} />
     ))}
   </section>
 );

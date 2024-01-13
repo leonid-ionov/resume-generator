@@ -1,4 +1,4 @@
-import { IPositionExplore, TResumeData } from './TResumeData.ts';
+import { IPositionExplore, IUserEducation, TResumeData } from './TResumeData.ts';
 import { FieldError, UseFormRegister } from 'react-hook-form';
 import { HTMLProps } from 'react';
 
@@ -12,8 +12,13 @@ interface IExperienceFormData extends Omit<IPositionExplore, 'workingPeriod'> {
   startDate: string;
   endDate: string;
 }
+interface IEducationFormData extends Omit<IUserEducation, 'educationPeriod'> {
+  startDate: string;
+  endDate: string;
+}
 
-interface IFormData extends Omit<TResumeData, 'contacts' | 'photoLink' | 'info' | 'experience'> {
+interface IFormData
+  extends Omit<TResumeData, 'contacts' | 'photoLink' | 'info' | 'experience' | 'education' | 'interests'> {
   photoLink: FileList;
   contacts: {
     icon: TIcon;
@@ -23,6 +28,8 @@ interface IFormData extends Omit<TResumeData, 'contacts' | 'photoLink' | 'info' 
   city: string;
   languages: string;
   experience: IExperienceFormData[];
+  education: IEducationFormData[];
+  interests: { name: string; icon: FileList | '' }[];
 }
 
 interface IFormAttributes {
