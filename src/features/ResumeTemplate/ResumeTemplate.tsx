@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { forwardRef } from 'react';
 import styles from './ResumeTemplate.module.scss';
 import { UserSection } from './components/UserSection/UserSection.tsx';
 import { ContactsSection } from './components/ContactsSection/ContactsSection.tsx';
@@ -15,8 +15,8 @@ interface IResumeTemplateProps {
   resumeData: TResumeData;
 }
 
-export const ResumeTemplate: FC<IResumeTemplateProps> = ({ resumeData }) => (
-  <div className={styles.ResumePreview}>
+const ResumeTemplate = forwardRef<HTMLDivElement, IResumeTemplateProps>(({ resumeData }, ref) => (
+  <div ref={ref} className={styles.ResumePreview}>
     <div className={styles.Row1}>
       <div className={styles.Row1_content}>
         <UserSection userName={resumeData.userName} desiredJob={resumeData.desiredJob} />
@@ -37,4 +37,8 @@ export const ResumeTemplate: FC<IResumeTemplateProps> = ({ resumeData }) => (
       <SkillsSection skills={resumeData.skills} />
     </div>
   </div>
-);
+));
+
+ResumeTemplate.displayName = 'ResumeTemplate';
+
+export default ResumeTemplate;
