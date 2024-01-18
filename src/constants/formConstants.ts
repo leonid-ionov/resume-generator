@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactElement } from 'react';
 import { IFormData, IIconOption, TIcon } from '../types/formTypes.ts';
 import { EmailIcon } from '../components/Icons/EmailIcon.tsx';
 import { PhoneIcon } from '../components/Icons/PhoneIcon.tsx';
@@ -39,7 +39,7 @@ const IconsOptions: IIconOption[] = [
   },
 ];
 
-const IconMap: Record<TIcon, ReactNode> = {
+const IconMap: Record<TIcon, ReactElement> = {
   email: EmailIcon(),
   phone: PhoneIcon(),
   github: GitHubIcon(),
@@ -47,7 +47,7 @@ const IconMap: Record<TIcon, ReactNode> = {
   linkedin: LinkedInIcon(),
   website: WebSiteIcon(),
   facebook: FacebookIcon(),
-  'Select icon': 'Select icon',
+  'Select icon': EmailIcon(),
 };
 
 const initialFormData: IFormData = {

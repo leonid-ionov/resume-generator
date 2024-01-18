@@ -1,13 +1,10 @@
 @import 'styles/_helpers';
-@import 'styles/typography';
 
 .SectionTitle {
   @include FlexColumn;
   gap: spacing(2);
 
   &_title {
-    @extend %Montserrat;
-    @extend %bold;
-    @include font-size(19px, 14px, 5px);
+    @include Montserrat-font(semiBold, 19px, 14px, 5px);
   }
 }

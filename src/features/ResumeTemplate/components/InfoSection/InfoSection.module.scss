@@ -1,6 +1,5 @@
 @import 'styles/_helpers';
 @import 'styles/_colors';
-@import 'styles/typography';
 
 .InfoSection {
   @include FlexColumn();
@@ -21,11 +20,10 @@
   border-bottom: $black solid 1px;
 
   &_text {
-    @extend %OpenSans;
-    @include font-size(16px, 14px);
+    @include OpenSans-font(regular, 16px, 14px);
 
     &__bold {
-      @extend %extraBold;
+      font-family: 'Open Sans Bold', sans-serif;
     }
   }
 }

@@ -44,3 +44,36 @@
     letter-spacing: $letter-spacing;
   }
 }
+
+@mixin Montserrat-font($type, $size, $line-height: null, $letter-spacing: null) {
+  @if $type == 'regular' {
+    font-family: 'Montserrat Regular', sans-serif;
+  } @else if $type == 'lightItalic' {
+    font-family: 'Montserrat LightItalic', sans-serif;
+    font-style: italic;
+  } @else if $type == 'medium' {
+    font-family: 'Montserrat Medium', sans-serif;
+  } @else if $type == 'semiBold' {
+    font-family: 'Montserrat SemiBold', sans-serif;
+  } @else {
+    @error "Invalid font type: #{$type}. Please choose either 'regular' | 'lightItalic' | 'medium' | 'semiBold'.";
+  }
+
+  text-transform: uppercase;
+  @include font-size($size, $line-height, $letter-spacing);
+}
+
+@mixin OpenSans-font($type, $size, $line-height: null, $letter-spacing: null) {
+  @if $type == 'regular' {
+    font-family: 'Open Sans Regular', sans-serif;
+  } @else if $type == 'bold' {
+    font-family: 'Open Sans Bold', sans-serif;
+  } @else if $type == 'italic' {
+    font-family: 'Open Sans Bold', sans-serif;
+    font-style: italic;
+  } @else {
+    @error "Invalid font type: #{$type}. Please choose either 'regular' | 'bold' | 'italic'.";
+  }
+
+  @include font-size($size, $line-height, $letter-spacing);
+}

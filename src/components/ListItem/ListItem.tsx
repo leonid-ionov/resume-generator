@@ -9,12 +9,14 @@ interface IListItemProps extends PropsWithChildren {
 }
 
 export const ListItem: FC<IListItemProps> = ({ name, secondName, timePeriod, children }) => (
-  <li className={styles.ListItem}>
-    <div className={styles.ListItem_title}>
-      <p className={cn(styles.ListItem_text, styles.ListItem_text__bold)}>{name}</p>
-      <p className={cn(styles.ListItem_text, styles.ListItem_text__bold)}>{timePeriod}</p>
-    </div>
-    <p className={styles.ListItem_text}>{secondName}</p>
-    {children}
+  <li className={styles.ListItem} data-id="list-item">
+    <section className={styles.ListItem_content}>
+      <div className={styles.ListItem_title}>
+        <p className={cn(styles.ListItem_text, styles.ListItem_text__bold)}>{name}</p>
+        <p className={cn(styles.ListItem_text, styles.ListItem_text__bold)}>{timePeriod}</p>
+      </div>
+      <p className={styles.ListItem_text}>{secondName}</p>
+      {children}
+    </section>
   </li>
 );

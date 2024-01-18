@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 interface IUserInterest {
   name: string;
   icon: string;
@@ -36,7 +34,7 @@ interface IInfoItem {
 
 interface IContactElement {
   info: string;
-  icon: ReactNode;
+  icon: string;
 }
 
 interface IPersonPhoto {

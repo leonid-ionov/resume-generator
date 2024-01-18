@@ -1,5 +1,4 @@
 @import 'styles/_helpers';
-@import 'styles/typography';
 
 .ProfileSection {
   @include FlexColumn;
@@ -8,7 +7,6 @@
   gap: spacing(3);
 
   &_profile {
-    @extend %OpenSans;
-    @include font-size(16px, 23px);
+    @include OpenSans-font(regular, 16px, 23px);
   }
 }

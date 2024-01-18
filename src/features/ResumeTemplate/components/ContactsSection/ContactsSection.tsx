@@ -2,12 +2,14 @@ import { FC } from 'react';
 import styles from './ContactsSection.module.scss';
 import { IContactElement } from '../../../../types/TResumeData.ts';
 
-const ContactElement: FC<IContactElement> = ({ info, icon }) => (
-  <article className={styles.ContactElement}>
-    <p className={styles.ContactElement_info}>{info}</p>
-    <figure className={styles.ContactElement_icon}>{icon}</figure>
-  </article>
-);
+const ContactElement: FC<IContactElement> = ({ info, icon }) => {
+  return (
+    <article className={styles.ContactElement}>
+      <p className={styles.ContactElement_info}>{info}</p>
+      <img data-id="icon" className={styles.ContactElement_icon} src={icon} alt={info} />
+    </article>
+  );
+};
 
 export interface IContactsSection {
   contacts: IContactElement[];

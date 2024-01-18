@@ -1,6 +1,5 @@
-@import 'styles/typography';
+@import 'styles/_helpers';
 
 .Education_description {
-  @extend %OpenSans;
-  font-size: 13px;
+  @include OpenSans-font(regular, 13px);
 }

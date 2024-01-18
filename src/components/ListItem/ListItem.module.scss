@@ -1,22 +1,30 @@
 @import 'styles/_colors';
 @import 'styles/_helpers';
-@import 'styles/typography';
 
 .ListItem {
   list-style-type: none;
+  @include Flex();
+  gap: spacing(4);
   position: relative;
-  @include FlexColumn;
-  gap: spacing(1);
+  padding-left: spacing(5);
 
   &::before {
-    content: '\2022';
-    height: 14px;
+    position: absolute;
+    content: ' ';
     width: 14px;
+    height: 14px;
     border-radius: 50%;
     background-color: $black;
-    position: absolute;
-    left: -39px;
+    padding: 0;
+    margin: 0;
     top: 2px;
+    left: 0;
+  }
+
+  &_content {
+    @include FlexColumn;
+    flex: 1;
+    gap: spacing(1);
   }
 
   &_title {
@@ -24,11 +32,10 @@
   }
 
   &_text {
-    @extend %Montserrat;
-    @include font-size(15px, null, 2px);
+    @include Montserrat-font(regular, 15px, null, 2px);
 
     &__bold {
-      @extend %bold;
+      font-family: 'Montserrat SemiBold', sans-serif;
       letter-spacing: 4px;
     }
   }

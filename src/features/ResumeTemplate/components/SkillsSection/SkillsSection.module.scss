@@ -1,6 +1,5 @@
 @import 'styles/_colors';
 @import 'styles/_helpers';
-@import 'styles/typography';
 
 .SkillsSection {
   @include FlexColumn;
@@ -12,13 +11,11 @@
   gap: spacing(1.5);
 
   &_name {
-    @extend %Montserrat, %bold;
-    @include font-size(14px, 11px, 3px);
+    @include Montserrat-font(semiBold, 14px, 11px, 3px);
   }
 
   &_description {
-    @extend %Montserrat, %italic, %light;
-    @include font-size(12px, 13px);
+    @include Montserrat-font(lightItalic, 12px, 13px);
   }
 }
 

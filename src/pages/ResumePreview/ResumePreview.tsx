@@ -15,16 +15,22 @@ export const ResumePreview: FC = () => {
   const handleSaveAsPDF = async () => {
     const content = templateRef.current;
     if (!content) return;
-
-    const pdf = new jsPDF('p', 'pt', [1224, 1720]);
-    pdf.internal.pageSize.width = 1224;
-    pdf.internal.pageSize.height = 1720;
+    const pdf = new jsPDF('p', 'pt', 'a4');
+    pdf.internal.pageSize.width = 1224.1;
+    pdf.internal.pageSize.height = 1720.1;
     pdf.internal.scaleFactor = 1;
-    await pdf.html(content, {
-      callback: pdf => {
-        pdf.save('example.pdf');
-      },
-    });
+    try {
+      const styleElem = document.head.appendChild(document.createElement('style'));
+      styleElem.innerHTML = 'li[data-id="list-item"]::before { margin-top: 6px; } img[data-id="icon"] { top: 3px; }';
+      await pdf.html(content, {
+        callback: pdf => {
+          pdf.save('resume.pdf');
+        },
+      });
+      document.head.removeChild(styleElem);
+    } catch (error) {
+      /* Implement error handling in the future */
+    }
   };
 
   return (

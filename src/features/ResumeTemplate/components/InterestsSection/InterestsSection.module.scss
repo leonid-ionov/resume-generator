@@ -1,6 +1,5 @@
 @import 'styles/_helpers';
 @import 'styles/_colors';
-@import 'styles/typography';
 
 $iconContainerWidth: spacing(11.25);
 
@@ -21,8 +20,7 @@ $iconContainerWidth: spacing(11.25);
   }
 
   &_text {
-    @extend %Montserrat;
-    font-size: 13px;
+    @include Montserrat-font(regular, 13px);
     text-align: center;
   }
 

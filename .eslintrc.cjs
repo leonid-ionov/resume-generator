@@ -16,14 +16,6 @@ module.exports = {
     'import/prefer-default-export': 0,
     'class-methods-use-this': 0,
     'lines-between-class-members': 0,
-    '@typescript-eslint/no-misused-promises': [
-      2,
-      {
-        checksVoidReturn: {
-          attributes: false,
-        },
-      },
-    ],
   },
   overrides: [
     {
@@ -43,6 +35,16 @@ module.exports = {
         tsconfigRootDir: '.',
       },
       plugins: ['react-refresh', '@typescript-eslint', 'prettier'],
+      rules: {
+        '@typescript-eslint/no-misused-promises': [
+          2,
+          {
+            checksVoidReturn: {
+              attributes: false,
+            },
+          },
+        ],
+      }
     },
   ],
 };

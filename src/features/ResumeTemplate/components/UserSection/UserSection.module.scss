@@ -1,20 +1,17 @@
 @import 'styles/_helpers';
 @import 'styles/_colors';
-@import 'styles/typography';
 
 .UserSection {
   @include FlexColumn;
   gap: spacing(4);
 
   &_name {
-    @extend %Montserrat, %bold;
-    @include font-size(39px, 28px, 8px);
+    @include Montserrat-font(semiBold, 39px, 28px, 8px);
     color: $white;
   }
 
   &_job {
-    @extend %Montserrat;
-    @include font-size(18px, 14px, 5px);
+    @include Montserrat-font(regular, 18px, 14px, 5px);
     color: $white;
   }
 }

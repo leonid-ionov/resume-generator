@@ -1,17 +1,33 @@
-@import 'styles/typography';
 @import 'styles/_helpers';
+@import 'styles/_colors';
 
 .Experience_description {
-  @extend %OpenSans;
-  font-size: 13px;
+  @include OpenSans-font(regular, 13px);
+  & strong {
+    font-family: 'Open Sans Bold', sans-serif;
+  }
+  & em {
+    font-family: 'Open Sans Italic', sans-serif;
+    font-style: italic;
+  }
   & ol {
     padding-left: spacing(1.75);
   }
   & ul {
-    list-style: '•' outside;
     padding-left: spacing(0.625);
     li {
-      padding-left: spacing(0.75);
+      list-style: none;
+      position: relative;
+      padding-left: spacing(1.5);
+
+      &::before {
+        position: absolute;
+        content: '•';
+        padding: 0;
+        margin: 0;
+        top: 1px;
+        left: 0;
+      }
     }
   }
 }

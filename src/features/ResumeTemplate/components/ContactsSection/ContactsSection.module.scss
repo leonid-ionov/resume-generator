@@ -1,6 +1,5 @@
 @import 'styles/_colors';
 @import 'styles/_helpers';
-@import 'styles/typography';
 
 .ContactsSection {
   @include FlexColumn(flex-end);
@@ -9,18 +8,18 @@
 
 .ContactElement {
   @include Flex(center);
-  gap: spacing(1);
+  position: relative;
 
   &_info {
-    @extend %Montserrat, %semiBold;
-    @include font-size(18px, 17px, 3px);
+    @include Montserrat-font(medium, 18px, 17px, 3px);
     color: $white;
   }
 
   &_icon {
+    right: -32px;
+    position: absolute;
     width: 24px;
     height: 24px;
-    margin: 0;
     color: $white;
   }
 }

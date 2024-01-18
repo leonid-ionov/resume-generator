@@ -29,7 +29,7 @@ interface IFormData
   languages: string;
   experience: IExperienceFormData[];
   education: IEducationFormData[];
-  interests: { name: string; icon: FileList | '' }[];
+  interests: { name: string; icon: FileList | string }[];
 }
 
 interface IFormAttributes {

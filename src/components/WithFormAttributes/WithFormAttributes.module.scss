@@ -1,5 +1,4 @@
 @import 'styles/_colors';
-@import 'styles/typography';
 @import 'styles/_helpers';
 
 .controlContainer {
@@ -7,15 +6,13 @@
 }
 
 .controlLabel {
-  @extend %OpenSans;
-  font-size: 14px;
+  @include OpenSans-font(regular, 14px);
   display: block;
   margin-bottom: spacing(0.5);
 }
 
 .controlHelperText {
-  @extend %OpenSans;
-  font-size: 12px;
+  @include OpenSans-font(regular, 12px);
   display: block;
   margin-top: spacing(0.5);
 }
