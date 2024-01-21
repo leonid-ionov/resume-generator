@@ -1,41 +1,19 @@
-import { CSSProperties, FC, PropsWithChildren, ReactElement, useEffect, useMemo, useState } from 'react';
+import { FC, PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react';
 import { AppContext, IAppContext } from './AppContext.tsx';
 import { TResumeData } from '../types/TResumeData.ts';
 import { IFormData } from '../types/formTypes.ts';
 import { IconMap, initialFormData } from '../constants/formConstants.ts';
-import * as ReactDOMServer from 'react-dom/server';
-import html2canvas from 'html2canvas';
-import { styleToCss } from '../utils/styleToCss.ts';
 import { resumePreviewData } from '../constants/resumePreviewData.tsx';
-
-const convertSVGToImage = async (icon: ReactElement | string | FileList, style?: CSSProperties) => {
-  let element: HTMLDivElement | HTMLImageElement | null = null;
-  if (typeof icon === 'string' || icon instanceof FileList) {
-    element = document.createElement('img');
-    element.setAttribute('src', typeof icon === 'string' ? icon : URL.createObjectURL(icon[0]));
-  } else {
-    element = document.createElement('div');
-    element.innerHTML = ReactDOMServer.renderToString(icon);
-  }
-  element.setAttribute(
-    'style',
-    styleToCss({ display: 'flex', justifyContent: 'center', alignItems: 'center', ...style } ?? {})
-  );
-  document.body.appendChild(element);
-  const canvas = await html2canvas(element, { backgroundColor: 'transparent' });
-  document.body.removeChild(element);
-  return canvas.toDataURL('image/png');
-};
+import { convertToImageString } from '../utils/convertToImageString.ts';
 
 const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data => {
   const { interests, experience, education, contacts, photoLink, dayOfBirth, city, languages, ...rest } = data;
   const parser = new DOMParser();
   const contactsIconStyle = { width: '24px', height: '24px', color: 'white' };
   const interestsIconStyle = { width: '60px', height: '60px' };
-
   return {
     ...rest,
-    photoLink: URL.createObjectURL(photoLink[0]),
+    photoLink: await convertToImageString(photoLink),
     info: [
       { type: 'dayOfBirth', value: dayOfBirth },
       { type: 'city', value: city },
@@ -56,13 +34,13 @@ const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data 
     contacts: await Promise.all(
       contacts.map(async contact => ({
         ...contact,
-        icon: await convertSVGToImage(IconMap[contact.icon], contactsIconStyle),
+        icon: await convertToImageString(IconMap[contact.icon], contactsIconStyle),
       }))
     ),
     interests: await Promise.all(
       interests.map(async interest => ({
         ...interest,
-        icon: await convertSVGToImage(interest.icon, interestsIconStyle),
+        icon: await convertToImageString(interest.icon, interestsIconStyle),
       }))
     ),
   };
@@ -71,10 +49,18 @@ const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data 
 export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [formData, setFormData] = useState<IFormData>(initialFormData);
   const [resumeData, setResumeData] = useState<TResumeData>(resumePreviewData);
+  const submitResume = useCallback(
+    (data: IFormData) => {
+      setFormData(prevState => ({ ...prevState, ...data }));
+    },
+    [setFormData]
+  );
 
   useEffect(() => {
     normalizeFormData(formData)
-      .then(data => setResumeData(data))
+      .then(data => {
+        setResumeData(prevState => ({ ...prevState, ...data }));
+      })
       .catch(() => {
         /* Implement error handling in the future */
       });
@@ -84,11 +70,9 @@ export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
     () => ({
       resumeData,
       formData,
-      submitResume: data => {
-        setFormData(prevState => ({ ...prevState, ...data }));
-      },
+      submitResume,
     }),
-    [setFormData, formData, resumeData]
+    [submitResume, formData, resumeData]
   );
   return <AppContext.Provider value={appContext}>{children}</AppContext.Provider>;
 };

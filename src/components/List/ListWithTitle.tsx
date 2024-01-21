@@ -9,6 +9,6 @@ interface IListProps extends PropsWithChildren {
 export const ListWithTitle: FC<IListProps> = ({ title, children }) => (
   <section className={styles.List}>
     <SectionTitle title={title} />
-    <ul>{children}</ul>
+    <ul className={styles.List_unordered}>{children}</ul>
   </section>
 );

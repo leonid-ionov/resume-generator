@@ -7,6 +7,7 @@ import { FacebookIcon } from '../components/Icons/FacebookIcon.tsx';
 import { LinkedInIcon } from '../components/Icons/LinkedInIcon.tsx';
 import { GitHubIcon } from '../components/Icons/GitHubIcon.tsx';
 import { WebSiteIcon } from '../components/Icons/WebSiteIcon.tsx';
+import { getMockFileList } from '../utils/getMockFileList.ts';
 
 const IconsOptions: IIconOption[] = [
   {
@@ -54,7 +55,7 @@ const initialFormData: IFormData = {
   userName: '',
   desiredJob: '',
   profile: '',
-  photoLink: [new File([''], 'placeholder.jpg', { type: 'image/jpeg' })] as unknown as FileList,
+  photoLink: getMockFileList(),
   dayOfBirth: '',
   city: '',
   languages: '',

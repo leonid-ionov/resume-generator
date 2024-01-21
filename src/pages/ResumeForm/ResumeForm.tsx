@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 import Input from '../../components/Input/Input.tsx';
 import { Control, SubmitHandler, useFieldArray, useForm, UseFormRegister } from 'react-hook-form';
 import useAppContext from '../../context/useAppContext.tsx';
@@ -9,6 +9,8 @@ import { IFormData } from '../../types/formTypes.ts';
 import TextArea from '../../components/TextArea/TextArea.tsx';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { convertToImageString } from '../../utils/convertToImageString.ts';
+import { DateInput } from '../../components/Input/DateInput.tsx';
 
 const SkillDetailsArray = ({
   nestIndex,
@@ -65,6 +67,7 @@ export const ResumeForm: FC = () => {
     setValue,
     watch,
     formState: { errors },
+    getValues,
   } = useForm<IFormData>({
     defaultValues: formData,
   });
@@ -89,8 +92,54 @@ export const ResumeForm: FC = () => {
     name: 'interests',
   });
   const onSubmit: SubmitHandler<IFormData> = data => {
-    console.log(data);
     submitResume(data);
+  };
+
+  const handleSave = async () => {
+    const { interests, photoLink, ...rest } = getValues();
+    const normalizedFormData = {
+      ...rest,
+      photoLink: await convertToImageString(photoLink),
+      interests: await Promise.all(
+        interests.map(async interest => ({
+          ...interest,
+          icon: await convertToImageString(interest.icon, { width: '60px', height: '60px' }),
+        }))
+      ),
+    };
+    const jsonFormData = JSON.stringify(normalizedFormData);
+    const blobFormData = new Blob([jsonFormData], { type: 'application/json' });
+
+    const downloadLink = document.createElement('a');
+    downloadLink.href = URL.createObjectURL(blobFormData);
+    downloadLink.download = `Resume Form ${formData.userName}`;
+
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+
+    URL.revokeObjectURL(downloadLink.href);
+  };
+
+  const handleLoad = (event: ChangeEvent<HTMLInputElement>) => {
+    const fileInput = event.target;
+    const file = fileInput.files && fileInput.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        try {
+          const data = JSON.parse(e.target?.result as string) as IFormData;
+          (Object.keys(data) as (keyof IFormData)[]).forEach(value => {
+            if (value in data) {
+              setValue(value, data[value]);
+            }
+          });
+        } catch (error) {
+          console.error('Error when loading a form file:', error);
+        }
+      };
+      reader.readAsText(file);
+    }
   };
 
   return (
@@ -174,7 +223,19 @@ export const ResumeForm: FC = () => {
           accept="image/*"
           {...register('photoLink')}
         />
-        <Input type="date" label="Your date of birth" {...register('dayOfBirth')} />
+        <DateInput
+          setFormValue={setValue}
+          dateTimeProps={{
+            timeFormat: false,
+            closeOnSelect: true,
+            momentFormat: 'DD.MM.YYYY',
+          }}
+          inputProps={{
+            ...register('dayOfBirth'),
+            placeholder: 'DD.MM.YYYY',
+            label: 'Your date of birth',
+          }}
+        />
         <Input label="Your city of residence" {...register('city')} />
         <Input label="languages you speak" {...register('languages')} />
         <span style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -216,6 +277,12 @@ export const ResumeForm: FC = () => {
           {experienceField.fields.map((field, index) => {
             register(`experience.${index}.description`);
             const descriptionValue = watch(`experience.${index}.description`);
+            const dateTimeProps = {
+              timeFormat: false,
+              dateFormat: 'MM.YYYY',
+              momentFormat: 'MM.YYYY',
+              closeOnSelect: true,
+            };
             return (
               <div key={field.id}>
                 <Input
@@ -224,10 +291,36 @@ export const ResumeForm: FC = () => {
                   {...register(`experience.${index}.positionName`)}
                 />
                 <Input label="Company name" placeholder="Microsoft" {...register(`experience.${index}.companyName`)} />
-                <Input label="Start date of working" type="date" {...register(`experience.${index}.startDate`)} />
-                <Input label="End date of working" type="date" {...register(`experience.${index}.endDate`)} />
+                <DateInput
+                  setFormValue={setValue}
+                  dateTimeProps={dateTimeProps}
+                  inputProps={{
+                    ...register(`experience.${index}.startDate`),
+                    placeholder: 'MM.YYYY',
+                    label: 'Start date of working',
+                  }}
+                />
+                <DateInput
+                  setFormValue={setValue}
+                  dateTimeProps={dateTimeProps}
+                  inputProps={{
+                    ...register(`experience.${index}.endDate`),
+                    placeholder: 'MM.YYYY',
+                    label: 'End date of working',
+                  }}
+                />
                 <ReactQuill
                   theme="snow"
+                  modules={{
+                    clipboard: { matchVisual: false },
+                    toolbar: [
+                      [{ header: [3, 4, 5, false] }],
+                      ['bold', 'italic', 'underline', 'strike'],
+                      [{ list: 'ordered' }, { list: 'bullet' }],
+                      [{ align: [] }],
+                      ['clean'],
+                    ],
+                  }}
                   value={descriptionValue}
                   onChange={value => setValue(`experience.${index}.description`, value)}
                 />
@@ -245,6 +338,12 @@ export const ResumeForm: FC = () => {
             Tell about your education
           </Button>
           {educationField.fields.map((field, index) => {
+            const dateTimeProps = {
+              timeFormat: false,
+              dateFormat: 'YYYY',
+              momentFormat: 'YYYY',
+              closeOnSelect: true,
+            };
             return (
               <div key={field.id}>
                 <Input
@@ -257,8 +356,24 @@ export const ResumeForm: FC = () => {
                   placeholder="Master of finance"
                   {...register(`education.${index}.speciality`)}
                 />
-                <Input label="Start date of education" type="date" {...register(`education.${index}.startDate`)} />
-                <Input label="End date of education" type="date" {...register(`education.${index}.endDate`)} />
+                <DateInput
+                  setFormValue={setValue}
+                  dateTimeProps={dateTimeProps}
+                  inputProps={{
+                    ...register(`education.${index}.startDate`),
+                    placeholder: 'YYYY',
+                    label: 'Start date of education',
+                  }}
+                />
+                <DateInput
+                  setFormValue={setValue}
+                  dateTimeProps={dateTimeProps}
+                  inputProps={{
+                    ...register(`education.${index}.endDate`),
+                    placeholder: 'YYYY',
+                    label: 'End date of education',
+                  }}
+                />
                 <Input
                   label="Add some description"
                   placeholder="Department Name"
@@ -280,6 +395,8 @@ export const ResumeForm: FC = () => {
         </span>
 
         <Button type="submit">Submit</Button>
+        <Button onClick={handleSave}>Сохранить в JSON</Button>
+        <input type="file" accept=".json" onChange={handleLoad} />
       </form>
     </div>
   );

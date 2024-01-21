@@ -19,7 +19,7 @@ interface IEducationFormData extends Omit<IUserEducation, 'educationPeriod'> {
 
 interface IFormData
   extends Omit<TResumeData, 'contacts' | 'photoLink' | 'info' | 'experience' | 'education' | 'interests'> {
-  photoLink: FileList;
+  photoLink: FileList | string;
   contacts: {
     icon: TIcon;
     info: string;

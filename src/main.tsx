@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.scss';
+import 'react-datetime/css/react-datetime.css';
 import './fonts/Montserrat-LightItalic.ttf';
 import './fonts/Montserrat-Regular.ttf';
 import './fonts/Montserrat-Medium.ttf';
