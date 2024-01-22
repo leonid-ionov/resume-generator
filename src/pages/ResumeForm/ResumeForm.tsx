@@ -11,6 +11,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { convertToImageString } from '../../utils/convertToImageString.ts';
 import { DateInput } from '../../components/Input/DateInput.tsx';
+import { Accordion } from '../../components/Accordion/Accordion.tsx';
 
 const SkillDetailsArray = ({
   nestIndex,
@@ -145,102 +146,101 @@ export const ResumeForm: FC = () => {
   return (
     <div>
       <h2>Create your own resume</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          label="Your Name"
-          error={errors.userName}
-          description="Write here your name"
-          placeholder="John Doe"
-          {...register('userName')}
-        />
-        <Input
-          label="Desired Job"
-          error={errors.desiredJob}
-          description="Write here your desired job"
-          placeholder="Software Engineer"
-          {...register('desiredJob')}
-        />
-        <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <h3>Contacts</h3>
-          <Button onClick={() => contactsField.append({ info: '', icon: 'Select icon' })}>+</Button>
-        </span>
-        {contactsField.fields.map((field, index) => {
-          switch (index) {
-            case 0:
-              return (
-                <Input
-                  key={field.id}
-                  label="Email"
-                  type="email"
-                  error={errors.contacts?.[index]?.info}
-                  description="Add email address"
-                  placeholder="example@example.com"
-                  {...register(`contacts.${index}.info`)}
-                />
-              );
-            case 1:
-              return (
-                <Input
-                  key={field.id}
-                  label="Phone number"
-                  type="tel"
-                  error={errors.contacts?.[index]?.info}
-                  description="Add phone number"
-                  placeholder="123-456-7890"
-                  {...register(`contacts.${index}.info`)}
-                />
-              );
-            default:
-              return (
-                <div key={field.id} style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+      <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <Accordion title="Personal Info">
+          <Input
+            label="Your Name"
+            error={errors.userName}
+            description="Write here your name"
+            placeholder="John Doe"
+            {...register('userName')}
+          />
+          <Input
+            label="Desired Job"
+            error={errors.desiredJob}
+            description="Write here your desired job"
+            placeholder="Software Engineer"
+            {...register('desiredJob')}
+          />
+          <TextArea label="About you" rows={4} description="Tell about yourself" {...register('profile')} />
+          <Input
+            label="Your Photo"
+            description="Photo must be 416x300"
+            type="file"
+            accept="image/*"
+            {...register('photoLink')}
+          />
+          <DateInput
+            setFormValue={setValue}
+            dateTimeProps={{
+              timeFormat: false,
+              closeOnSelect: true,
+              momentFormat: 'DD.MM.YYYY',
+            }}
+            inputProps={{
+              ...register('dayOfBirth'),
+              placeholder: 'DD.MM.YYYY',
+              label: 'Your date of birth',
+            }}
+          />
+          <Input label="Your city of residence" {...register('city')} />
+          <Input label="languages you speak" {...register('languages')} />
+        </Accordion>
+        <Accordion title="Contacts">
+          {contactsField.fields.map((field, index) => {
+            switch (index) {
+              case 0:
+                return (
                   <Input
                     key={field.id}
-                    label="New contact"
-                    placeholder="My LinkedIn"
+                    label="Email"
+                    type="email"
                     error={errors.contacts?.[index]?.info}
-                    description="Add another contact information"
+                    description="Add email address"
+                    placeholder="example@example.com"
                     {...register(`contacts.${index}.info`)}
                   />
-                  <Select
-                    control={control}
-                    label="Icon"
-                    placeholder="Select icon"
-                    description="Select icon"
-                    options={IconsOptions}
-                    error={errors.contacts?.[index]?.icon}
-                    {...register(`contacts.${index}.icon`)}
+                );
+              case 1:
+                return (
+                  <Input
+                    key={field.id}
+                    label="Phone number"
+                    type="tel"
+                    error={errors.contacts?.[index]?.info}
+                    description="Add phone number"
+                    placeholder="123-456-7890"
+                    {...register(`contacts.${index}.info`)}
                   />
-                  <Button onClick={() => contactsField.remove(index)}>-</Button>
-                </div>
-              );
-          }
-        })}
-        <TextArea label="About you" rows={4} description="Tell about yourself" {...register('profile')} />
-        <Input
-          label="Your Photo"
-          description="Photo must be 416x300"
-          type="file"
-          accept="image/*"
-          {...register('photoLink')}
-        />
-        <DateInput
-          setFormValue={setValue}
-          dateTimeProps={{
-            timeFormat: false,
-            closeOnSelect: true,
-            momentFormat: 'DD.MM.YYYY',
-          }}
-          inputProps={{
-            ...register('dayOfBirth'),
-            placeholder: 'DD.MM.YYYY',
-            label: 'Your date of birth',
-          }}
-        />
-        <Input label="Your city of residence" {...register('city')} />
-        <Input label="languages you speak" {...register('languages')} />
-        <span style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <h3>Skills</h3>
-          <Button onClick={() => skillsField.append({ name: '', details: [{ level: '50%' }] })}>Add new skill</Button>
+                );
+              default:
+                return (
+                  <div key={field.id} style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+                    <Input
+                      key={field.id}
+                      label="New contact"
+                      placeholder="My LinkedIn"
+                      error={errors.contacts?.[index]?.info}
+                      description="Add another contact information"
+                      {...register(`contacts.${index}.info`)}
+                    />
+                    <Select
+                      control={control}
+                      label="Icon"
+                      placeholder="Select icon"
+                      description="Select icon"
+                      options={IconsOptions}
+                      error={errors.contacts?.[index]?.icon}
+                      {...register(`contacts.${index}.icon`)}
+                    />
+                    <Button onClick={() => contactsField.remove(index)}>-</Button>
+                  </div>
+                );
+            }
+          })}
+          <Button onClick={() => contactsField.append({ info: '', icon: 'Select icon' })}>Add another contact</Button>
+        </Accordion>
+        <Accordion title="Skills">
           {skillsField.fields.map((field, skillIndex) => {
             const isSkillHaveVariant = watch(`skills.${skillIndex}.details.0.variant`) !== undefined;
             return (
@@ -258,22 +258,9 @@ export const ResumeForm: FC = () => {
               </div>
             );
           })}
-        </span>
-        <span style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <h3>Experience</h3>
-          <Button
-            onClick={() =>
-              experienceField.append({
-                positionName: '',
-                description: '',
-                startDate: '',
-                endDate: '',
-                companyName: '',
-              })
-            }
-          >
-            Tell about your experience
-          </Button>
+          <Button onClick={() => skillsField.append({ name: '', details: [{ level: '50%' }] })}>Add new skill</Button>
+        </Accordion>
+        <Accordion title="Experience">
           {experienceField.fields.map((field, index) => {
             register(`experience.${index}.description`);
             const descriptionValue = watch(`experience.${index}.description`);
@@ -327,16 +314,21 @@ export const ResumeForm: FC = () => {
               </div>
             );
           })}
-        </span>
-        <span style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <h3>Education</h3>
           <Button
             onClick={() =>
-              educationField.append({ speciality: '', institution: '', startDate: '', endDate: '', description: '' })
+              experienceField.append({
+                positionName: '',
+                description: '',
+                startDate: '',
+                endDate: '',
+                companyName: '',
+              })
             }
           >
-            Tell about your education
+            Tell about your experience
           </Button>
+        </Accordion>
+        <Accordion title="Education">
           {educationField.fields.map((field, index) => {
             const dateTimeProps = {
               timeFormat: false,
@@ -382,17 +374,23 @@ export const ResumeForm: FC = () => {
               </div>
             );
           })}
-        </span>
-        <span style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <h3>Interests</h3>
-          <Button onClick={() => interestsField.append({ name: '', icon: '' })}>Tell about your interests</Button>
+          <Button
+            onClick={() =>
+              educationField.append({ speciality: '', institution: '', startDate: '', endDate: '', description: '' })
+            }
+          >
+            Tell about your education
+          </Button>
+        </Accordion>
+        <Accordion title="Interests">
           {interestsField.fields.map((field, index) => (
             <div key={field.id}>
               <Input label="Name of interest" placeholder="Cooking" {...register(`interests.${index}.name`)} />
               <Input label="Icon for interest" type="file" {...register(`interests.${index}.icon`)} />
             </div>
           ))}
-        </span>
+          <Button onClick={() => interestsField.append({ name: '', icon: '' })}>Tell about your interests</Button>
+        </Accordion>
 
         <Button type="submit">Submit</Button>
         <Button onClick={handleSave}>Сохранить в JSON</Button>

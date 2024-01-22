@@ -1,0 +1,51 @@
+@import 'styles/_colors';
+@import 'styles/_helpers';
+
+.container {
+  @include FlexColumn;
+  border: 2px solid $black;
+  border-radius: radius(4);
+  overflow: hidden;
+
+  &.expanded {
+    .title::after {
+      transform: rotate(270deg);
+    }
+
+    .content {
+      visibility: visible;
+      padding: spacing(0.75, 1.25, 1.25);
+      transition:
+        visibility 1s ease-out,
+        max-height 3s,
+        padding 0.01s;
+      max-height: 3000px;
+    }
+  }
+}
+
+.title {
+  @include Flex(center, space-between);
+  @include Montserrat-font(semiBold, 16px, 20px);
+  cursor: pointer;
+  padding: spacing(1.25);
+
+  &::after {
+    color: $grey;
+    content: '\25BA';
+    font-size: 24px;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+  }
+}
+
+.content {
+  @include FlexColumn;
+  padding: 0;
+  visibility: hidden;
+  transition:
+    visibility 0.1s,
+    max-height 0.4s cubic-bezier(0, 1, 0, 1),
+    padding 0.5s;
+  max-height: 0;
+}
