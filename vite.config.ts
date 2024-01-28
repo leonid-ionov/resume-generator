@@ -4,6 +4,10 @@ import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  assetsInclude: ['./src/assets/fonts/*.ttf', './src/assets/icons/*.svg'],
+  server: {
+    port: 555,
+  },
   plugins: [react()],
   css: {
     preprocessorOptions: {

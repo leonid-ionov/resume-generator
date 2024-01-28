@@ -1,11 +1,10 @@
 import { IPositionExplore, IUserEducation, TResumeData } from './TResumeData.ts';
 import { FieldError, UseFormRegister } from 'react-hook-form';
 import { HTMLProps } from 'react';
-
-type TIcon = 'email' | 'phone' | 'github' | 'instagram' | 'linkedin' | 'website' | 'facebook' | 'Select icon';
+import { Area } from 'react-easy-crop';
 
 interface IIconOption {
-  value: TIcon;
+  value: string;
   label: string;
 }
 interface IExperienceFormData extends Omit<IPositionExplore, 'workingPeriod'> {
@@ -19,9 +18,9 @@ interface IEducationFormData extends Omit<IUserEducation, 'educationPeriod'> {
 
 interface IFormData
   extends Omit<TResumeData, 'contacts' | 'photoLink' | 'info' | 'experience' | 'education' | 'interests'> {
-  photoLink: FileList | string;
+  photoLink: { photo: FileList | string; crop?: Area };
   contacts: {
-    icon: TIcon;
+    icon: string;
     info: string;
   }[];
   dayOfBirth: string;
@@ -42,4 +41,4 @@ type TFormElement<T extends HTMLElement> = ReturnType<UseFormRegister<IFormData>
   Omit<HTMLProps<T>, 'name' | 'onBlur' | 'onChange' | 'ref'> &
   IFormAttributes;
 
-export type { TFormElement, TIcon, IIconOption, IFormData, IFormAttributes };
+export type { TFormElement, IIconOption, IFormData, IFormAttributes };

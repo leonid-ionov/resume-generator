@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import Input from '../../components/Input/Input.tsx';
 import { Control, SubmitHandler, useFieldArray, useForm, UseFormRegister } from 'react-hook-form';
 import useAppContext from '../../context/useAppContext.tsx';
@@ -12,6 +12,8 @@ import 'react-quill/dist/quill.snow.css';
 import { convertToImageString } from '../../utils/convertToImageString.ts';
 import { DateInput } from '../../components/Input/DateInput.tsx';
 import { Accordion } from '../../components/Accordion/Accordion.tsx';
+import Cropper, { Point } from 'react-easy-crop';
+import styles from '../../features/ResumeForm/ResumeForm.module.scss';
 
 const SkillDetailsArray = ({
   nestIndex,
@@ -98,13 +100,14 @@ export const ResumeForm: FC = () => {
 
   const handleSave = async () => {
     const { interests, photoLink, ...rest } = getValues();
+    const photo = await convertToImageString(photoLink.photo);
     const normalizedFormData = {
       ...rest,
-      photoLink: await convertToImageString(photoLink),
+      photoLink: { photo, crop: photoLink.crop },
       interests: await Promise.all(
         interests.map(async interest => ({
           ...interest,
-          icon: await convertToImageString(interest.icon, { width: '60px', height: '60px' }),
+          icon: await convertToImageString(interest.icon, { width: 60, height: 60 }),
         }))
       ),
     };
@@ -142,7 +145,9 @@ export const ResumeForm: FC = () => {
       reader.readAsText(file);
     }
   };
-
+  const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
+  const userPhotoValue = watch('photoLink');
+  register('photoLink.crop');
   return (
     <div>
       <h2>Create your own resume</h2>
@@ -163,12 +168,31 @@ export const ResumeForm: FC = () => {
             {...register('desiredJob')}
           />
           <TextArea label="About you" rows={4} description="Tell about yourself" {...register('profile')} />
+          <div className={styles.userPhoto_container}>
+            <Cropper
+              aspect={1.39}
+              image={
+                typeof userPhotoValue.photo === 'string'
+                  ? userPhotoValue.photo
+                  : URL.createObjectURL(userPhotoValue.photo[0])
+              }
+              objectFit="cover"
+              crop={crop}
+              showGrid={false}
+              onCropChange={crop => {
+                setCrop(prevState => ({ ...prevState, ...crop }));
+              }}
+              onCropComplete={(_, croppedAreaPixels) => {
+                setValue('photoLink.crop', croppedAreaPixels);
+              }}
+            />
+          </div>
           <Input
             label="Your Photo"
             description="Photo must be 416x300"
             type="file"
             accept="image/*"
-            {...register('photoLink')}
+            {...register('photoLink.photo')}
           />
           <DateInput
             setFormValue={setValue}

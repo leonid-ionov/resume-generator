@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import styles from './Select.module.scss';
 import { Control, useWatch } from 'react-hook-form';
 import cn from 'classnames';
-import { IFormData, TFormElement, IIconOption, TIcon } from '../../types/formTypes.ts';
+import { IFormData, TFormElement, IIconOption } from '../../types/formTypes.ts';
 import { withFormAttributes } from '../WithFormAttributes/WithFormAttributes.tsx';
 
 interface ISelectProps extends TFormElement<HTMLSelectElement> {
@@ -12,7 +12,7 @@ interface ISelectProps extends TFormElement<HTMLSelectElement> {
 
 const SelectComponent = forwardRef<HTMLSelectElement, ISelectProps>(
   ({ options, name, placeholder, error, ...overProps }, ref) => {
-    const selectValue = useWatch({ name, control: overProps.control }) as TIcon;
+    const selectValue = useWatch({ name, control: overProps.control });
     return (
       <select
         id={name}

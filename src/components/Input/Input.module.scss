@@ -11,8 +11,11 @@
   }
 
   /********** File Input Styles **********/
-  &[type='file']::file-selector-button {
-    @extend .Button, .Button_small;
+  &[type='file'] {
+    width: 267px;
+    &::file-selector-button {
+      @extend .Button, .Button_small;
+    }
   }
 
   /********** Range Input Styles **********/

@@ -1,71 +1,52 @@
-import { ReactElement } from 'react';
-import { IFormData, IIconOption, TIcon } from '../types/formTypes.ts';
-import { EmailIcon } from '../components/Icons/EmailIcon.tsx';
-import { PhoneIcon } from '../components/Icons/PhoneIcon.tsx';
-import { InstagramIcon } from '../components/Icons/InstagramIcon.tsx';
-import { FacebookIcon } from '../components/Icons/FacebookIcon.tsx';
-import { LinkedInIcon } from '../components/Icons/LinkedInIcon.tsx';
-import { GitHubIcon } from '../components/Icons/GitHubIcon.tsx';
-import { WebSiteIcon } from '../components/Icons/WebSiteIcon.tsx';
-import { getMockFileList } from '../utils/getMockFileList.ts';
+import { IFormData, IIconOption } from '../types/formTypes.ts';
+import initialPhoto from '../assets/images/initialPhoto.png';
 
 const IconsOptions: IIconOption[] = [
   {
-    value: 'email',
+    value: new URL('../assets/icons/email.svg', import.meta.url).href,
     label: 'Email',
   },
   {
-    value: 'phone',
+    value: new URL('../assets/icons/phone.svg', import.meta.url).href,
     label: 'Phone',
   },
   {
-    value: 'github',
+    value: new URL('../assets/icons/github.svg', import.meta.url).href,
     label: 'GitHub',
   },
   {
-    value: 'instagram',
+    value: new URL('../assets/icons/instagram.svg', import.meta.url).href,
     label: 'Instagram',
   },
   {
-    value: 'linkedin',
+    value: new URL('../assets/icons/linkedin.svg', import.meta.url).href,
     label: 'LinkedIn',
   },
   {
-    value: 'website',
+    value: new URL('../assets/icons/website.svg', import.meta.url).href,
     label: 'Web site',
   },
   {
-    value: 'facebook',
+    value: new URL('../assets/icons/facebook.svg', import.meta.url).href,
     label: 'Facebook',
   },
 ];
-
-const IconMap: Record<TIcon, ReactElement> = {
-  email: EmailIcon(),
-  phone: PhoneIcon(),
-  github: GitHubIcon(),
-  instagram: InstagramIcon(),
-  linkedin: LinkedInIcon(),
-  website: WebSiteIcon(),
-  facebook: FacebookIcon(),
-  'Select icon': EmailIcon(),
-};
 
 const initialFormData: IFormData = {
   userName: '',
   desiredJob: '',
   profile: '',
-  photoLink: getMockFileList(),
+  photoLink: { photo: initialPhoto },
   dayOfBirth: '',
   city: '',
   languages: '',
   contacts: [
     {
-      icon: 'email',
+      icon: IconsOptions[0].value,
       info: '',
     },
     {
-      icon: 'phone',
+      icon: IconsOptions[1].value,
       info: '',
     },
   ],
@@ -75,4 +56,4 @@ const initialFormData: IFormData = {
   interests: [],
 };
 
-export { initialFormData, IconMap, IconsOptions };
+export { initialFormData, IconsOptions };

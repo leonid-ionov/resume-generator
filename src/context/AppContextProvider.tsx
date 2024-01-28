@@ -2,18 +2,16 @@ import { FC, PropsWithChildren, useCallback, useEffect, useMemo, useState } from
 import { AppContext, IAppContext } from './AppContext.tsx';
 import { TResumeData } from '../types/TResumeData.ts';
 import { IFormData } from '../types/formTypes.ts';
-import { IconMap, initialFormData } from '../constants/formConstants.ts';
+import { initialFormData } from '../constants/formConstants.ts';
 import { resumePreviewData } from '../constants/resumePreviewData.tsx';
 import { convertToImageString } from '../utils/convertToImageString.ts';
 
 const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data => {
   const { interests, experience, education, contacts, photoLink, dayOfBirth, city, languages, ...rest } = data;
   const parser = new DOMParser();
-  const contactsIconStyle = { width: '24px', height: '24px', color: 'white' };
-  const interestsIconStyle = { width: '60px', height: '60px' };
   return {
     ...rest,
-    photoLink: await convertToImageString(photoLink),
+    photoLink: await convertToImageString(photoLink.photo, { width: 416, height: 300 }, photoLink.crop),
     info: [
       { type: 'dayOfBirth', value: dayOfBirth },
       { type: 'city', value: city },
@@ -34,13 +32,13 @@ const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data 
     contacts: await Promise.all(
       contacts.map(async contact => ({
         ...contact,
-        icon: await convertToImageString(IconMap[contact.icon], contactsIconStyle),
+        icon: await convertToImageString(contact.icon, { width: 24, height: 24 }),
       }))
     ),
     interests: await Promise.all(
       interests.map(async interest => ({
         ...interest,
-        icon: await convertToImageString(interest.icon, interestsIconStyle),
+        icon: await convertToImageString(interest.icon, { width: 60, height: 60 }),
       }))
     ),
   };
