@@ -25,7 +25,7 @@ export const DateInput: FC<IDateInputProps> = ({ dateTimeProps, inputProps, setF
           <Input
             {...inputProps}
             onChange={props.onChange}
-            value={props.value}
+            value={inputProps.value as string}
             onClick={() => openCalendar()}
             onKeyUp={() => openCalendar()}
           />

@@ -21,7 +21,7 @@ export const ResumePreview: FC = () => {
     pdf.internal.scaleFactor = 1;
     try {
       const styleElem = document.head.appendChild(document.createElement('style'));
-      styleElem.innerHTML = 'li[data-id="list-item"]::before { margin-top: 6px; } img[data-id="icon"] { top: 3px; }';
+      styleElem.innerHTML = 'li[data-id="list-item"]::before { margin-top: 6px; } img[data-id="icon"] { top: 4px; }';
       await pdf.html(content, {
         callback: pdf => {
           pdf.save('resume.pdf');
@@ -29,7 +29,7 @@ export const ResumePreview: FC = () => {
       });
       document.head.removeChild(styleElem);
     } catch (error) {
-      /* Implement error handling in the future */
+      /* TODO: Implement error handling in the future */
     }
   };
 

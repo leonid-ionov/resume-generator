@@ -11,7 +11,7 @@ const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data 
   const parser = new DOMParser();
   return {
     ...rest,
-    photoLink: await convertToImageString(photoLink.photo, { width: 416, height: 300 }, photoLink.crop),
+    photoLink: await convertToImageString(photoLink.photo, { size: { width: 416, height: 300 }, crop: photoLink.crop }),
     info: [
       { type: 'dayOfBirth', value: dayOfBirth },
       { type: 'city', value: city },
@@ -32,13 +32,13 @@ const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data 
     contacts: await Promise.all(
       contacts.map(async contact => ({
         ...contact,
-        icon: await convertToImageString(contact.icon, { width: 24, height: 24 }),
+        icon: await convertToImageString(contact.icon, { size: { width: 24, height: 24 }, color: 'white' }),
       }))
     ),
     interests: await Promise.all(
       interests.map(async interest => ({
         ...interest,
-        icon: await convertToImageString(interest.icon, { width: 60, height: 60 }),
+        icon: await convertToImageString(interest.icon, { size: { width: 60, height: 60 } }),
       }))
     ),
   };
@@ -59,8 +59,8 @@ export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
       .then(data => {
         setResumeData(prevState => ({ ...prevState, ...data }));
       })
-      .catch(() => {
-        /* Implement error handling in the future */
+      .catch(error => {
+        console.error(error);
       });
   }, [formData]);
 

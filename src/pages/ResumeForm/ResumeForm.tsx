@@ -14,6 +14,7 @@ import { DateInput } from '../../components/Input/DateInput.tsx';
 import { Accordion } from '../../components/Accordion/Accordion.tsx';
 import Cropper, { Point } from 'react-easy-crop';
 import styles from '../../features/ResumeForm/ResumeForm.module.scss';
+import initialPhoto from '../../assets/images/initialPhoto.png';
 
 const SkillDetailsArray = ({
   nestIndex,
@@ -70,7 +71,6 @@ export const ResumeForm: FC = () => {
     setValue,
     watch,
     formState: { errors },
-    getValues,
   } = useForm<IFormData>({
     defaultValues: formData,
   });
@@ -99,7 +99,7 @@ export const ResumeForm: FC = () => {
   };
 
   const handleSave = async () => {
-    const { interests, photoLink, ...rest } = getValues();
+    const { interests, photoLink, ...rest } = formData;
     const photo = await convertToImageString(photoLink.photo);
     const normalizedFormData = {
       ...rest,
@@ -107,7 +107,7 @@ export const ResumeForm: FC = () => {
       interests: await Promise.all(
         interests.map(async interest => ({
           ...interest,
-          icon: await convertToImageString(interest.icon, { width: 60, height: 60 }),
+          icon: await convertToImageString(interest.icon, { size: { width: 60, height: 60 } }),
         }))
       ),
     };
@@ -145,9 +145,9 @@ export const ResumeForm: FC = () => {
       reader.readAsText(file);
     }
   };
-  const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const userPhotoValue = watch('photoLink');
-  register('photoLink.crop');
+  const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
+
   return (
     <div>
       <h2>Create your own resume</h2>
@@ -169,23 +169,26 @@ export const ResumeForm: FC = () => {
           />
           <TextArea label="About you" rows={4} description="Tell about yourself" {...register('profile')} />
           <div className={styles.userPhoto_container}>
-            <Cropper
-              aspect={1.39}
-              image={
-                typeof userPhotoValue.photo === 'string'
-                  ? userPhotoValue.photo
-                  : URL.createObjectURL(userPhotoValue.photo[0])
-              }
-              objectFit="cover"
-              crop={crop}
-              showGrid={false}
-              onCropChange={crop => {
-                setCrop(prevState => ({ ...prevState, ...crop }));
-              }}
-              onCropComplete={(_, croppedAreaPixels) => {
-                setValue('photoLink.crop', croppedAreaPixels);
-              }}
-            />
+            {!userPhotoValue?.crop ? (
+              <img src={initialPhoto} alt="user photo" />
+            ) : (
+              <Cropper
+                aspect={1.39}
+                image={
+                  typeof userPhotoValue.photo === 'string'
+                    ? userPhotoValue.photo
+                    : URL.createObjectURL(userPhotoValue.photo[0])
+                }
+                crop={crop}
+                showGrid={false}
+                onCropChange={crop => {
+                  setCrop(prevState => ({ ...prevState, ...crop }));
+                }}
+                onCropComplete={(_, croppedAreaPixels) => {
+                  setValue('photoLink.crop', croppedAreaPixels);
+                }}
+              />
+            )}
           </div>
           <Input
             label="Your Photo"

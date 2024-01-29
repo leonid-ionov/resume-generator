@@ -8,14 +8,24 @@ const createImage: (url: string) => Promise<HTMLImageElement> = url =>
     image.src = url;
   });
 
-export const convertToImageString = async (icon: string | FileList, size?: Size, crop?: Area): Promise<string> => {
-  let imageSrc: string;
-  if (typeof icon === 'string') {
-    imageSrc = icon;
-  } else {
-    imageSrc = URL.createObjectURL(icon[0]);
+interface IConvertOptions {
+  size?: Size;
+  crop?: Area;
+  color?: string;
+}
+
+type TConvertToImageString = (image: string | FileList, options?: IConvertOptions) => Promise<string>;
+
+export const convertToImageString: TConvertToImageString = async (image, options) => {
+  if (image === '') {
+    return 'about:blank';
   }
-  const image = await createImage(imageSrc);
+
+  let imageSrc: string;
+  if (typeof image === 'string') {
+    imageSrc = image;
+  } else imageSrc = URL.createObjectURL(image[0]);
+  const imageElement = await createImage(imageSrc);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 
@@ -23,13 +33,30 @@ export const convertToImageString = async (icon: string | FileList, size?: Size,
     throw new Error('Some problem with canvas');
   }
 
-  canvas.width = size?.width ?? image.width;
-  canvas.height = size?.height ?? image.height;
+  canvas.width = options?.size?.width ?? imageElement.width;
+  canvas.height = options?.size?.height ?? imageElement.height;
 
-  if (!crop) {
-    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  if (!options?.crop) {
+    ctx.drawImage(imageElement, 0, 0, canvas.width, canvas.height);
   } else {
-    ctx.drawImage(image, crop.x, crop.y, crop.width, crop.height, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(
+      imageElement,
+      options.crop.x,
+      options.crop.y,
+      options.crop.width,
+      options.crop.height,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+  }
+
+  if (options?.color) {
+    ctx.globalCompositeOperation = 'source-in';
+    ctx.fillStyle = options.color;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.globalCompositeOperation = 'source-over';
   }
 
   return new Promise(resolve => {
