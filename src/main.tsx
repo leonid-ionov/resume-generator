@@ -7,8 +7,8 @@ import { AppContextProvider } from './context/AppContextProvider.tsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { TPages } from './types/TPages.ts';
 import { MainPage } from './pages/Main/MainPage.tsx';
-import { ResumeForm } from './pages/ResumeForm/ResumeForm.tsx';
-import { ResumePreview } from './pages/ResumePreview/ResumePreview.tsx';
+import { FormPage } from './pages/FormPage/FormPage.tsx';
+import { ResumePreviewPage } from './pages/ResumePreviewPage/ResumePreviewPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -21,11 +21,11 @@ const router = createBrowserRouter([
       },
       {
         path: TPages.FORM,
-        element: <ResumeForm />,
+        element: <FormPage />,
       },
       {
         path: TPages.PREVIEW,
-        element: <ResumePreview />,
+        element: <ResumePreviewPage />,
       },
     ],
   },

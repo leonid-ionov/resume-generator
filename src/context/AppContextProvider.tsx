@@ -1,10 +1,11 @@
-import { FC, PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react';
+import { FC, PropsWithChildren, useCallback, useMemo, useReducer } from 'react';
 import { AppContext, IAppContext } from './AppContext.tsx';
 import { TResumeData } from '../types/TResumeData.ts';
 import { IFormData } from '../types/formTypes.ts';
 import { initialFormData } from '../constants/formConstants.ts';
 import { resumePreviewData } from '../constants/resumePreviewData.tsx';
 import { convertToImageString } from '../utils/convertToImageString.ts';
+import { AppActionTypes, appReducer } from './AppReducer.ts';
 
 const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data => {
   const { interests, experience, education, contacts, photoLink, dayOfBirth, city, languages, ...rest } = data;
@@ -45,32 +46,33 @@ const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data 
 };
 
 export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [formData, setFormData] = useState<IFormData>(initialFormData);
-  const [resumeData, setResumeData] = useState<TResumeData>(resumePreviewData);
+  const [state, dispatch] = useReducer(appReducer, {
+    formData: initialFormData,
+    resumeData: resumePreviewData,
+  });
+
   const submitResume = useCallback(
-    (data: IFormData) => {
-      setFormData(prevState => ({ ...prevState, ...data }));
+    async (formData: IFormData) => {
+      const resumeData = await normalizeFormData(formData);
+      dispatch({ type: AppActionTypes.SUBMIT_FORM_DATA, payload: { resumeData, formData } });
     },
-    [setFormData]
+    [dispatch]
   );
 
-  useEffect(() => {
-    normalizeFormData(formData)
-      .then(data => {
-        setResumeData(prevState => ({ ...prevState, ...data }));
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, [formData]);
+  const loadSavedFormData = useCallback(
+    (formData: IFormData) => {
+      dispatch({ type: AppActionTypes.LOAD_SAVED_FORM_DATA, payload: formData });
+    },
+    [dispatch]
+  );
 
   const appContext = useMemo<IAppContext>(
     () => ({
-      resumeData,
-      formData,
+      ...state,
       submitResume,
+      loadSavedFormData,
     }),
-    [submitResume, formData, resumeData]
+    [submitResume, state, loadSavedFormData]
   );
   return <AppContext.Provider value={appContext}>{children}</AppContext.Provider>;
 };

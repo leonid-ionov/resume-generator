@@ -1,5 +1,5 @@
 import { IPositionExplore, IUserEducation, TResumeData } from './TResumeData.ts';
-import { FieldError, UseFormRegister } from 'react-hook-form';
+import { Control, FieldError, FieldErrors, UseFormRegister } from 'react-hook-form';
 import { HTMLProps } from 'react';
 import { Area } from 'react-easy-crop';
 
@@ -41,4 +41,10 @@ type TFormElement<T extends HTMLElement> = ReturnType<UseFormRegister<IFormData>
   Omit<HTMLProps<T>, 'name' | 'onBlur' | 'onChange' | 'ref'> &
   IFormAttributes;
 
-export type { TFormElement, IIconOption, IFormData, IFormAttributes };
+interface IFormComponent {
+  control: Control<IFormData>;
+  register: UseFormRegister<IFormData>;
+  errors?: FieldErrors<IFormData>;
+}
+
+export type { TFormElement, IIconOption, IFormData, IFormAttributes, IFormComponent };

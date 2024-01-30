@@ -6,7 +6,7 @@ import ResumeTemplate from '../../features/ResumeTemplate/ResumeTemplate.tsx';
 import Button from '../../components/Button/Button.tsx';
 import { jsPDF } from 'jspdf';
 
-export const ResumePreview: FC = () => {
+export const ResumePreviewPage: FC = () => {
   const location = useLocation();
   const appContext = useAppContext();
   const state = location.state as { isPreview?: boolean };

@@ -16,11 +16,11 @@ export const resumePreviewData: TResumeData = {
   contacts: [
     {
       info: 'blackbeard@pirate.com',
-      icon: new URL('../assets/icons/email.svg', import.meta.url).href,
+      icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAB7ElEQVRIS7WV/VHCQBDFSQfaQehAKjBWoFQgdCAVKBWIFUgHQgXSgViB6UA6iO93s3dzXi4c/MHOvMmwedm3X3dUowtbdeH4o6JA13WNkrgXeNaWUKvnXthWVbU5luSggALf6MNn4aFQJUJTCSHas6yAgs/EfBWuhIOwFr4ta34jDh6jqhYSWaUKPQEFf7LgcHeWHUGzJv67XpAQ1hP5JyByLdKXZT5XRmReNJvTpxEn+o62OUsFIDXCWqS5J1kA5kHLAAGWcSBxPuRjXq38456ACLyE1Apk4dpiLfPB02pCS8RDmOprIVQfKoh6uVLwhQWnGkSxpbATECYZlgC7Ex8/ybzoQTIb+ab4YgHU2QxWzu12VDbt4ONg0TKEYFEXDuJfpwI/ctTC2O+0Puj5vIK15JeKfLCcL64AMn08V2AkgThO5zI3X65FYUBRi3r7nZwXl1RUQVbAH5jQ72S/nYgF8UOmYmwtsBgMfibsxZ2kM/BrGnpqg2a4bEbOdnI2mRdhUdKD5jcpbIaJsF1kRzDWlIP2xrZFhxBOa34qcpa7KtgcLMxiIPuT3KXLLhy6k6JlSEPXdXyj0o6tQL8Z3uDNmkui9IfDZtHboxafg5R4yl/mTB/dCo1QZ7OMDtrZAqXsS++LFZQClN7/AUg08xkhVUIqAAAAAElFTkSuQmCC',
     },
     {
       info: '+1 800 PIR-RATE',
-      icon: new URL('../assets/icons/phone.svg', import.meta.url).href,
+      icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAtklEQVRIS2NkoDFgxGb+////FYDi/UDsAMQCBNywASifyMjI+AGbOlwWzAcqTiDBcweAFjiSYsF7IlyOYh7QAqyOxeWD/yDduDQhmwwMTrxqRy1gGA0irIlgNBURTBmjQTSMgoiE+gBnyYu3NEWzYAKQ3wjE9UBcgG45WfUBmiGCoGoRWp3ep9SC/dD6GNkcmA9Argf5AhmQXGUqAHWD6mUHAvEAqugvADGo0n9AdJ1MSuQSUgsAoCigGX9D0bQAAAAASUVORK5CYII=',
     },
   ],
   experience: [

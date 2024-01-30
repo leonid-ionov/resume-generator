@@ -6,16 +6,19 @@ import { initialFormData } from '../constants/formConstants.ts';
 export interface IAppContext {
   formData: IFormData;
   resumeData?: TResumeData;
-  submitResume: (data: IFormData) => void;
+  isLoadSavedFormData?: boolean;
+  submitResume: (data: IFormData) => Promise<void>;
+  loadSavedFormData: (data: IFormData) => void;
 }
-
-const stubFunction = () => {
-  /* stub function*/
-};
 
 const initialAppContext: IAppContext = {
   formData: initialFormData,
-  submitResume: stubFunction,
+  submitResume: async () => {
+    /* stub function*/
+  },
+  loadSavedFormData: () => {
+    /* stub function*/
+  },
 };
 
 export const AppContext = createContext<IAppContext>(initialAppContext);

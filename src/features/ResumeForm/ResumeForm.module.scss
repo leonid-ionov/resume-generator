@@ -1,6 +1,11 @@
 @import 'styles/_helpers';
 @import 'styles/_constants';
 
+.resumeForm {
+  @include FlexColumn;
+  gap: spacing(1.25);
+}
+
 .userPhoto_container {
   position: relative;
   width: 100%;
