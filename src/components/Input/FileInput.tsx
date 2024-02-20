@@ -5,32 +5,44 @@ import { UseFormRegister } from 'react-hook-form';
 import { withFormAttributes } from '../WithFormAttributes/WithFormAttributes.tsx';
 import cn from 'classnames';
 import styles from './Input.module.scss';
+import success from '../../assets/icons/success.svg';
+import unavailable from '../../assets/icons/unavailable.svg';
 
 interface IFileInputProps extends HTMLProps<HTMLInputElement>, IFormAttributes {
   registerProps?: ReturnType<UseFormRegister<IFormData>>;
-  onFileUploaded?: (file?: File) => void;
+  handleFileUpload?: (file?: File) => void;
+  isFileSelected?: boolean;
   fileLabel: string;
 }
 
 const FileInputComponent = forwardRef<HTMLInputElement, IFileInputProps>(
-  ({ registerProps, fileLabel, error, ...overProps }, ref) => {
+  ({ registerProps, fileLabel, error, isFileSelected, handleFileUpload, ...overProps }, ref) => {
     const hiddenFileInput = useRef<HTMLInputElement>(null);
     return (
       <>
-        <Button onClick={() => hiddenFileInput.current?.click()}>{fileLabel}</Button>
+        <Button onClick={() => hiddenFileInput.current?.click()}>
+          <section className={styles.inputControl_file}>
+            <p>{fileLabel}</p>
+            {hiddenFileInput.current?.files?.[0]?.name || isFileSelected ? (
+              <img src={success} alt="file successfully uploaded" />
+            ) : (
+              <img src={unavailable} alt="file is unavailable" />
+            )}
+          </section>
+        </Button>
         <input
           type="file"
           id={overProps.name}
           name={overProps.name}
           className={cn(styles.inputControl, error && styles.inputControl_error)}
+          ref={ref ?? hiddenFileInput}
           {...overProps}
           {...registerProps}
           onChange={async event => {
             const fileUploaded = event.target.files?.[0];
-            if (overProps?.onFileUploaded) overProps.onFileUploaded(fileUploaded);
+            if (handleFileUpload) handleFileUpload(fileUploaded);
             if (registerProps?.onChange) await registerProps.onChange(event);
           }}
-          ref={ref ?? hiddenFileInput}
         />
       </>
     );

@@ -56,7 +56,12 @@ export const FormPage: FC = () => {
       <section className={style.FormPage_title}>
         <h2>Create your own resume</h2>
         <Button onClick={handleSave}>Save as JSON</Button>
-        <FileInput onFileUploaded={handleLoad} type="file" accept="application/json" fileLabel="Fill Form From Save" />
+        <FileInput
+          handleFileUpload={handleLoad}
+          type="file"
+          accept="application/json"
+          fileLabel="Fill Form From Save"
+        />
       </section>
       <ResumeForm />
     </section>

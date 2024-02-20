@@ -47,6 +47,7 @@ export const PersonalInfoForm: FC<IPersonalInfoFormProps> = ({ setFormValue, con
           fileLabel="Your Photo"
           description="Photo must be 416x300"
           accept="image/*"
+          isFileSelected={!!userPhotoValue.photo}
           registerProps={register('photoLink.photo')}
         />
       </div>

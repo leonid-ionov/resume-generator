@@ -1,6 +1,6 @@
 @import 'styles/_colors';
 @import 'styles/controls';
-@import '../Button/Button.module.scss';
+@import 'styles/_helpers';
 
 .inputControl {
   /********** Standard Input Styles **********/
@@ -13,8 +13,16 @@
   /********** File Input Styles **********/
   &[type='file'] {
     display: none;
-    &::file-selector-button {
-      @extend .Button, .Button_small;
+  }
+
+  &_file {
+    @include Flex(center);
+    gap: spacing(0.5);
+
+    & img {
+      width: 20px;
+      height: 20px;
+      filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(164deg) brightness(106%) contrast(102%);
     }
   }
 

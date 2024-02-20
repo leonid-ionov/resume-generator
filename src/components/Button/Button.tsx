@@ -6,10 +6,15 @@ interface IButtonProps extends PropsWithChildren {
   onClick?: () => void;
   small?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  className?: string;
 }
 
-const Button: FC<IButtonProps> = ({ small, type, onClick, children }) => (
-  <button className={cn(styles.Button, { [styles.Button_small]: small })} type={type ?? 'button'} onClick={onClick}>
+const Button: FC<IButtonProps> = ({ small, className, type, onClick, children }) => (
+  <button
+    className={cn(styles.Button, { [styles.Button_small]: small }, className)}
+    type={type ?? 'button'}
+    onClick={onClick}
+  >
     {children}
   </button>
 );
