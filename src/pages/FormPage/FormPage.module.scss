@@ -1,0 +1,10 @@
+@import 'styles/_helpers';
+
+.FormPage {
+  font-family: 'Montserrat SemiBold', sans-serif;
+  margin: spacing(0, 5);
+
+  &_title {
+    @include Flex(center);
+  }
+}

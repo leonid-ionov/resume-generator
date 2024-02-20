@@ -20,12 +20,12 @@
 @mixin Flex($align: null, $justify: null) {
   display: flex;
 
-  @if $justify {
-    justify-content: $justify;
-  }
-
   @if $align {
     align-items: $align;
+  }
+
+  @if $justify {
+    justify-content: $justify;
   }
 }
 

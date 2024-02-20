@@ -1,5 +1,4 @@
 import { IFormData, IIconOption } from '../types/formTypes.ts';
-import initialPhoto from '../assets/images/initialPhoto.png';
 
 const IconsOptions: IIconOption[] = [
   { label: 'Email', value: new URL('../assets/icons/email.svg', import.meta.url).href },
@@ -15,7 +14,7 @@ const initialFormData: IFormData = {
   userName: '',
   desiredJob: '',
   profile: '',
-  photoLink: { photo: initialPhoto },
+  photoLink: {},
   dayOfBirth: '',
   city: '',
   languages: '',

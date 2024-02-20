@@ -1,9 +1,11 @@
-import { ChangeEvent, FC } from 'react';
+import { FC } from 'react';
 import useAppContext from '../../context/useAppContext.tsx';
 import Button from '../../components/Button/Button.tsx';
 import { IFormData } from '../../types/formTypes.ts';
 import { convertToImageString } from '../../utils/convertToImageString.ts';
 import { ResumeForm } from '../../features/ResumeForm/ResumeForm.tsx';
+import style from './FormPAge.module.scss';
+import FileInput from '../../components/Input/FileInput.tsx';
 
 export const FormPage: FC = () => {
   const { loadSavedFormData, formData } = useAppContext();
@@ -34,9 +36,7 @@ export const FormPage: FC = () => {
     URL.revokeObjectURL(downloadLink.href);
   };
 
-  const handleLoad = (event: ChangeEvent<HTMLInputElement>) => {
-    const fileInput = event.target;
-    const file = fileInput.files && fileInput.files[0];
+  const handleLoad = (file?: File) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
@@ -52,11 +52,13 @@ export const FormPage: FC = () => {
   };
 
   return (
-    <div>
-      <h2>Create your own resume</h2>
+    <section className={style.FormPage}>
+      <section className={style.FormPage_title}>
+        <h2>Create your own resume</h2>
+        <Button onClick={handleSave}>Save as JSON</Button>
+        <FileInput onFileUploaded={handleLoad} type="file" accept="application/json" fileLabel="Fill Form From Save" />
+      </section>
       <ResumeForm />
-      <Button onClick={handleSave}>Сохранить в JSON</Button>
-      <input type="file" accept=".json" onChange={handleLoad} />
-    </div>
+    </section>
   );
 };

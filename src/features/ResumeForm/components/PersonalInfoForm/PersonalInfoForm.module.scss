@@ -1,0 +1,35 @@
+@import 'styles/_helpers';
+@import 'styles/_constants';
+
+.formContainer {
+  @include Flex;
+  gap: spacing(2);
+}
+
+.userPhoto {
+  &#{&} {
+    min-width: $fourthSectionWidth;
+    height: 300px;
+    position: relative;
+  }
+  &_container {
+    position: relative;
+    @include FlexColumn;
+    gap: spacing(2.5);
+  }
+}
+
+.userProfile_container {
+  @include FlexColumn;
+  gap: spacing(2.5);
+  width: 60vw;
+}
+
+.flexContainer {
+  @include Flex;
+  gap: spacing(1);
+}
+
+.dateInput {
+  width: 140px;
+}

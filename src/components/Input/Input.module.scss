@@ -12,7 +12,7 @@
 
   /********** File Input Styles **********/
   &[type='file'] {
-    width: 267px;
+    display: none;
     &::file-selector-button {
       @extend .Button, .Button_small;
     }

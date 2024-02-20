@@ -14,10 +14,10 @@ interface IConvertOptions {
   color?: string;
 }
 
-type TConvertToImageString = (image: string | FileList, options?: IConvertOptions) => Promise<string>;
+type TConvertToImageString = (image?: string | FileList, options?: IConvertOptions) => Promise<string>;
 
 export const convertToImageString: TConvertToImageString = async (image, options) => {
-  if (image === '') {
+  if (!image || image === '') {
     return 'about:blank';
   }
 

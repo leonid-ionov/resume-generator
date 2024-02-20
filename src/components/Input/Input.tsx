@@ -6,13 +6,13 @@ import { withFormAttributes } from '../WithFormAttributes/WithFormAttributes.tsx
 
 type TInputProps = TFormElement<HTMLInputElement>;
 
-const InputComponent = forwardRef<HTMLInputElement, TInputProps>(({ name, error, ...overProps }, ref) => {
+const InputComponent = forwardRef<HTMLInputElement, TInputProps>(({ name, error, className, ...overProps }, ref) => {
   return (
     <input
       type="text"
       id={name}
       name={name}
-      className={cn(styles.inputControl, error && styles.inputControl_error)}
+      className={cn(styles.inputControl, error && styles.inputControl_error, className)}
       {...overProps}
       ref={ref}
     />

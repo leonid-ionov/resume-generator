@@ -3,10 +3,16 @@
 
 .Navbar {
   width: 100%;
-  @include Flex(center, center);
+  min-height: 76px;
+  @include Flex(center, space-between);
   background-color: $headerBackground;
-  padding: spacing(2, 0);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  padding: spacing(2, 5);
+
+  &_mainPage {
+    justify-content: center;
+  }
+
+  &_text {
+    @include Montserrat-font(semiBold, 24px, 20px);
+  }
 }

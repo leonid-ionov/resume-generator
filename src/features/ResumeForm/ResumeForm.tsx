@@ -36,13 +36,13 @@ export const ResumeForm: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.resumeForm}>
+      <Button type="submit">Submit changes</Button>
       <PersonalInfoForm setFormValue={setValue} control={control} register={register} errors={errors} />
       <ContactsForm control={control} register={register} errors={errors} />
       <SkillForm control={control} register={register} errors={errors} />
       <ExperienceForm setFormValue={setValue} control={control} register={register} />
       <EducationForm setFormValue={setValue} control={control} register={register} />
       <InterestsForm control={control} register={register} />
-      <Button type="submit">Submit</Button>
     </form>
   );
 };

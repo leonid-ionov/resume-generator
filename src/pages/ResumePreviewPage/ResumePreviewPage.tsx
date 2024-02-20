@@ -5,12 +5,13 @@ import { resumePreviewData } from '../../constants/resumePreviewData.tsx';
 import ResumeTemplate from '../../features/ResumeTemplate/ResumeTemplate.tsx';
 import Button from '../../components/Button/Button.tsx';
 import { jsPDF } from 'jspdf';
+import styles from './ResumePreviewPage.module.scss';
 
 export const ResumePreviewPage: FC = () => {
   const location = useLocation();
   const appContext = useAppContext();
-  const state = location.state as { isPreview?: boolean };
-  const resumeData = state.isPreview ? resumePreviewData : { ...resumePreviewData, ...appContext.resumeData };
+  const state = location?.state ? (location.state as { isPreview?: boolean }) : {};
+  const resumeData = state?.isPreview ? resumePreviewData : { ...resumePreviewData, ...appContext.resumeData };
   const templateRef = useRef<HTMLDivElement>(null);
   const handleSaveAsPDF = async () => {
     const content = templateRef.current;
@@ -34,9 +35,11 @@ export const ResumePreviewPage: FC = () => {
   };
 
   return (
-    <div>
+    <section className={styles.previewPage}>
+      <section className={styles.previewPage_title}>
+        <h2>Resume Preview</h2> <Button onClick={handleSaveAsPDF}>Save as PDF</Button>
+      </section>
       <ResumeTemplate resumeData={resumeData} ref={templateRef} />
-      <Button onClick={handleSaveAsPDF}>Save as PDF</Button>
-    </div>
+    </section>
   );
 };

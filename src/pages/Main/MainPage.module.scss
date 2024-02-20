@@ -1,0 +1,13 @@
+@import 'styles/_helpers';
+
+.mainPage {
+  @include Montserrat-font(regular, 16px);
+  text-transform: none;
+  @include FlexColumn;
+  gap: spacing(1);
+
+  h2 {
+    @include Montserrat-font(semiBold, 32px);
+    text-transform: none;
+  }
+}

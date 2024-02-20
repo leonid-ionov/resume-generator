@@ -18,7 +18,7 @@ interface IEducationFormData extends Omit<IUserEducation, 'educationPeriod'> {
 
 interface IFormData
   extends Omit<TResumeData, 'contacts' | 'photoLink' | 'info' | 'experience' | 'education' | 'interests'> {
-  photoLink: { photo: FileList | string; crop?: Area };
+  photoLink: { photo?: FileList | string; crop?: Area };
   contacts: {
     icon: string;
     info: string;

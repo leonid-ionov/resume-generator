@@ -2,14 +2,14 @@ import { ForwardRefExoticComponent, forwardRef, RefAttributes } from 'react';
 import styles from './WithFormAttributes.module.scss';
 import { IFormAttributes } from '../../types/formTypes.ts';
 
-export const withFormAttributes = <T extends HTMLElement, P extends IFormAttributes & { name: string }>(
+export const withFormAttributes = <T extends HTMLElement, P extends IFormAttributes & { name?: string }>(
   WrappedComponent: ForwardRefExoticComponent<Omit<P, 'ref'> & RefAttributes<T>>
 ) => {
   // eslint-disable-next-line react/display-name
   return forwardRef<T, P>((props, ref) => {
     const { label, description, ...rest } = props;
     return (
-      <div className={styles.controlContainer}>
+      <div>
         {label && (
           <label className={styles.controlLabel} htmlFor={rest.name}>
             {label}
