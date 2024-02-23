@@ -8,7 +8,7 @@
   background-color: $backgroundLight;
 
   & .content {
-    padding: spacing(4, 0);
+    padding: spacing(4, 5);
     width: 100%;
     @include FlexColumn(center);
   }

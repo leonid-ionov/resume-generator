@@ -4,6 +4,8 @@ import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  appType: 'spa',
+  base: process.env.NODE_ENV === 'production' ? '/resume-generator/' : '/',
   assetsInclude: ['./src/assets/fonts/*.ttf', './src/assets/icons/*.svg'],
   server: {
     port: 555,

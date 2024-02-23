@@ -4,13 +4,15 @@ import App from './App.tsx';
 import './index.scss';
 import 'react-datetime/css/react-datetime.css';
 import { AppContextProvider } from './context/AppContextProvider.tsx';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom';
 import { TPages } from './types/TPages.ts';
 import { MainPage } from './pages/Main/MainPage.tsx';
 import { FormPage } from './pages/FormPage/FormPage.tsx';
 import { ResumePreviewPage } from './pages/ResumePreviewPage/ResumePreviewPage.tsx';
 
-const router = createBrowserRouter([
+const createRouter = import.meta.env.VITE_ROUTER_TYPE === 'hash' ? createHashRouter : createBrowserRouter;
+
+const router = createRouter([
   {
     path: '/',
     element: <App />,
