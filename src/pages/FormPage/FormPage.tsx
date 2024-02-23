@@ -4,7 +4,7 @@ import Button from '../../components/Button/Button.tsx';
 import { IFormData } from '../../types/formTypes.ts';
 import { convertToImageString } from '../../utils/convertToImageString.ts';
 import { ResumeForm } from '../../features/ResumeForm/ResumeForm.tsx';
-import style from './FormPAge.module.scss';
+import style from './FormPage.module.scss';
 import FileInput from '../../components/Input/FileInput.tsx';
 
 export const FormPage: FC = () => {
