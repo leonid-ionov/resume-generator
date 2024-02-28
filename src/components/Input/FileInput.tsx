@@ -5,8 +5,8 @@ import { UseFormRegister } from 'react-hook-form';
 import { withFormAttributes } from '../WithFormAttributes/WithFormAttributes.tsx';
 import cn from 'classnames';
 import styles from './Input.module.scss';
-import success from '../../assets/icons/success.svg';
-import unavailable from '../../assets/icons/unavailable.svg';
+import filePresent from '../../assets/icons/filePresent.svg';
+import uploadFile from '../../assets/icons/uploadFile.svg';
 
 interface IFileInputProps extends HTMLProps<HTMLInputElement>, IFormAttributes {
   registerProps?: ReturnType<UseFormRegister<IFormData>>;
@@ -16,17 +16,17 @@ interface IFileInputProps extends HTMLProps<HTMLInputElement>, IFormAttributes {
 }
 
 const FileInputComponent = forwardRef<HTMLInputElement, IFileInputProps>(
-  ({ registerProps, fileLabel, error, isFileSelected, handleFileUpload, ...overProps }, ref) => {
-    const hiddenFileInput = useRef<HTMLInputElement>(null);
+  ({ registerProps, fileLabel, error, isFileSelected, handleFileUpload, ...overProps }) => {
+    const hiddenFileInput = useRef<HTMLInputElement | null>(null);
     return (
       <>
         <Button onClick={() => hiddenFileInput.current?.click()}>
           <section className={styles.inputControl_file}>
             <p>{fileLabel}</p>
             {hiddenFileInput.current?.files?.[0]?.name || isFileSelected ? (
-              <img src={success} alt="file successfully uploaded" />
+              <img src={filePresent} alt="file successfully uploaded" />
             ) : (
-              <img src={unavailable} alt="file is unavailable" />
+              <img src={uploadFile} alt="file is unavailable" />
             )}
           </section>
         </Button>
@@ -35,9 +35,12 @@ const FileInputComponent = forwardRef<HTMLInputElement, IFileInputProps>(
           id={overProps.name}
           name={overProps.name}
           className={cn(styles.inputControl, error && styles.inputControl_error)}
-          ref={ref ?? hiddenFileInput}
           {...overProps}
           {...registerProps}
+          ref={element => {
+            registerProps?.ref(element);
+            hiddenFileInput.current = element;
+          }}
           onChange={async event => {
             const fileUploaded = event.target.files?.[0];
             if (handleFileUpload) handleFileUpload(fileUploaded);
