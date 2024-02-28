@@ -36,6 +36,7 @@ const ResumeTemplate = forwardRef<HTMLDivElement, IResumeTemplateProps>(({ resum
       <InfoSection userInfo={resumeData.info} />
       <SkillsSection skills={resumeData.skills} />
     </div>
+    <div id="hidden-text" className={styles.hidden_text} />
   </div>
 ));
 

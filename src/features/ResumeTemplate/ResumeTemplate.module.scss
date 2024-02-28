@@ -48,4 +48,9 @@
     @include FlexColumn;
     gap: spacing(4);
   }
+
+  .hidden_text {
+    font-size: 1px;
+    color: $backgroundDark;
+  }
 }

@@ -1,7 +1,7 @@
 import { FC, useRef } from 'react';
 import useAppContext from '../../context/useAppContext.tsx';
 import { useLocation } from 'react-router-dom';
-import { resumePreviewData } from '../../constants/resumePreviewData.tsx';
+import { hiddenText, resumePreviewData } from '../../constants/resumePreviewData.tsx';
 import ResumeTemplate from '../../features/ResumeTemplate/ResumeTemplate.tsx';
 import Button from '../../components/Button/Button.tsx';
 import { jsPDF } from 'jspdf';
@@ -23,6 +23,8 @@ export const ResumePreviewPage: FC = () => {
     try {
       const styleElem = document.head.appendChild(document.createElement('style'));
       styleElem.innerHTML = 'li[data-id="list-item"]::before { margin-top: 6px; } img[data-id="icon"] { top: 4px; }';
+      const hiddenDiv = document.getElementById('hidden-text');
+      if (hiddenDiv) hiddenDiv.innerHTML = hiddenText;
       await pdf.html(content, {
         callback: pdf => {
           pdf.save('resume.pdf');
