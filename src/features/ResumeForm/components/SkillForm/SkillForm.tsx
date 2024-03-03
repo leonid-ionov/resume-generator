@@ -16,7 +16,7 @@ export const SkillForm: FC<IFormComponent> = ({ control, register, errors }) => 
   return (
     <Accordion title="Skills">
       {skillsField.fields.map((field, skillIndex) => {
-        const isSkillHaveVariant = skillsArray[skillIndex].details[0].variant !== undefined;
+        const isSkillHaveVariant = skillsArray[skillIndex]?.details[0].variant !== undefined;
         return (
           <div key={field.id}>
             <Input

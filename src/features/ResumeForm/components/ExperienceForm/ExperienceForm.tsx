@@ -67,7 +67,7 @@ export const ExperienceForm: FC<IExperienceFormProps> = ({ control, register, se
                   ['clean'],
                 ],
               }}
-              value={experienceValue[index].description}
+              value={experienceValue[index]?.description}
               onChange={value => setFormValue(`experience.${index}.description`, value)}
             />
           </div>
