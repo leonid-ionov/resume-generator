@@ -28,31 +28,62 @@
 
   /********** Range Input Styles **********/
   &[type='range'] {
+    --range-progress: 0%;
+
+    position: relative;
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
-    cursor: pointer;
     border: none;
 
-    &::-webkit-slider-runnable-track,
+    &::-webkit-slider-runnable-track {
+      height: 3px;
+      background-color: $greyLight;
+    }
     &::-moz-range-track {
       background-color: $greyLight;
     }
-    &::-webkit-progress-value,
+
+    &::-webkit-slider-thumb {
+      position: relative;
+      -webkit-appearance: none;
+      margin-top: -8.5px;
+      background-color: #f0f0f0;
+      height: 20px;
+      width: 20px;
+      border-radius: radius(4);
+      border: 1.5px solid #999999;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      height: 3px;
+      width: calc(var(--range-progress) * 0.975);
+      left: 16px;
+      background: $grey;
+    }
+
     &::-moz-range-progress {
       background-color: $grey;
     }
 
     &:hover:not(:focus) {
-      &::-webkit-slider-runnable-track,
+      &::-webkit-slider-runnable-track {
+        background-color: rgba(119, 113, 122, 0.7);
+      }
       &::-moz-range-track {
         background-color: rgba(119, 113, 122, 0.7);
       }
-      &::-webkit-progress-value,
+      &::before {
+        background-color: rgba(57, 47, 61, 0.7);
+      }
       &::-moz-range-progress {
         background-color: rgba(57, 47, 61, 0.7);
       }
-      &::-webkit-slider-thumb,
+      &::-webkit-slider-thumb {
+        background-color: $backgroundGrey;
+      }
       &::-moz-range-thumb {
         background-color: $backgroundGrey;
       }
@@ -60,7 +91,11 @@
 
     &:focus {
       outline-width: 0;
-      &::-webkit-slider-thumb,
+      &::-webkit-slider-thumb {
+        border-radius: radius(4);
+        outline-offset: 5px;
+        outline: 2px solid $greyDark;
+      }
       &::-moz-range-thumb {
         outline-offset: 5px;
         outline: 2px solid $greyDark;

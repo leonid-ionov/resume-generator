@@ -5,6 +5,7 @@ import Input from '../../../../components/Input/Input.tsx';
 import { SkillVariantArray } from './SkillVariantArray.tsx';
 import Button from '../../../../components/Button/Button.tsx';
 import { Accordion } from '../../../../components/Accordion/Accordion.tsx';
+import RangeInput from '../../../../components/Input/RangeInput.tsx';
 
 export const SkillForm: FC<IFormComponent> = ({ control, register, errors }) => {
   const skillsField = useFieldArray({
@@ -16,7 +17,7 @@ export const SkillForm: FC<IFormComponent> = ({ control, register, errors }) => 
   return (
     <Accordion title="Skills">
       {skillsField.fields.map((field, skillIndex) => {
-        const isSkillHaveVariant = skillsArray[skillIndex].details[0].variant !== undefined;
+        const isSkillHaveVariant = skillsArray[skillIndex]?.details[0].variant !== undefined;
         return (
           <div key={field.id}>
             <Input
@@ -26,7 +27,11 @@ export const SkillForm: FC<IFormComponent> = ({ control, register, errors }) => 
               {...register(`skills.${skillIndex}.name`)}
             />
             {!isSkillHaveVariant && (
-              <Input type="range" label="Your skill level" {...register(`skills.${skillIndex}.details.0.level`)} />
+              <RangeInput
+                control={control}
+                label="Your skill level"
+                {...register(`skills.${skillIndex}.details.0.level`)}
+              />
             )}
             <SkillVariantArray nestIndex={skillIndex} control={control} register={register} />
           </div>
