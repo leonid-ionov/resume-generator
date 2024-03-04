@@ -1,10 +1,15 @@
 import { Area, Size } from 'react-easy-crop';
+import { BLANK_IMAGE } from '../constants/formConstants.ts';
 
 const createImage: (url: string) => Promise<HTMLImageElement> = url =>
   new Promise((resolve, reject) => {
     const image = new Image();
+    if (url === BLANK_IMAGE) {
+      resolve(image);
+      return;
+    }
     image.onload = () => resolve(image);
-    image.onerror = error => reject(error);
+    image.onerror = error => reject(['Error by creating image', error]);
     image.src = url;
   });
 
@@ -17,8 +22,8 @@ interface IConvertOptions {
 type TConvertToImageString = (image?: string | FileList, options?: IConvertOptions) => Promise<string>;
 
 export const convertToImageString: TConvertToImageString = async (image, options) => {
-  if (!image || image === '') {
-    return 'about:blank';
+  if (!image || image === '' || !image[0]) {
+    return BLANK_IMAGE;
   }
 
   let imageSrc: string;

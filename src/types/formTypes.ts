@@ -31,6 +31,10 @@ interface IFormData
   interests: { name: string; icon: FileList | string }[];
 }
 
+interface IStampedFormData extends IFormData {
+  appStamp?: string;
+}
+
 interface IFormAttributes {
   label?: string;
   description?: string;
@@ -47,4 +51,4 @@ interface IFormComponent {
   errors?: FieldErrors<IFormData>;
 }
 
-export type { TFormElement, IIconOption, IFormData, IFormAttributes, IFormComponent };
+export type { TFormElement, IIconOption, IFormData, IFormAttributes, IFormComponent, IStampedFormData };

@@ -5,9 +5,10 @@
   @include Flex(center, center);
   max-width: $fourthSectionWidth;
   overflow: hidden;
+  text-align: center;
 
   &_photo {
-    width: 100%;
+    width: $fourthSectionWidth;
     height: auto;
     object-fit: cover;
   }
