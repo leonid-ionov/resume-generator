@@ -34,4 +34,7 @@ const initialFormData: IFormData = {
   interests: [{ name: '', icon: '' }],
 };
 
-export { initialFormData, IconsOptions };
+const VALIDATION_STRING = 'Neonrul Resume Generator File' as const;
+const BLANK_IMAGE = 'about:blank' as const;
+
+export { initialFormData, IconsOptions, VALIDATION_STRING, BLANK_IMAGE };

@@ -1,13 +1,11 @@
-import { FC, useState } from 'react';
+import { FC, useMemo } from 'react';
 import { useController, UseFormSetValue, useWatch } from 'react-hook-form';
 import Input from '../../../../components/Input/Input.tsx';
 import TextArea from '../../../../components/TextArea/TextArea.tsx';
 import styles from './PersonalInfoForm.module.scss';
-import initialPhoto from '../../../../assets/images/initialPhoto.png';
-import Cropper from 'react-easy-crop';
 import { DateInput } from '../../../../components/Input/DateInput.tsx';
 import { IFormComponent, IFormData } from '../../../../types/formTypes.ts';
-import FileInput from '../../../../components/Input/FileInput.tsx';
+import { UserPhotoForm } from './UserPhotoForm.tsx';
 
 interface IPersonalInfoFormProps extends IFormComponent {
   setFormValue: UseFormSetValue<IFormData>;
@@ -15,42 +13,20 @@ interface IPersonalInfoFormProps extends IFormComponent {
 
 export const PersonalInfoForm: FC<IPersonalInfoFormProps> = ({ setFormValue, control, register, errors }) => {
   const { formState } = useController({ control, name: 'photoLink' });
-  const userPhotoValue = useWatch({ control, name: 'photoLink' });
-  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const { photo } = useWatch({ control, name: 'photoLink' });
+  const memoizedPhoto = useMemo(() => {
+    if (typeof photo === 'string') return photo;
+    if (photo instanceof FileList && photo.length > 0) return URL.createObjectURL(photo[0]);
+    return null;
+  }, [photo]);
   return (
     <section className={styles.formContainer}>
-      <div className={styles.userPhoto_container}>
-        {!userPhotoValue?.photo ? (
-          <img className={styles.userPhoto} src={initialPhoto} alt="user photo" />
-        ) : (
-          <Cropper
-            classes={{ containerClassName: styles.userPhoto }}
-            aspect={1.39}
-            image={
-              typeof userPhotoValue.photo === 'string'
-                ? userPhotoValue.photo
-                : URL.createObjectURL(userPhotoValue.photo[0])
-            }
-            restrictPosition
-            initialCroppedAreaPixels={formState.defaultValues?.photoLink?.crop}
-            crop={crop}
-            showGrid={false}
-            onCropChange={crop => {
-              setCrop(prevState => ({ ...prevState, ...crop }));
-            }}
-            onCropComplete={(_, croppedAreaPixels) => {
-              setFormValue('photoLink.crop', croppedAreaPixels);
-            }}
-          />
-        )}
-        <FileInput
-          fileLabel="Your Photo"
-          description="Photo must be 416x300"
-          accept="image/*"
-          isFileSelected={!!userPhotoValue.photo}
-          registerProps={register('photoLink.photo')}
-        />
-      </div>
+      <UserPhotoForm
+        photo={memoizedPhoto}
+        registerProps={register('photoLink.photo')}
+        initialCrop={formState.defaultValues?.photoLink?.crop}
+        handleCropComplete={croppedArea => setFormValue('photoLink.crop', croppedArea)}
+      />
       <div className={styles.userProfile_container}>
         <div className={styles.flexContainer}>
           <Input

@@ -1,11 +1,12 @@
 import { FC } from 'react';
 import useAppContext from '../../context/useAppContext.tsx';
 import Button from '../../components/Button/Button.tsx';
-import { IFormData } from '../../types/formTypes.ts';
+import { IStampedFormData } from '../../types/formTypes.ts';
 import { convertToImageString } from '../../utils/convertToImageString.ts';
 import { ResumeForm } from '../../features/ResumeForm/ResumeForm.tsx';
 import style from './FormPage.module.scss';
 import FileInput from '../../components/Input/FileInput.tsx';
+import { VALIDATION_STRING } from '../../constants/formConstants.ts';
 
 export const FormPage: FC = () => {
   const { loadSavedFormData, formData } = useAppContext();
@@ -13,6 +14,7 @@ export const FormPage: FC = () => {
     const { interests, photoLink, ...rest } = formData;
     const photo = await convertToImageString(photoLink.photo);
     const normalizedFormData = {
+      appStamp: VALIDATION_STRING,
       ...rest,
       photoLink: { photo, crop: photoLink.crop },
       interests: await Promise.all(
@@ -41,8 +43,13 @@ export const FormPage: FC = () => {
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         try {
-          const data = JSON.parse(e.target?.result as string) as IFormData;
-          loadSavedFormData({ ...data });
+          const data = JSON.parse(e.target?.result as string) as IStampedFormData;
+          const { appStamp, ...formData } = data;
+          if (appStamp !== VALIDATION_STRING) {
+            console.error('Error when loading a form file: Invalid file format');
+            return;
+          }
+          loadSavedFormData(formData);
         } catch (error) {
           console.error('Error when loading a form file:', error);
         }
@@ -55,7 +62,7 @@ export const FormPage: FC = () => {
     <section className={style.FormPage}>
       <section className={style.FormPage_title}>
         <h2>Create your own resume</h2>
-        <Button onClick={handleSave}>Save as JSON</Button>
+        <Button onClick={handleSave}>Save form</Button>
         <FileInput
           handleFileUpload={handleLoad}
           type="file"
