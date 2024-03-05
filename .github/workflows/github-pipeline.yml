@@ -1,6 +1,9 @@
 name: Build & Deploy
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -37,6 +40,7 @@ jobs:
           CI: true
 
       - name: Upload Pages artifact
+        if: ${{ github.event_name != 'pull_request' }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ vars.BUILD_PATH }}
@@ -45,6 +49,7 @@ jobs:
   deploy:
     name: Deploy
     needs: build
+    if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     permissions:
       pages: write

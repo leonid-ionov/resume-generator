@@ -1,16 +1,33 @@
 {
   "name": "resume-generator",
+  "description": "SPA to generate my perfect resume",
+  "main": "main.tsx",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "author": {
     "name": "Leonid Ionov",
     "url": "https://github.com/Neonrul"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Neonrul/resume-generator"
+  },
+  "bugs": {
+    "url": "https://github.com/Neonrul/resume-generator/issues"
+  },
+  "homepage": "https://neonrul.github.io/resume-generator",
   "license": "MIT",
   "engines": {
     "node": ">=18.15.0"
   },
+  "keywords": [
+    "resume",
+    "CV",
+    "form",
+    "react",
+    "vite"
+  ],
   "scripts": {
     "build": "vite build",
     "dev": "vite",
