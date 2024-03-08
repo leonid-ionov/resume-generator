@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
@@ -12,7 +13,7 @@ const baseUrlMap: Record<string, string> = {
 export default defineConfig({
   appType: 'spa',
   base: baseUrlMap?.[process.env.NODE_ENV],
-  assetsInclude: ['./src/assets/fonts/*.ttf', './src/assets/icons/*.svg'],
+  assetsInclude: ['./src/assets/fonts/*.ttf', './src/assets/icons/*.svg', './src/assets/icons/*.png'],
   server: {
     port: 555,
   },
@@ -26,5 +27,11 @@ export default defineConfig({
     alias: {
       styles: resolve(__dirname, './src/styles'),
     },
+  },
+  test: {
+    globals: true,
+    include: ['**/*.test.ts', '**/*.test.tsx'],
+    environment: 'jsdom',
+    setupFiles: './vitest.setup.ts',
   },
 });

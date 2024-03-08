@@ -32,7 +32,10 @@ jobs:
       - name: Lint check
         run: npm run lint
 
-      - name: Test build
+      - name: Run tests
+        run: npm run test
+
+      - name: Build app
         run: npm run build
         env:
           NODE_ENV: ${{ vars.ENV }}
