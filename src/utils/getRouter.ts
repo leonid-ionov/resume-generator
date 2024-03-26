@@ -1,12 +1,13 @@
 import { createBrowserRouter, createHashRouter, createMemoryRouter } from 'react-router-dom';
+import { RouterTypes } from '../constants/environmentMaps.ts';
 
-export const getRouter = (type?: string) => {
+export const getRouter = (type?: RouterTypes) => {
   switch (type) {
-    case 'hash':
+    case RouterTypes.HASH:
       return createHashRouter;
-    case 'memory':
+    case RouterTypes.MEMORY:
       return createMemoryRouter;
-    case 'browser':
+    case RouterTypes.BROWSER:
     default:
       return createBrowserRouter;
   }

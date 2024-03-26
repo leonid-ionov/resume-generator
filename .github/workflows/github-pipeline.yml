@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: Build & Deploy to GH-Pages
 
 on:
   pull_request:
@@ -9,12 +9,16 @@ on:
     branches:
       - main
 
+env:
+  DEPLOY_ENVIRONMENT: github-pages
+  ARTIFACT_NAME: gh-pages-build
+  BUILD_PATH: dist
+
 jobs:
   build:
     name: Build
     concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
-    environment: github-pages
     steps:
       - name: Check if PR is draft
         if: github.event.pull_request.draft
@@ -44,20 +48,16 @@ jobs:
 
       - name: Build app
         run: npm run build
-        env:
-          NODE_ENV: ${{ vars.ENV }}
-          VITE_ROUTER_TYPE: ${{ vars.ROUTER_TYPE }}
-          CI: true
 
       - name: Upload Pages artifact
         if: ${{ github.event_name != 'pull_request' }}
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ vars.BUILD_PATH }}
-          name: ${{ vars.ARTIFACT_NAME }}
+          path: ${{ env.BUILD_PATH }}
+          name: ${{ env.ARTIFACT_NAME }}
 
   deploy:
-    name: Deploy
+    name: Deploy to GH-Pages
     needs: build
     if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
@@ -74,7 +74,7 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifact_name: ${{ vars.ARTIFACT_NAME }}
+          artifact_name: ${{ env.ARTIFACT_NAME }}
 
       - name: Delete Artifacts
         env:
