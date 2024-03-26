@@ -2,6 +2,7 @@ name: Build & Deploy
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     branches:
       - main
   push:
@@ -15,6 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: github-pages
     steps:
+      - name: Check if PR is draft
+        if: github.event.pull_request.draft
+        run: |
+          echo "##[warning] PR is in the draft state. Workflow is stopping early."
+          exit 1
+
       - name: Checkout
         uses: actions/checkout@v4
 
