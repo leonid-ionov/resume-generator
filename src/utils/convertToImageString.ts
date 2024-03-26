@@ -13,7 +13,7 @@ const createImage: (url: string) => Promise<HTMLImageElement> = url =>
     image.src = url;
   });
 
-interface IConvertOptions {
+export interface IConvertOptions {
   size?: Size;
   crop?: Area;
   color?: string;

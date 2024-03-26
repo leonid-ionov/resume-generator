@@ -6,8 +6,8 @@ describe('getRouter', () => {
     ['browser', createBrowserRouter],
     ['hash', createHashRouter],
     ['memory', createMemoryRouter],
-  ])('Should return create router function for each type', (type, router) => {
-    expect(getRouter(type)).toBe(router);
+  ])('Should return create router function for %s type', (type, expected) => {
+    expect(getRouter(type)).toBe(expected);
   });
 
   test('Should return createBrowserRouter by default', () => {

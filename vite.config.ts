@@ -30,8 +30,14 @@ export default defineConfig({
   },
   test: {
     globals: true,
+    pool: 'forks',
+    setupFiles: './src/tests/vitest.setup.ts',
     include: ['**/*.test.ts', '**/*.test.tsx'],
     environment: 'jsdom',
-    setupFiles: './vitest.setup.ts',
+    environmentOptions: {
+      jsdom: {
+        resources: 'usable',
+      },
+    },
   },
 });
