@@ -1,0 +1,105 @@
+name: Bug Report
+description: Create a bug report
+title: '[Bug] '
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to submit a bug report. Please fill out the details below.
+
+  - type: input
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the bug.
+      placeholder: Tell me what you expected to happen...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See the error
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### Screenshots
+        
+        You can drag and drop images into the comment area below, or use the following Markdown syntax:
+        ```
+        ![alt text](url)
+        ```
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What you expected to happen.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: Name of the browser you are using.
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Edge
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: os
+    attributes:
+      label: Operating System
+      description: The operating system and version you are using.
+      options:
+        - label: macOS
+        - label: Windows
+        - label: Linux
+
+  - type: checkboxes
+    id: environment
+    attributes:
+      label: Environment
+      description: The issue was discovered...
+      options:
+        - label: locally
+        - label: on Github-Pages
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Any other context or information about the problem.
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: If applicable, add relevant logs or error messages here.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      description: Please confirm before submitting.
+      options:
+        - label: I have searched the existing issues to ensure this bug has not already been reported.
+          required: true
