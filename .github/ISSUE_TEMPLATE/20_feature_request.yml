@@ -12,11 +12,14 @@ body:
     validations:
       required: true
 
-  - type: markdown
+  - type: textarea
+    id: implementation-scope
     attributes:
-      value: |
-        **Implementation scope:**
-        - [ ] Implement...
+      label: Implementation Scope
+      description: Describe the steps you envision for the implementation of this feature.
+      placeholder: "1. Design a new form context provider...\n2. Refactor existing controls to use context...\n3. Add examples to the documentation..."
+    validations:
+      required: true
 
   - type: textarea
     id: additional-context
