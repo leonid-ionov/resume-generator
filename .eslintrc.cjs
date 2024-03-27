@@ -31,7 +31,7 @@ module.exports = {
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
-        project: ['./tsconfig.json', './tsconfig.node.json'],
+        project: ['./tsconfig.json'],
         tsconfigRootDir: '.',
       },
       plugins: ['react-refresh', '@typescript-eslint', 'prettier'],
@@ -44,6 +44,14 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      files: '**/*.test.+(ts|tsx)',
+      rules: {
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
       },
     },
   ],

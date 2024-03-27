@@ -10,8 +10,11 @@ import { MainPage } from './pages/Main/MainPage.tsx';
 import { FormPage } from './pages/FormPage/FormPage.tsx';
 import { ResumePreviewPage } from './pages/ResumePreviewPage/ResumePreviewPage.tsx';
 import { getRouter } from './utils/getRouter.ts';
+import { routerEnvironmentMap } from './constants/environmentMaps.ts';
 
-const createRouter = getRouter(import.meta.env.VITE_ROUTER_TYPE as string | undefined);
+const environment = process.env.DEPLOY_ENVIRONMENT ?? process.env.NODE_ENV;
+const routerType = environment ? routerEnvironmentMap[environment] : undefined;
+const createRouter = getRouter(routerType);
 
 const router = createRouter([
   {
