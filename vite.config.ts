@@ -15,6 +15,9 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 555,
     },
+    define: {
+      'process.env': env,
+    },
     plugins: [react()],
     css: {
       preprocessorOptions: {
