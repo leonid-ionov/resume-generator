@@ -34,8 +34,7 @@ body:
     attributes:
       value: |
         ### Screenshots
-        **If applicable, add screenshots to help explain your problem.**
-
+        
         You can drag and drop images into the comment area below, or use the following Markdown syntax:
         ```
         ![alt text](url)
