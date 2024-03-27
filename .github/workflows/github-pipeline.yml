@@ -22,6 +22,9 @@ jobs:
     permissions:
       actions: 'write'
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Check if PR is draft
         if: github.event.pull_request.draft
         env:
@@ -30,9 +33,6 @@ jobs:
           echo "##[warning] PR is in the draft state. Workflow is stopping early."
           gh run cancel ${{ github.run_id }}
           gh run watch ${{ github.run_id }}
-
-      - name: Checkout
-        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
