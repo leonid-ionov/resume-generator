@@ -7,7 +7,8 @@ describe('convertToImageString', () => {
   const fileList = new MockFileList(1).list;
   const emptyFileList = new MockFileList(0).list;
   const mockImage = fileToDataUri('../../assets/images/pirate.png');
-  const originalCreateObjectURL = URL.createObjectURL;
+  const originalCreateObjectURL = (...args: Parameters<typeof URL.createObjectURL>) =>
+    URL.createObjectURL.call(URL, ...args);
   const mockCreateObjectURL = vi.fn().mockReturnValue(mockImage);
 
   Object.defineProperty(URL, 'createObjectURL', {

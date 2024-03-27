@@ -13,7 +13,8 @@ import { getRouter } from './utils/getRouter.ts';
 import { routerEnvironmentMap } from './constants/environmentMaps.ts';
 
 const environment = process.env.DEPLOY_ENVIRONMENT ?? process.env.NODE_ENV;
-const createRouter = getRouter(routerEnvironmentMap[environment]);
+const routerType = environment ? routerEnvironmentMap[environment] : undefined;
+const createRouter = getRouter(routerType);
 
 const router = createRouter([
   {
