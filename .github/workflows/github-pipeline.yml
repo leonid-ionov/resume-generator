@@ -30,7 +30,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "##[warning] PR is in the draft state. Workflow is stopping early."
+          echo "::warning :: PR is in the draft state. Workflow is stopping early."
           gh run cancel ${{ github.run_id }}
           gh run watch ${{ github.run_id }}
 
