@@ -18,6 +18,7 @@ body:
       label: Implementation Scope
       description: Describe the steps you envision for the implementation of this feature.
       placeholder: "1. Design a new form context provider...\n2. Refactor existing controls to use context...\n3. Add examples to the documentation..."
+      value: '- [ ]'
     validations:
       required: true
 
