@@ -9,6 +9,7 @@ body:
       label: Description
       description: Tell me about the feature
       placeholder: As a developer/user, I want...
+      value: 'As a developer/user, I want...'
     validations:
       required: true
 
@@ -17,8 +18,14 @@ body:
     attributes:
       label: Implementation Scope
       description: Describe the steps you envision for the implementation of this feature.
-      placeholder: "1. Design a new form context provider...\n2. Refactor existing controls to use context...\n3. Add examples to the documentation..."
-      value: '- [ ]'
+      placeholder: |
+        1. Design a new form context provider...
+        2. Refactor existing controls to use context...
+        3. Add examples to the documentation...
+        value: |
+        - [ ] Task 1
+        - [ ] Task 2
+        - [ ] Task 3
     validations:
       required: true
 
