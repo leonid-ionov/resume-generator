@@ -1,12 +1,11 @@
 import { createContext } from 'react';
-import { TResumeData } from '../types/TResumeData.ts';
 import { IFormData } from '../types/formTypes.ts';
 import { initialFormData } from '../constants/formConstants.ts';
+import { IAppState } from './AppReducer.ts';
+import { TResumeData } from '../types/TResumeData.ts';
 
-export interface IAppContext {
-  formData: IFormData;
+export interface IAppContext extends Omit<IAppState, 'resumeData'> {
   resumeData?: TResumeData;
-  isLoadSavedFormData?: boolean;
   submitResume: (data: IFormData) => Promise<void>;
   loadSavedFormData: (data: IFormData) => void;
 }

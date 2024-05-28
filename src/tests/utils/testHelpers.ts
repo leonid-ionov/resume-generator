@@ -20,4 +20,6 @@ const uriToBuffer = (uri: string): Buffer => {
   return Buffer.from(base64Data, 'base64');
 };
 
-export { uriToBuffer, fileToDataUri };
+const isTestEnv = () => process.env.NODE_ENV === 'test';
+
+export { uriToBuffer, fileToDataUri, isTestEnv };

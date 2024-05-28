@@ -27,7 +27,7 @@ const FileInput: FC<IFileInputProps> = ({
     <>
       <Button onClick={triggerFileInputClick}>
         <section className={styles.inputControl_file}>
-          <p>{fileLabel}</p>
+          <p id="file-input-label">{fileLabel}</p>
           {hiddenFileInput.current?.files?.[0]?.name || isFileSelected ? (
             <img src={filePresent} alt="file successfully uploaded" />
           ) : (
@@ -37,6 +37,7 @@ const FileInput: FC<IFileInputProps> = ({
       </Button>
       <input
         type="file"
+        aria-labelledby="file-input-label"
         id={overProps.name}
         name={overProps.name}
         className={cn(styles.inputControl, overProps.error && styles.inputControl_error)}

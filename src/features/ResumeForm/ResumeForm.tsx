@@ -12,7 +12,7 @@ import { InterestsForm } from './components/InterestsForm/InterestsForm.tsx';
 import useAppContext from '../../context/useAppContext.tsx';
 
 export const ResumeForm: FC = () => {
-  const { submitResume, formData, isLoadSavedFormData } = useAppContext();
+  const { submitResume, formData, isFormDataLoaded } = useAppContext();
   const {
     reset,
     register,
@@ -25,10 +25,10 @@ export const ResumeForm: FC = () => {
   });
 
   useEffect(() => {
-    if (isLoadSavedFormData) {
+    if (isFormDataLoaded) {
       reset(formData);
     }
-  }, [formData, reset, isLoadSavedFormData]);
+  }, [formData, reset, isFormDataLoaded]);
 
   const onSubmit: SubmitHandler<IFormData> = async data => {
     await submitResume(data);

@@ -19,10 +19,10 @@ type AppAction =
       payload: IFormData;
     };
 
-interface IAppState {
+export interface IAppState {
   resumeData: TResumeData;
   formData: IFormData;
-  isLoadSavedFormData?: boolean;
+  isFormDataLoaded?: boolean;
 }
 
 export const appReducer = (state: IAppState, action: AppAction): IAppState => {
@@ -35,7 +35,7 @@ export const appReducer = (state: IAppState, action: AppAction): IAppState => {
     case AppActionTypes.LOAD_SAVED_FORM_DATA:
       return {
         ...state,
-        isLoadSavedFormData: true,
+        isFormDataLoaded: true,
         formData: action.payload,
       };
     default:
