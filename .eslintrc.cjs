@@ -47,7 +47,7 @@ module.exports = {
       },
     },
     {
-      files: '**/*.test.+(ts|tsx)',
+      files: ['**/*.test.+(ts|tsx)', '**/__mocks__/*.+(ts|tsx)', 'vitest.setup.ts'],
       rules: {
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',

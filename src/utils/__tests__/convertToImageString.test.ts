@@ -2,22 +2,15 @@ import { convertToImageString, IConvertOptions } from '../convertToImageString.t
 import { BLANK_IMAGE } from '../../constants/formConstants.ts';
 import MockFileList from '../../tests/utils/mocks/MockFileList.ts';
 import { fileToDataUri, uriToBuffer } from '../../tests/utils/testHelpers.ts';
+import { mockCreateObjectURL } from '../../tests/vitest.setup.ts';
 
 describe('convertToImageString', () => {
   const fileList = new MockFileList(1).list;
   const emptyFileList = new MockFileList(0).list;
   const mockImage = fileToDataUri('../../assets/images/pirate.png');
-  const originalCreateObjectURL = (...args: Parameters<typeof URL.createObjectURL>) =>
-    URL.createObjectURL.call(URL, ...args);
-  const mockCreateObjectURL = vi.fn().mockReturnValue(mockImage);
-
-  Object.defineProperty(URL, 'createObjectURL', {
-    value: mockCreateObjectURL,
-    writable: true,
-  });
+  mockCreateObjectURL.mockImplementation(() => mockImage);
 
   afterAll(() => {
-    URL.createObjectURL = originalCreateObjectURL;
     vi.restoreAllMocks();
   });
 

@@ -30,6 +30,7 @@ export const FormPage: FC = () => {
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(blobFormData);
     downloadLink.download = `Resume Form ${formData.userName}`;
+    downloadLink.target = 'blank';
 
     document.body.appendChild(downloadLink);
     downloadLink.click();

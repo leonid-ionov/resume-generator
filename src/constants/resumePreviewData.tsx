@@ -1,5 +1,7 @@
 import { TResumeData } from '../types/TResumeData.ts';
 import pirateImage from '../assets/images/pirate.png';
+import bottleIcon from '../assets/icons/bottle.svg';
+import mapIcon from '../assets/icons/map.svg';
 
 const resumePreviewData: TResumeData = {
   userName: 'Blackbeard',
@@ -42,7 +44,7 @@ const resumePreviewData: TResumeData = {
   education: [
     {
       speciality: 'Master of Nautical Studies',
-      educationPeriod: '1690-1696',
+      educationPeriod: '1690 - 1696',
       institution: 'Pirate Academy of the Seven Seas',
       description: 'Advanced Navigation, Looting Strategies, and Rum Connoisseurship',
     },
@@ -58,11 +60,11 @@ const resumePreviewData: TResumeData = {
   interests: [
     {
       name: 'Navigating the High Seas',
-      icon: new URL('../assets/icons/map.svg', import.meta.url).href,
+      icon: mapIcon,
     },
     {
       name: 'Rum Tasting',
-      icon: new URL('../assets/icons/bottle.svg', import.meta.url).href,
+      icon: bottleIcon,
     },
   ],
 };

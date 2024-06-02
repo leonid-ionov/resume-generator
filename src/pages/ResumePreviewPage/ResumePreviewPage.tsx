@@ -26,13 +26,13 @@ export const ResumePreviewPage: FC = () => {
       const hiddenDiv = document.getElementById('hidden-text');
       if (hiddenDiv) hiddenDiv.innerHTML = hiddenText;
       await pdf.html(content, {
-        callback: pdf => {
-          pdf.save('resume.pdf');
+        callback: doc => {
+          void doc.save(`${resumeData.userName} ${resumeData.desiredJob} CV.pdf`, { returnPromise: true });
         },
       });
       document.head.removeChild(styleElem);
     } catch (error) {
-      /* TODO: Implement error handling in the future */
+      console.error('Error when save resume as pdf:', error);
     }
   };
 
