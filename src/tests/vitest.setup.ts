@@ -7,6 +7,10 @@ Object.defineProperty(process, 'env', {
   },
 });
 
+vi.stubGlobal('getComputedStyle', () => ({
+  getPropertyValue: () => '',
+}));
+
 expect.extend({ toMatchImageSnapshot });
 
 const originalCreateObjectURL = (...args: Parameters<typeof URL.createObjectURL>) =>

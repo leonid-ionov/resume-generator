@@ -1,5 +1,7 @@
 import { IAppContext } from '../AppContext.tsx';
-import { resumePreviewData } from '../../constants/resumePreviewData.tsx';
+import { TResumeData } from '../../types/TResumeData.ts';
+import phoneIcon from '../../assets/icons/phone.svg';
+import emailIcon from '../../assets/icons/email.svg';
 
 const mockSubmitResume = vi.fn();
 const mockLoadSavedFormData = vi.fn();
@@ -22,11 +24,11 @@ const mockFormData = {
   contacts: [
     {
       info: 'john.doe@example.com',
-      icon: 'email_icon.png',
+      icon: emailIcon,
     },
     {
       info: '+1 234 567 890',
-      icon: 'phone_icon.png',
+      icon: phoneIcon,
     },
   ],
   experience: [
@@ -85,12 +87,45 @@ const mockFormData = {
   ],
 };
 
+const mockResumeData: TResumeData = {
+  userName: mockFormData.userName,
+  desiredJob: mockFormData.desiredJob,
+  profile: mockFormData.profile,
+  photoLink: mockFormData.photoLink.photo,
+  info: [
+    { type: 'dayOfBirth', value: mockFormData.dayOfBirth },
+    { type: 'city', value: mockFormData.city },
+    { type: 'languages', value: mockFormData.languages },
+  ],
+  contacts: mockFormData.contacts,
+  experience: mockFormData.experience.map(exp => ({
+    positionName: exp.positionName,
+    companyName: exp.companyName,
+    workingPeriod: `${exp.startDate} - ${exp.endDate}`,
+    description: exp.description,
+  })),
+  skills: mockFormData.skills.map(skill => ({
+    name: skill.name,
+    details: skill.details.map(detail => ({
+      variant: 'variant' in detail ? detail.variant : '',
+      level: detail.level,
+    })),
+  })),
+  education: mockFormData.education.map(edu => ({
+    speciality: edu.speciality,
+    institution: edu.institution,
+    educationPeriod: `${edu.startDate}-${edu.endDate}`,
+    description: edu.description,
+  })),
+  interests: mockFormData.interests,
+};
+
 const useAppContext = (): IAppContext => {
   return {
     submitResume: mockSubmitResume,
     loadSavedFormData: mockLoadSavedFormData,
     formData: mockFormData,
-    resumeData: resumePreviewData,
+    resumeData: mockResumeData,
   };
 };
 
