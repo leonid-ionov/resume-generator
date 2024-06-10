@@ -1,12 +1,13 @@
 import { FC } from 'react';
-import { IFormComponent } from '../../../../types/formTypes.ts';
+import { IFormData } from '../../../../types/formTypes.ts';
 import Input from '../../../../components/Input/Input.tsx';
 import Button from '../../../../components/Button/Button.tsx';
 import { Accordion } from '../../../../components/Accordion/Accordion.tsx';
-import { useFieldArray, useWatch } from 'react-hook-form';
+import { useFieldArray, useFormContext, useWatch } from 'react-hook-form';
 import FileInput from '../../../../components/Input/FileInput.tsx';
 
-export const InterestsForm: FC<IFormComponent> = ({ control, register }) => {
+export const InterestsForm: FC = () => {
+  const { control, register } = useFormContext<IFormData>();
   const interestsField = useFieldArray({
     control,
     name: 'interests',

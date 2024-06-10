@@ -1,27 +1,22 @@
-import { forwardRef } from 'react';
-import { IFormData, TFormElement } from '../../types/formTypes.ts';
-import { Control, useWatch } from 'react-hook-form';
+import { forwardRef, useRef } from 'react';
+import { TFormElement } from '../../types/formTypes.ts';
 import Input from './Input.tsx';
 
-interface IRangeInputProps extends TFormElement<HTMLInputElement> {
-  control: Control<IFormData>;
-}
-
-const RangeInput = forwardRef<HTMLInputElement, IRangeInputProps>(({ name, control, ...overProps }, ref) => {
-  const rangeInputValue = useWatch({ name, control });
-  const style = { ...overProps?.style, '--range-progress': `${String(rangeInputValue)?.replace('%', '')}%` };
+const RangeInput = forwardRef<HTMLInputElement, TFormElement<HTMLInputElement>>((props, ref) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const style = { ...props?.style, '--range-progress': `${String(inputRef?.current?.value)?.replace('%', '')}%` };
+  console.log('rerender', props.name);
   return (
     <Input
-      {...overProps}
+      {...props}
       ref={element => {
-        if (overProps.ref) overProps.ref(element);
         if (ref) {
           if (typeof ref === 'function') ref(element);
           else ref.current = element;
         }
+        if (inputRef) inputRef.current = element;
       }}
       type="range"
-      name={name}
       style={style}
     />
   );

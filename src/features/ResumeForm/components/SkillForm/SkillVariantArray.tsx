@@ -35,11 +35,7 @@ export const SkillVariantArray: FC<ISkillVariantArray> = ({ nestIndex, control, 
               placeholder="My awesome skill"
               {...register(`skills.${nestIndex}.details.${index}.variant`)}
             />
-            <RangeInput
-              control={control}
-              label="Your skill variant level"
-              {...register(`skills.${nestIndex}.details.${index}.level`)}
-            />
+            <RangeInput label="Your skill variant level" {...register(`skills.${nestIndex}.details.${index}.level`)} />
           </div>
         );
       })}

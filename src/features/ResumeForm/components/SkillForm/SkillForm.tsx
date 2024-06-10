@@ -1,13 +1,18 @@
-import { IFormComponent } from '../../../../types/formTypes.ts';
+import { IFormData } from '../../../../types/formTypes.ts';
 import { FC } from 'react';
-import { useFieldArray, useWatch } from 'react-hook-form';
+import { useFieldArray, useFormContext, useWatch } from 'react-hook-form';
 import Input from '../../../../components/Input/Input.tsx';
 import { SkillVariantArray } from './SkillVariantArray.tsx';
 import Button from '../../../../components/Button/Button.tsx';
 import { Accordion } from '../../../../components/Accordion/Accordion.tsx';
 import RangeInput from '../../../../components/Input/RangeInput.tsx';
 
-export const SkillForm: FC<IFormComponent> = ({ control, register, errors }) => {
+export const SkillForm: FC = () => {
+  const {
+    control,
+    register,
+    formState: { errors },
+  } = useFormContext<IFormData>();
   const skillsField = useFieldArray({
     control,
     name: 'skills',
@@ -27,11 +32,7 @@ export const SkillForm: FC<IFormComponent> = ({ control, register, errors }) => 
               {...register(`skills.${skillIndex}.name`)}
             />
             {!isSkillHaveVariant && (
-              <RangeInput
-                control={control}
-                label="Your skill level"
-                {...register(`skills.${skillIndex}.details.0.level`)}
-              />
+              <RangeInput label="Your skill level" {...register(`skills.${skillIndex}.details.0.level`)} />
             )}
             <SkillVariantArray nestIndex={skillIndex} control={control} register={register} />
           </div>

@@ -3,11 +3,16 @@ import Select from '../../../../components/Select/Select.tsx';
 import { IconsOptions } from '../../../../constants/formConstants.ts';
 import Button from '../../../../components/Button/Button.tsx';
 import { Accordion } from '../../../../components/Accordion/Accordion.tsx';
-import { useFieldArray } from 'react-hook-form';
-import { IFormComponent } from '../../../../types/formTypes.ts';
+import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
+import { IFormData } from '../../../../types/formTypes.ts';
 import { FC } from 'react';
 
-export const ContactsForm: FC<IFormComponent> = ({ control, register, errors }) => {
+export const ContactsForm: FC = () => {
+  const {
+    control,
+    register,
+    formState: { errors },
+  } = useFormContext<IFormData>();
   const contactsField = useFieldArray({
     control,
     name: 'contacts',
@@ -52,14 +57,19 @@ export const ContactsForm: FC<IFormComponent> = ({ control, register, errors }) 
                   description="Add another contact information"
                   {...register(`contacts.${index}.info`)}
                 />
-                <Select
+                <Controller
+                  render={({ field, fieldState }) => (
+                    <Select
+                      label="Icon"
+                      placeholder="Select icon"
+                      description="Select icon"
+                      options={IconsOptions}
+                      error={fieldState.error}
+                      {...field}
+                    />
+                  )}
+                  name={`contacts.${index}.icon`}
                   control={control}
-                  label="Icon"
-                  placeholder="Select icon"
-                  description="Select icon"
-                  options={IconsOptions}
-                  error={errors?.contacts?.[index]?.icon}
-                  {...register(`contacts.${index}.icon`)}
                 />
                 <Button onClick={() => contactsField.remove(index)}>-</Button>
               </div>

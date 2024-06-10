@@ -13,13 +13,7 @@ import useAppContext from '../../context/useAppContext.tsx';
 
 export const ResumeForm: FC = () => {
   const { submitResume } = useAppContext();
-  const {
-    handleSubmit,
-    setValue,
-    control,
-    register,
-    formState: { errors },
-  } = useFormContext<IFormData>();
+  const { handleSubmit } = useFormContext<IFormData>();
 
   const onSubmit: SubmitHandler<IFormData> = async data => {
     await submitResume(data);
@@ -28,12 +22,12 @@ export const ResumeForm: FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.resumeForm}>
       <Button type="submit">Submit changes</Button>
-      <PersonalInfoForm setFormValue={setValue} control={control} register={register} errors={errors} />
-      <ContactsForm control={control} register={register} errors={errors} />
-      <SkillForm control={control} register={register} errors={errors} />
-      <ExperienceForm setFormValue={setValue} control={control} register={register} />
-      <EducationForm setFormValue={setValue} control={control} register={register} />
-      <InterestsForm control={control} register={register} />
+      <PersonalInfoForm />
+      <ContactsForm />
+      <SkillForm />
+      <ExperienceForm />
+      <EducationForm />
+      <InterestsForm />
     </form>
   );
 };

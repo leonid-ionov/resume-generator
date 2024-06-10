@@ -1,31 +1,39 @@
 import { FC, useMemo } from 'react';
-import { useController, UseFormSetValue, useWatch } from 'react-hook-form';
+import { FieldPath, useFormContext, useWatch } from 'react-hook-form';
 import Input from '../../../../components/Input/Input.tsx';
 import TextArea from '../../../../components/TextArea/TextArea.tsx';
 import styles from './PersonalInfoForm.module.scss';
 import { DateInput } from '../../../../components/Input/DateInput.tsx';
-import { IFormComponent, IFormData } from '../../../../types/formTypes.ts';
+import { IFormData } from '../../../../types/formTypes.ts';
 import { UserPhotoForm } from './UserPhotoForm.tsx';
+import { Area } from 'react-easy-crop';
 
-interface IPersonalInfoFormProps extends IFormComponent {
-  setFormValue: UseFormSetValue<IFormData>;
-}
+export const PersonalInfoForm: FC = () => {
+  const {
+    control,
+    setValue,
+    register,
+    formState: { defaultValues, errors },
+  } = useFormContext<IFormData>();
 
-export const PersonalInfoForm: FC<IPersonalInfoFormProps> = ({ setFormValue, control, register, errors }) => {
-  const { formState } = useController({ control, name: 'photoLink' });
   const { photo } = useWatch({ control, name: 'photoLink' });
-  const memoizedPhoto = useMemo(() => {
+  const memorizedPhoto = useMemo(() => {
     if (typeof photo === 'string') return photo;
     if (photo instanceof FileList && photo.length > 0) return URL.createObjectURL(photo[0]);
     return null;
   }, [photo]);
+
+  const handleDateChange = (name: FieldPath<IFormData>) => (value: string) => {
+    setValue(name, value);
+  };
+
   return (
     <section className={styles.formContainer}>
       <UserPhotoForm
-        photo={memoizedPhoto}
+        photo={memorizedPhoto}
         registerProps={register('photoLink.photo')}
-        initialCrop={formState.defaultValues?.photoLink?.crop}
-        handleCropComplete={croppedArea => setFormValue('photoLink.crop', croppedArea)}
+        initialCrop={defaultValues?.photoLink?.crop as Area}
+        handleCropComplete={croppedArea => setValue('photoLink.crop', croppedArea)}
       />
       <div className={styles.userProfile_container}>
         <div className={styles.flexContainer}>
@@ -46,7 +54,7 @@ export const PersonalInfoForm: FC<IPersonalInfoFormProps> = ({ setFormValue, con
         </div>
         <div className={styles.flexContainer}>
           <DateInput
-            setFormValue={setFormValue}
+            handleChange={handleDateChange('dayOfBirth')}
             dateTimeProps={{
               timeFormat: false,
               closeOnSelect: true,

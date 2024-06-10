@@ -3,18 +3,18 @@ import Input from '../../../../components/Input/Input.tsx';
 import { DateInput } from '../../../../components/Input/DateInput.tsx';
 import Button from '../../../../components/Button/Button.tsx';
 import { Accordion } from '../../../../components/Accordion/Accordion.tsx';
-import { IFormComponent, IFormData } from '../../../../types/formTypes.ts';
-import { useFieldArray, UseFormSetValue } from 'react-hook-form';
+import { IFormData } from '../../../../types/formTypes.ts';
+import { FieldPath, useFieldArray, useFormContext } from 'react-hook-form';
 
-interface IEducationFormProps extends IFormComponent {
-  setFormValue: UseFormSetValue<IFormData>;
-}
-
-export const EducationForm: FC<IEducationFormProps> = ({ control, register, setFormValue }) => {
+export const EducationForm: FC = () => {
+  const { control, register, setValue } = useFormContext<IFormData>();
   const educationField = useFieldArray({
     control,
     name: 'education',
   });
+  const handleDateChange = (name: FieldPath<IFormData>) => (value: string) => {
+    setValue(name, value);
+  };
 
   return (
     <Accordion title="Education">
@@ -38,7 +38,7 @@ export const EducationForm: FC<IEducationFormProps> = ({ control, register, setF
               {...register(`education.${index}.speciality`)}
             />
             <DateInput
-              setFormValue={setFormValue}
+              handleChange={handleDateChange(`education.${index}.startDate`)}
               dateTimeProps={dateTimeProps}
               inputProps={{
                 ...register(`education.${index}.startDate`),
@@ -47,7 +47,7 @@ export const EducationForm: FC<IEducationFormProps> = ({ control, register, setF
               }}
             />
             <DateInput
-              setFormValue={setFormValue}
+              handleChange={handleDateChange(`education.${index}.endDate`)}
               dateTimeProps={dateTimeProps}
               inputProps={{
                 ...register(`education.${index}.endDate`),
