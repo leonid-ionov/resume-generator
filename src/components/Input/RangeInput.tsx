@@ -5,7 +5,7 @@ import Input from './Input.tsx';
 const RangeInput = forwardRef<HTMLInputElement, TFormElement<HTMLInputElement>>((props, ref) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const style = { ...props?.style, '--range-progress': `${String(inputRef?.current?.value)?.replace('%', '')}%` };
-  console.log('rerender', props.name);
+
   return (
     <Input
       {...props}

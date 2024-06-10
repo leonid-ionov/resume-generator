@@ -34,7 +34,7 @@ export const SkillForm: FC = () => {
             {!isSkillHaveVariant && (
               <RangeInput label="Your skill level" {...register(`skills.${skillIndex}.details.0.level`)} />
             )}
-            <SkillVariantArray nestIndex={skillIndex} control={control} register={register} />
+            <SkillVariantArray nestIndex={skillIndex} />
           </div>
         );
       })}
