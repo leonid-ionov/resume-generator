@@ -1,5 +1,5 @@
-import { FC, useEffect } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { FC } from 'react';
+import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { IFormData } from '../../types/formTypes.ts';
 import Button from '../../components/Button/Button.tsx';
 import styles from './ResumeForm.module.scss';
@@ -12,23 +12,14 @@ import { InterestsForm } from './components/InterestsForm/InterestsForm.tsx';
 import useAppContext from '../../context/useAppContext.tsx';
 
 export const ResumeForm: FC = () => {
-  const { submitResume, formData, isFormDataLoaded } = useAppContext();
+  const { submitResume } = useAppContext();
   const {
-    reset,
-    register,
-    control,
     handleSubmit,
     setValue,
+    control,
+    register,
     formState: { errors },
-  } = useForm<IFormData>({
-    defaultValues: formData,
-  });
-
-  useEffect(() => {
-    if (isFormDataLoaded) {
-      reset(formData);
-    }
-  }, [formData, reset, isFormDataLoaded]);
+  } = useFormContext<IFormData>();
 
   const onSubmit: SubmitHandler<IFormData> = async data => {
     await submitResume(data);

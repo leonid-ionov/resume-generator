@@ -7,6 +7,7 @@ import { ResumeForm } from '../../features/ResumeForm/ResumeForm.tsx';
 import style from './FormPage.module.scss';
 import FileInput from '../../components/Input/FileInput.tsx';
 import { VALIDATION_STRING } from '../../constants/formConstants.ts';
+import { ResumeFormProvider } from '../../features/ResumeForm/components/ResumeFormProvider/ResumeFormProvider.tsx';
 
 export const FormPage: FC = () => {
   const { loadSavedFormData, formData } = useAppContext();
@@ -71,7 +72,9 @@ export const FormPage: FC = () => {
           fileLabel="Fill Form From Save"
         />
       </section>
-      <ResumeForm />
+      <ResumeFormProvider>
+        <ResumeForm />
+      </ResumeFormProvider>
     </section>
   );
 };
