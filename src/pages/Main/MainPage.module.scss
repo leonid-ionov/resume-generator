@@ -1,13 +1,42 @@
 @import 'styles/_helpers';
 
 .mainPage {
-  @include Montserrat-font(regular, 16px);
-  text-transform: none;
+  @include Montserrat-font(regular, 16px, null, null, null);
   @include FlexColumn;
-  gap: spacing(1);
+  gap: spacing(6);
 
   h2 {
-    @include Montserrat-font(semiBold, 32px);
-    text-transform: none;
+    @include Montserrat-font(semiBold, 32px, null, null, null);
+  }
+
+  h3 {
+    @include Montserrat-font(semiBold, 24px, null, null, null);
+  }
+
+  &_textSection {
+    @include FlexColumn;
+    gap: spacing(1);
+  }
+
+  &_stepsSection {
+    @include Flex(null, space-around);
+
+    &_description {
+      @include FlexColumn(flex-end);
+      gap: spacing(4);
+      margin-top: spacing(3);
+    }
+
+    & .text {
+      @include Flex(center);
+    }
+    .icon {
+      width: 30px;
+      height: 30px;
+
+      &.right {
+        transform: rotate(180deg);
+      }
+    }
   }
 }

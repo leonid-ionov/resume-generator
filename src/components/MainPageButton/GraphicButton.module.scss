@@ -1,0 +1,32 @@
+@import 'styles/_helpers';
+@import 'styles/_colors';
+
+.GraphicButton {
+  @include FlexColumn(center);
+  cursor: pointer;
+  width: fit-content;
+  margin: spacing(1);
+  gap: spacing(2.5);
+
+  & div:focus-visible {
+    outline-style: none;
+  }
+
+  &_frame {
+    width: 200px;
+    height: 150px;
+    border: 2px solid $greyLight;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &_label {
+    @include Montserrat-font(semiBold, 16, null, null, null);
+  }
+}

@@ -11,8 +11,7 @@
   position: relative;
 
   &_info {
-    @include Montserrat-font(medium, 18px, 17px, 3px);
-    text-transform: none;
+    @include Montserrat-font(medium, 18px, 17px, 3px, null);
     color: $white;
   }
 
