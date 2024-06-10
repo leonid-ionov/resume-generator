@@ -447,20 +447,6 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] 
   <section
     class="_previewPage_7fd788"
   >
-    <section
-      class="_previewPage_title_7fd788"
-    >
-      <h2>
-        Resume Preview
-      </h2>
-       
-      <button
-        class="_Button_f8f296"
-        type="button"
-      >
-        Save as PDF
-      </button>
-    </section>
     <div
       class="_ResumePreview_a2badf"
     >
