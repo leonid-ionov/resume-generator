@@ -45,7 +45,7 @@
   }
 }
 
-@mixin Montserrat-font($type, $size, $line-height: null, $letter-spacing: null) {
+@mixin Montserrat-font($type, $size, $line-height: null, $letter-spacing: null, $transform: uppercase) {
   @if $type == 'regular' {
     font-family: 'Montserrat Regular', sans-serif;
   } @else if $type == 'lightItalic' {
@@ -59,7 +59,7 @@
     @error "Invalid font type: #{$type}. Please choose either 'regular' | 'lightItalic' | 'medium' | 'semiBold'.";
   }
 
-  text-transform: uppercase;
+  text-transform: $transform;
   @include font-size($size, $line-height, $letter-spacing);
 }
 

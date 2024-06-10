@@ -13,6 +13,7 @@ export const ResumePreviewPage: FC = () => {
   const state = location?.state ? (location.state as { isPreview?: boolean }) : {};
   const resumeData = state?.isPreview ? resumePreviewData : { ...resumePreviewData, ...appContext.resumeData };
   const templateRef = useRef<HTMLDivElement>(null);
+
   const handleSaveAsPDF = async () => {
     const content = templateRef.current;
     if (!content) return;
@@ -38,9 +39,11 @@ export const ResumePreviewPage: FC = () => {
 
   return (
     <section className={styles.previewPage}>
-      <section className={styles.previewPage_title}>
-        <h2>Resume Preview</h2> <Button onClick={handleSaveAsPDF}>Save as PDF</Button>
-      </section>
+      {!state?.isPreview && (
+        <section className={styles.previewPage_title}>
+          <h2>Resume Preview</h2> <Button onClick={handleSaveAsPDF}>Save as PDF</Button>
+        </section>
+      )}
       <ResumeTemplate resumeData={resumeData} ref={templateRef} />
     </section>
   );

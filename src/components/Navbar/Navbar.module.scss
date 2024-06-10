@@ -2,14 +2,20 @@
 @import '../../styles/_helpers';
 
 .Navbar {
+  @include Flex(center);
   width: 100%;
   min-height: 76px;
-  @include Flex(center, space-between);
   background-color: $headerBackground;
   padding: spacing(2, 5);
 
-  &_mainPage {
-    justify-content: center;
+  &_leftSection,
+  &_rightSection {
+    @include Flex;
+    flex: 1;
+  }
+
+  &_rightSection {
+    justify-content: flex-end;
   }
 
   &_text {
