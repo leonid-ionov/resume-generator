@@ -1,15 +1,16 @@
-import { useFieldArray } from 'react-hook-form';
-import { IFormComponent } from '../../../../types/formTypes.ts';
+import { useFieldArray, useFormContext } from 'react-hook-form';
+import { IFormData } from '../../../../types/formTypes.ts';
 import Button from '../../../../components/Button/Button.tsx';
 import Input from '../../../../components/Input/Input.tsx';
 import { FC } from 'react';
 import RangeInput from '../../../../components/Input/RangeInput.tsx';
 
-interface ISkillVariantArray extends IFormComponent {
+interface ISkillVariantArray {
   nestIndex: number;
 }
 
-export const SkillVariantArray: FC<ISkillVariantArray> = ({ nestIndex, control, register }) => {
+export const SkillVariantArray: FC<ISkillVariantArray> = ({ nestIndex }) => {
+  const { control, register } = useFormContext<IFormData>();
   const skillDetailsField = useFieldArray({
     control,
     name: `skills.${nestIndex}.details`,
@@ -35,11 +36,7 @@ export const SkillVariantArray: FC<ISkillVariantArray> = ({ nestIndex, control, 
               placeholder="My awesome skill"
               {...register(`skills.${nestIndex}.details.${index}.variant`)}
             />
-            <RangeInput
-              control={control}
-              label="Your skill variant level"
-              {...register(`skills.${nestIndex}.details.${index}.level`)}
-            />
+            <RangeInput label="Your skill variant level" {...register(`skills.${nestIndex}.details.${index}.level`)} />
           </div>
         );
       })}

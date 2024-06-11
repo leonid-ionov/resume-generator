@@ -38,21 +38,21 @@
 
     &::-webkit-slider-runnable-track {
       height: 3px;
-      background-color: $greyLight;
+      background-color: $grey2;
     }
     &::-moz-range-track {
-      background-color: $greyLight;
+      background-color: $grey2;
     }
 
     &::-webkit-slider-thumb {
       position: relative;
       -webkit-appearance: none;
       margin-top: -8.5px;
-      background-color: #f0f0f0;
+      background-color: $grey1;
       height: 20px;
       width: 20px;
       border-radius: radius(4);
-      border: 1.5px solid #999999;
+      border: 1.5px solid $grey3;
     }
 
     &::before {
@@ -70,16 +70,16 @@
 
     &:hover:not(:focus) {
       &::-webkit-slider-runnable-track {
-        background-color: rgba(119, 113, 122, 0.7);
+        background-color: $grey5;
       }
       &::-moz-range-track {
-        background-color: rgba(119, 113, 122, 0.7);
+        background-color: $grey5;
       }
       &::before {
-        background-color: rgba(57, 47, 61, 0.7);
+        background-color: $greyDark;
       }
       &::-moz-range-progress {
-        background-color: rgba(57, 47, 61, 0.7);
+        background-color: $greyDark;
       }
       &::-webkit-slider-thumb {
         background-color: $backgroundGrey;

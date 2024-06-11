@@ -2,23 +2,22 @@
 import { FC } from 'react';
 import Datetime, { DatetimepickerProps } from 'react-datetime';
 import Input from './Input.tsx';
-import { IFormData, TFormElement } from '../../types/formTypes.ts';
-import { UseFormSetValue } from 'react-hook-form';
+import { TFormElement } from '../../types/formTypes.ts';
 
 interface IDateInputProps {
   dateTimeProps: Omit<DatetimepickerProps, 'value' | 'onChange | renderInput'> & { momentFormat?: string };
   inputProps: TFormElement<HTMLInputElement>;
-  setFormValue: UseFormSetValue<IFormData>;
+  handleChange?: (value: string) => void;
 }
 
-export const DateInput: FC<IDateInputProps> = ({ dateTimeProps, inputProps, setFormValue }) => {
+export const DateInput: FC<IDateInputProps> = ({ dateTimeProps, inputProps, handleChange }) => {
   return (
     <Datetime
       {...dateTimeProps}
       value={inputProps.value as string}
       onChange={date => {
         const value = typeof date === 'string' ? date : date?.format(dateTimeProps.momentFormat);
-        setFormValue(inputProps.name, value);
+        if (handleChange) handleChange(value);
       }}
       renderInput={(props, openCalendar) => {
         return (

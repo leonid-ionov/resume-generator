@@ -36,9 +36,7 @@ interface IFormAttributes {
   error?: FieldError;
 }
 
-type TFormElement<T extends HTMLElement> = ReturnType<UseFormRegister<IFormData>> &
-  Omit<HTMLProps<T>, 'name' | 'onBlur' | 'onChange' | 'ref'> &
-  IFormAttributes;
+type TFormElement<Element extends HTMLElement> = HTMLProps<Element> & IFormAttributes;
 
 interface IFormComponent {
   control: Control<IFormData>;

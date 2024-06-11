@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { IFormComponent, IFormData } from '../../../../types/formTypes.ts';
-import { useFieldArray, UseFormSetValue, useWatch } from 'react-hook-form';
+import { IFormData } from '../../../../types/formTypes.ts';
+import { FieldPath, useFieldArray, useFormContext, useWatch } from 'react-hook-form';
 import Input from '../../../../components/Input/Input.tsx';
 import { DateInput } from '../../../../components/Input/DateInput.tsx';
 import 'react-quill/dist/quill.snow.css';
@@ -8,16 +8,16 @@ import ReactQuill from 'react-quill';
 import Button from '../../../../components/Button/Button.tsx';
 import { Accordion } from '../../../../components/Accordion/Accordion.tsx';
 
-interface IExperienceFormProps extends IFormComponent {
-  setFormValue: UseFormSetValue<IFormData>;
-}
-
-export const ExperienceForm: FC<IExperienceFormProps> = ({ control, register, setFormValue }) => {
+export const ExperienceForm: FC = () => {
+  const { control, register, setValue } = useFormContext<IFormData>();
   const experienceField = useFieldArray({
     control,
     name: 'experience',
   });
   const experienceValue = useWatch({ control, name: 'experience' });
+  const handleDateChange = (name: FieldPath<IFormData>) => (value: string) => {
+    setValue(name, value);
+  };
 
   return (
     <Accordion title="Experience">
@@ -38,7 +38,7 @@ export const ExperienceForm: FC<IExperienceFormProps> = ({ control, register, se
             />
             <Input label="Company name" placeholder="Microsoft" {...register(`experience.${index}.companyName`)} />
             <DateInput
-              setFormValue={setFormValue}
+              handleChange={handleDateChange(`experience.${index}.startDate`)}
               dateTimeProps={dateTimeProps}
               inputProps={{
                 ...register(`experience.${index}.startDate`),
@@ -47,7 +47,7 @@ export const ExperienceForm: FC<IExperienceFormProps> = ({ control, register, se
               }}
             />
             <DateInput
-              setFormValue={setFormValue}
+              handleChange={handleDateChange(`experience.${index}.endDate`)}
               dateTimeProps={dateTimeProps}
               inputProps={{
                 ...register(`experience.${index}.endDate`),
@@ -68,7 +68,7 @@ export const ExperienceForm: FC<IExperienceFormProps> = ({ control, register, se
                 ],
               }}
               value={experienceValue[index]?.description}
-              onChange={value => setFormValue(`experience.${index}.description`, value)}
+              onChange={value => setValue(`experience.${index}.description`, value)}
             />
           </div>
         );
