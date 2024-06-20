@@ -1,5 +1,6 @@
 import { TResumeData } from '../types/TResumeData.ts';
 import { IFormData } from '../types/formTypes.ts';
+import { Reducer } from 'react';
 import { isProdEnv } from '../tests/utils/testHelpers.ts';
 import { IconsOptions } from '../constants/formConstants.ts';
 
@@ -8,7 +9,7 @@ export enum AppActionTypes {
   LOAD_SAVED_FORM_DATA = 'LOAD_SAVED_FORM_DATA',
 }
 
-type AppAction =
+export type AppAction =
   | {
       type: AppActionTypes.SUBMIT_FORM_DATA;
       payload: {
@@ -34,7 +35,7 @@ const normalizeContactIcon: (iconUrl: string) => string = iconUrl => {
   return iconOption ? iconOption.value : iconUrl;
 };
 
-export const appReducer = (state: IAppState, action: AppAction): IAppState => {
+export const appReducer: Reducer<IAppState, AppAction> = (state, action) => {
   switch (action.type) {
     case AppActionTypes.SUBMIT_FORM_DATA:
       return {
