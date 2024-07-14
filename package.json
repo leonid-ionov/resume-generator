@@ -34,7 +34,7 @@
     "lint": "eslint src/**/*.ts src/**/*.tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src/**/*.ts src/**/*.tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "postinstall": "npm run prepare",
-    "prepare": "husky install",
+    "prepare": "husky",
     "prettier": "prettier --check . --ignore-unknown --ignore-path .gitignore",
     "prettier:fix": "prettier --write . --ignore-unknown --ignore-path .gitignore",
     "preview": "vite preview",
