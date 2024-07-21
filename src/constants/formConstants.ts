@@ -1,13 +1,20 @@
 import { IFormData, IIconOption } from '../types/formTypes.ts';
+import EmailIcon from '../assets/icons/email.svg';
+import PhoneIcon from '../assets/icons/phone.svg';
+import GithubIcon from '../assets/icons/github.svg';
+import InstagramIcon from '../assets/icons/instagram.svg';
+import LinkedinIcon from '../assets/icons/linkedin.svg';
+import WebsiteIcon from '../assets/icons/website.svg';
+import FacebookIcon from '../assets/icons/facebook.svg';
 
 const IconsOptions: IIconOption[] = [
-  { label: 'Email', value: new URL('../assets/icons/email.svg', import.meta.url).href },
-  { label: 'Phone', value: new URL('../assets/icons/phone.svg', import.meta.url).href },
-  { label: 'GitHub', value: new URL('../assets/icons/github.svg', import.meta.url).href },
-  { label: 'Instagram', value: new URL('../assets/icons/instagram.svg', import.meta.url).href },
-  { label: 'LinkedIn', value: new URL('../assets/icons/linkedin.svg', import.meta.url).href },
-  { label: 'Web site', value: new URL('../assets/icons/website.svg', import.meta.url).href },
-  { label: 'Facebook', value: new URL('../assets/icons/facebook.svg', import.meta.url).href },
+  { label: 'Email', value: new URL(EmailIcon, import.meta.url).href },
+  { label: 'Phone', value: new URL(PhoneIcon, import.meta.url).href },
+  { label: 'GitHub', value: new URL(GithubIcon, import.meta.url).href },
+  { label: 'Instagram', value: new URL(InstagramIcon, import.meta.url).href },
+  { label: 'LinkedIn', value: new URL(LinkedinIcon, import.meta.url).href },
+  { label: 'Web site', value: new URL(WebsiteIcon, import.meta.url).href },
+  { label: 'Facebook', value: new URL(FacebookIcon, import.meta.url).href },
 ];
 
 const initialFormData: IFormData = {

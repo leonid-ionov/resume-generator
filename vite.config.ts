@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
   return {
     appType: 'spa',
     base,
-    assetsInclude: ['./src/assets/fonts/*.ttf', './src/assets/icons/*.svg', './src/assets/icons/*.png'],
+    assetsInclude: ['./src/assets/fonts/*.ttf', './src/assets/icons/*.svg', './src/assets/images/*.png'],
     server: {
       port: 555,
     },
