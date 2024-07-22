@@ -22,4 +22,8 @@ const uriToBuffer = (uri: string): Buffer => {
 
 const isTestEnv = () => process.env.NODE_ENV === 'test';
 
-export { uriToBuffer, fileToDataUri, isTestEnv };
+const isDevEnv = () => process.env.NODE_ENV === 'development';
+
+const isProdEnv = () => !isTestEnv() && !isDevEnv();
+
+export { uriToBuffer, fileToDataUri, isTestEnv, isDevEnv, isProdEnv };

@@ -44,6 +44,7 @@ module.exports = {
             },
           },
         ],
+        'no-case-declarations': 'off',
       },
     },
     {

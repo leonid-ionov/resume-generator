@@ -1,5 +1,7 @@
 import { TResumeData } from '../types/TResumeData.ts';
 import { IFormData } from '../types/formTypes.ts';
+import { isProdEnv } from '../tests/utils/testHelpers.ts';
+import { IconsOptions } from '../constants/formConstants.ts';
 
 export enum AppActionTypes {
   SUBMIT_FORM_DATA = 'SUBMIT_FORM_DATA',
@@ -25,6 +27,13 @@ export interface IAppState {
   isFormDataLoaded?: boolean;
 }
 
+const normalizeContactIcon: (iconUrl: string) => string = iconUrl => {
+  const iconName = iconUrl.match(/\/([^/]+)\.svg$/)?.[1];
+  if (!iconName) return iconUrl;
+  const iconOption = IconsOptions.find(option => option.label.toLowerCase().replace(' ', '') === iconName);
+  return iconOption ? iconOption.value : iconUrl;
+};
+
 export const appReducer = (state: IAppState, action: AppAction): IAppState => {
   switch (action.type) {
     case AppActionTypes.SUBMIT_FORM_DATA:
@@ -33,10 +42,16 @@ export const appReducer = (state: IAppState, action: AppAction): IAppState => {
         resumeData: action.payload.resumeData,
       };
     case AppActionTypes.LOAD_SAVED_FORM_DATA:
+      const { contacts } = action.payload;
+      const shouldNormalizeContacts = contacts.length > 0 && isProdEnv() && contacts[0].icon.includes('localhost');
+      const normalizeContacts = shouldNormalizeContacts
+        ? contacts.map(({ info, icon }) => ({ info, icon: normalizeContactIcon(icon) }))
+        : null;
+
       return {
         ...state,
         isFormDataLoaded: true,
-        formData: action.payload,
+        formData: normalizeContacts ? { ...action.payload, contacts: normalizeContacts } : action.payload,
       };
     default:
       return state;
