@@ -4,7 +4,8 @@ import { TFormPages, TPages } from '../../types/TPages.ts';
 import Button from '../Button/Button.tsx';
 import { useLocation, useMatch, useNavigate } from 'react-router-dom';
 import { FormStepProgress } from '../../features/FormStepProgress/FormStepProgress.tsx';
-import useAppContext from '../../context/useAppContext.tsx';
+import { useUnit } from 'effector-react';
+import stepsModel from '../../store/stepsModel.ts';
 
 export const Navbar: FC = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ export const Navbar: FC = () => {
   const isPreviewPage = mainRoute === TPages.PREVIEW;
   const isNewFormPage = formRoute === TFormPages.NEW;
   const navigate = useNavigate();
-  const { formSteps } = useAppContext();
+  const formSteps = useUnit(stepsModel.stores.$formSteps);
 
   return (
     <section className={styles.Navbar}>

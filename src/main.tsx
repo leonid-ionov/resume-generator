@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.scss';
 import 'react-datetime/css/react-datetime.css';
-import { AppContextProvider } from './context/AppContextProvider.tsx';
 import { RouterProvider } from 'react-router-dom';
 import { TFormPages, TPages } from './types/TPages.ts';
 import { MainPage } from './pages/Main/MainPage.tsx';
@@ -76,8 +75,6 @@ const router = createRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <AppContextProvider>
-      <RouterProvider router={router} />
-    </AppContextProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

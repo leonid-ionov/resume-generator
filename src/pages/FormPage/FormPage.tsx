@@ -1,13 +1,15 @@
 import { FC } from 'react';
-import useAppContext from '../../context/useAppContext.tsx';
 import { convertToImageString } from '../../utils/convertToImageString.ts';
 import { ResumeForm } from '../../features/ResumeForm/ResumeForm.tsx';
 import style from './FormPage.module.scss';
 import { VALIDATION_STRING } from '../../constants/formConstants.ts';
 import { ResumeFormProvider } from '../../features/ResumeForm/components/ResumeFormProvider/ResumeFormProvider.tsx';
+import { useUnit } from 'effector-react';
+import formModel from '../../store/formModel.ts';
+import Button from '../../components/Button/Button.tsx';
 
 export const FormPage: FC = () => {
-  const { formData } = useAppContext();
+  const formData = useUnit(formModel.stores.$formData);
   const handleSave = async () => {
     const { interests, photoLink, ...rest } = formData;
     const photo = await convertToImageString(photoLink.photo);
@@ -39,6 +41,7 @@ export const FormPage: FC = () => {
 
   return (
     <section className={style.FormPage}>
+      <Button onClick={handleSave}>Save Resume</Button>
       <ResumeFormProvider>
         <ResumeForm />
       </ResumeFormProvider>

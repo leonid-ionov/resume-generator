@@ -1,16 +1,16 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: {browser: true, es2020: true},
   extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  settings: { react: { version: '18.2' } },
+  settings: {react: {version: '18.2'}},
   plugins: ['prettier'],
   rules: {
-    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    'react-refresh/only-export-components': ['warn', {allowConstantExport: true}],
     'prettier/prettier': 0,
     'react/function-component-definition': 0,
     'import/prefer-default-export': 0,
@@ -22,6 +22,7 @@ module.exports = {
       files: '**/*.+(ts|tsx)',
       extends: [
         'eslint:recommended',
+        'plugin:effector/react',
         'plugin:react/recommended',
         'plugin:react/jsx-runtime',
         'plugin:react-hooks/recommended',
@@ -34,7 +35,7 @@ module.exports = {
         project: ['./tsconfig.json'],
         tsconfigRootDir: '.',
       },
-      plugins: ['react-refresh', '@typescript-eslint', 'prettier'],
+      plugins: ['react-refresh', '@typescript-eslint', 'prettier', 'effector'],
       rules: {
         '@typescript-eslint/no-misused-promises': [
           2,

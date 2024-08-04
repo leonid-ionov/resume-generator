@@ -1,17 +1,18 @@
 import { FC, useRef } from 'react';
-import useAppContext from '../../context/useAppContext.tsx';
 import { useLocation } from 'react-router-dom';
 import { hiddenText, resumePreviewData } from '../../constants/resumePreviewData.tsx';
 import ResumeTemplate from '../../features/ResumeTemplate/ResumeTemplate.tsx';
 import Button from '../../components/Button/Button.tsx';
 import { jsPDF } from 'jspdf';
 import styles from './ResumePreviewPage.module.scss';
+import formModel from '../../store/formModel.ts';
+import { useUnit } from 'effector-react/compat';
 
 export const ResumePreviewPage: FC = () => {
   const location = useLocation();
-  const appContext = useAppContext();
+  const userResumeData = useUnit(formModel.stores.$resumeData);
   const state = location?.state ? (location.state as { isPreview?: boolean }) : {};
-  const resumeData = state?.isPreview ? resumePreviewData : { ...resumePreviewData, ...appContext.resumeData };
+  const resumeData = state?.isPreview ? resumePreviewData : { ...resumePreviewData, ...userResumeData };
   const templateRef = useRef<HTMLDivElement>(null);
 
   const handleSaveAsPDF = async () => {

@@ -24,6 +24,6 @@ const isTestEnv = () => process.env.NODE_ENV === 'test';
 
 const isDevEnv = () => process.env.NODE_ENV === 'development';
 
-const isProdEnv = () => !isTestEnv() && !isDevEnv();
+const isProdEnv = (): boolean => !isTestEnv() && !isDevEnv();
 
 export { uriToBuffer, fileToDataUri, isTestEnv, isDevEnv, isProdEnv };

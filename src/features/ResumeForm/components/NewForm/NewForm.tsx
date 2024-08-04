@@ -1,43 +1,20 @@
 import { FC } from 'react';
-import useAppContext from '../../../../context/useAppContext.tsx';
 import { useNavigate } from 'react-router-dom';
-import { IFormData, IStampedFormData } from '../../../../types/formTypes.ts';
-import { initialFormData, VALIDATION_STRING } from '../../../../constants/formConstants.ts';
+import { initialFormData } from '../../../../constants/formConstants.ts';
 import style from '../../../../pages/FormPage/FormPage.module.scss';
 import { TFormPages, TPages } from '../../../../types/TPages.ts';
 import loadData from '../../../../assets/images/loadData.png';
 import formPreview from '../../../../assets/images/formPreview.png';
 import { useFormContext } from 'react-hook-form';
 import ChoiceSection from '../../../../components/ChoiceSection/ChoiceSection.tsx';
+import { useUnit } from 'effector-react';
+import formModel from '../../../../store/formModel.ts';
 
 export const NewForm: FC = () => {
-  const { loadSavedFormData } = useAppContext();
   const { reset } = useFormContext();
-
+  const handleLoadFormData = useUnit(formModel.effects.loadFormDataFx);
   const navigate = useNavigate();
   const personalInfoFormPage = `/${TPages.FORM}/${TFormPages.PERSONAL}`;
-
-  const handleLoad = (file?: File) => {
-    return new Promise<IFormData>(resolve => {
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (e: ProgressEvent<FileReader>) => {
-          try {
-            const data = JSON.parse(e.target?.result as string) as IStampedFormData;
-            const { appStamp, ...formData } = data;
-            if (appStamp !== VALIDATION_STRING) {
-              console.error('Error when loading a form file: Invalid file format');
-              return;
-            }
-            resolve(formData);
-          } catch (error) {
-            console.error('Error when loading a form file:', error);
-          }
-        };
-        reader.readAsText(file);
-      }
-    });
-  };
 
   return (
     <section className={style.FormPage_title}>
@@ -46,8 +23,8 @@ export const NewForm: FC = () => {
         firstChoice={{
           type: 'FileInput',
           onUpload: async file => {
-            const formData = await handleLoad(file);
-            loadSavedFormData(formData);
+            const formData = await handleLoadFormData(file);
+            reset(formData);
             navigate(personalInfoFormPage);
           },
           accept: 'application/json',
