@@ -17,7 +17,7 @@ your resume, so you can focus more on crafting your story and less on the detail
 
 To try out the Resume Generator for yourself and create your own professional CV, feel free to visit the live
 application deployed on GitHub Pages. Here's
-the [Resume Generator Demo Link](https://neonrul.github.io/resume-generator/).
+the [Resume Generator Demo Link](https://leonid-ionov.github.io/resume-generator/).
 
 ## Usage Instructions
 
