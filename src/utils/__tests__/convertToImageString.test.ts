@@ -4,8 +4,7 @@ import MockFileList from '../../tests/utils/mocks/MockFileList.ts';
 import { fileToDataUri, uriToBuffer } from '../../tests/utils/testHelpers.ts';
 import { mockCreateObjectURL } from '../../tests/vitest.setup.ts';
 
-// Tests skipped due to canvas/jest-image-snapshot requiring system dependencies (pangocairo) not available in this environment
-describe.skip('convertToImageString', () => {
+describe('convertToImageString', () => {
   const fileList = new MockFileList(1).list;
   const emptyFileList = new MockFileList(0).list;
   const mockImage = fileToDataUri('../../assets/images/pirate.png');
