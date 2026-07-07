@@ -45,7 +45,7 @@ describe('convertToImageString', () => {
 
   test('Should handle image load error', async () => {
     const spyConsoleError = vi.spyOn(console, 'error').mockReturnValue(vi.fn);
-    await expect(convertToImageString('invalid_url')).rejects.toEqual(['Error by creating image', expect.any(Event)]);
+    await expect(convertToImageString('invalid_url')).rejects.toThrow('Error by creating image');
     expect(spyConsoleError).toHaveBeenCalled();
     spyConsoleError.mockRestore();
   });

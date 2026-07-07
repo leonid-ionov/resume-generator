@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types, @typescript-eslint/no-unsafe-assignment,  @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { FC } from 'react';
 import Datetime, { DatetimepickerProps } from 'react-datetime';
 import Input from './Input.tsx';
@@ -20,13 +20,14 @@ export const DateInput: FC<IDateInputProps> = ({ dateTimeProps, inputProps, hand
         if (handleChange) handleChange(value);
       }}
       renderInput={(props, openCalendar) => {
+        const openCalendarSafely = openCalendar as () => void;
         return (
           <Input
             {...inputProps}
             onChange={props.onChange}
-            value={inputProps.value as string}
-            onClick={() => openCalendar()}
-            onKeyUp={() => openCalendar()}
+            value={inputProps.value}
+            onClick={() => openCalendarSafely()}
+            onKeyUp={() => openCalendarSafely()}
           />
         );
       }}
