@@ -2,12 +2,19 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
-    "types": ["vite/client", "node", "vitest/globals", "vitest/jsdom"],
+    "types": [
+      "node",
+      "vitest/globals",
+      "vitest/jsdom"
+    ],
     "esModuleInterop": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -16,14 +23,25 @@
     "noEmit": true,
     "jsx": "preserve",
     "allowJs": true,
-    "plugins": [{ "name": "next" }],
-
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "incremental": true
   },
-  "include": ["src", "vite.config.ts", "app", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"],
+  "include": [
+    "src",
+    "vitest.config.ts",
+    "app",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

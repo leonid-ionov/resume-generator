@@ -1,6 +1,6 @@
 import { TResumeData } from '../types/TResumeData.ts';
 import { IFormData } from '../types/formTypes.ts';
-import { isProdEnv } from '../tests/utils/testHelpers.ts';
+import { isProdEnv } from '../utils/envHelpers.ts';
 import { IconsOptions } from '../constants/formConstants.ts';
 
 export enum AppActionTypes {

@@ -1,14 +1,18 @@
+import { ReactNode, Suspense } from 'react';
 import styles from './App.module.scss';
 import { Navbar } from './components/Navbar/Navbar.tsx';
-import { Outlet } from 'react-router-dom';
 
-function App() {
+interface AppProps {
+  children: ReactNode;
+}
+
+function App({ children }: AppProps) {
   return (
     <div className={styles.App}>
-      <Navbar />
-      <section className={styles.content}>
-        <Outlet />
-      </section>
+      <Suspense fallback={null}>
+        <Navbar />
+      </Suspense>
+      <section className={styles.content}>{children}</section>
     </div>
   );
 }
