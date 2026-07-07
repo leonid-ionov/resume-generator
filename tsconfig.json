@@ -2,18 +2,10 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "types": [
-      "node",
-      "vitest/globals",
-      "vitest/jsdom"
-    ],
+    "types": ["node", "vitest/globals", "vitest/jsdom"],
     "esModuleInterop": true,
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -35,13 +27,6 @@
     "noFallthroughCasesInSwitch": true,
     "incremental": true
   },
-  "include": [
-    "src",
-    "vitest.config.ts",
-    "app",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src", "vitest.config.ts", "app", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
