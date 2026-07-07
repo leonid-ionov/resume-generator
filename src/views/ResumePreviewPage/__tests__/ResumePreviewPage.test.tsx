@@ -13,6 +13,10 @@ vi.mock('next/navigation', () => ({
 describe('ResumePreviewPage', () => {
   const mockUseSearchParams = useSearchParams as unknown as ReturnType<typeof vi.fn>;
 
+  beforeEach(() => {
+    mockUseSearchParams.mockReturnValue({ get: () => null });
+  });
+
   afterEach(() => {
     vi.clearAllMocks();
   });
