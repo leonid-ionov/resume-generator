@@ -19,7 +19,8 @@ export const PersonalInfoForm: FC = () => {
   const { photo } = useWatch({ control, name: 'photoLink' });
   const memorizedPhoto = useMemo(() => {
     if (typeof photo === 'string') return photo;
-    if (photo instanceof FileList && photo.length > 0) return URL.createObjectURL(photo[0]);
+    if (typeof FileList !== 'undefined' && photo instanceof FileList && photo.length > 0)
+      return URL.createObjectURL(photo[0]);
     return null;
   }, [photo]);
 

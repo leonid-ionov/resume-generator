@@ -1,5 +1,5 @@
 import { PluginOption } from 'vite';
-import { isTestEnv } from '../utils/testHelpers.ts';
+import { isTestEnv } from '../../utils/envHelpers.ts';
 
 const vitestAssetsResolverPlugin = (): PluginOption => ({
   name: 'vitest-svg-resolver',

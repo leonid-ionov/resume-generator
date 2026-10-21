@@ -3,8 +3,8 @@ import { IFormData } from '../../../../types/formTypes.ts';
 import { FieldPath, useFieldArray, useFormContext, useWatch } from 'react-hook-form';
 import Input from '../../../../components/Input/Input.tsx';
 import { DateInput } from '../../../../components/Input/DateInput.tsx';
-import 'react-quill/dist/quill.snow.css';
-import ReactQuill from 'react-quill';
+import 'react-quill-new/dist/quill.snow.css';
+import ReactQuill from 'react-quill-new';
 import Button from '../../../../components/Button/Button.tsx';
 import { Accordion } from '../../../../components/Accordion/Accordion.tsx';
 

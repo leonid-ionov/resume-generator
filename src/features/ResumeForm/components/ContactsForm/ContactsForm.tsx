@@ -76,7 +76,7 @@ export const ContactsForm: FC = () => {
             );
         }
       })}
-      <Button onClick={() => contactsField.append({ info: '', icon: 'Select icon' })}>Add another contact</Button>
+      <Button onClick={() => contactsField.append({ info: '', icon: '' })}>Add another contact</Button>
     </Accordion>
   );
 };

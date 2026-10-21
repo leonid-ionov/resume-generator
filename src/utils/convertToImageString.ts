@@ -9,7 +9,10 @@ const createImage: (url: string) => Promise<HTMLImageElement> = url =>
       return;
     }
     image.onload = () => resolve(image);
-    image.onerror = error => reject(['Error by creating image', error]);
+    image.onerror = error => {
+      const details = error instanceof Event ? error.type : error;
+      reject(new Error(`Error by creating image: ${details}`));
+    };
     image.src = url;
   });
 

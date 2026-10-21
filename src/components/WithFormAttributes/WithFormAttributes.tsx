@@ -15,7 +15,7 @@ export const withFormAttributes = <T extends HTMLElement, P extends IFormAttribu
             {label}
           </label>
         )}
-        <WrappedComponent {...(rest as P)} ref={ref} />
+        <WrappedComponent {...(rest as unknown as P)} ref={ref} />
         {(description || rest.error) && (
           <small className={rest.error ? styles.controlErrorText : styles.controlHelperText}>
             {rest.error ? rest.error.message : description}

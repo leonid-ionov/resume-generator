@@ -1,4 +1,4 @@
-import { FC, HTMLProps, useRef } from 'react';
+import { FC, HTMLProps, useRef, useState } from 'react';
 import Button from '../Button/Button.tsx';
 import { IFormAttributes, IFormData } from '../../types/formTypes.ts';
 import { UseFormRegister } from 'react-hook-form';
@@ -22,13 +22,14 @@ const FileInput: FC<IFileInputProps> = ({
   ...overProps
 }) => {
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
+  const [selectedFileName, setSelectedFileName] = useState<string | undefined>(undefined);
   const triggerFileInputClick = () => hiddenFileInput.current?.click();
   return (
     <>
       <Button onClick={triggerFileInputClick}>
         <section className={styles.inputControl_file}>
           <p id="file-input-label">{fileLabel}</p>
-          {hiddenFileInput.current?.files?.[0]?.name || isFileSelected ? (
+          {selectedFileName || isFileSelected ? (
             <img src={filePresent} alt="file successfully uploaded" />
           ) : (
             <img src={uploadFile} alt="file is unavailable" />
@@ -49,6 +50,7 @@ const FileInput: FC<IFileInputProps> = ({
         }}
         onChange={async event => {
           const fileUploaded = event.target.files?.[0];
+          setSelectedFileName(fileUploaded?.name);
           handleFileUpload?.(fileUploaded);
           await registerProps?.onChange?.(event);
         }}

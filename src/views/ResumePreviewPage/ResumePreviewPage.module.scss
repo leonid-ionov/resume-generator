@@ -1,0 +1,11 @@
+@import 'styles/_helpers';
+
+.previewPage {
+  font-family: 'Montserrat SemiBold', sans-serif;
+  @include FlexColumn;
+  gap: spacing(2);
+
+  &_title {
+    @include Flex(center);
+  }
+}

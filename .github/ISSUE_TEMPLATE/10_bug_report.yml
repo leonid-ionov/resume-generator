@@ -34,7 +34,7 @@ body:
     attributes:
       value: |
         ### Screenshots
-        
+
         You can drag and drop images into the comment area below, or use the following Markdown syntax:
         ```
         ![alt text](url)

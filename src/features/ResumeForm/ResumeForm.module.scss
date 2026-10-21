@@ -1,7 +1,12 @@
 @import 'styles/_helpers';
 @import 'styles/_constants';
+@import 'styles/_colors';
 
 .resumeForm {
   @include FlexColumn;
   gap: spacing(1.25);
+}
+
+.resumeForm_error {
+  color: $error;
 }

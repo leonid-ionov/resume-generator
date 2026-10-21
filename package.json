@@ -1,22 +1,21 @@
 {
   "name": "resume-generator",
   "description": "SPA to generate my perfect resume",
-  "main": "main.tsx",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "author": {
     "name": "Leonid Ionov",
-    "url": "https://github.com/Neonrul"
+    "url": "https://github.com/leonid-ionov"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Neonrul/resume-generator"
+    "url": "https://github.com/leonid-ionov/resume-generator"
   },
   "bugs": {
-    "url": "https://github.com/Neonrul/resume-generator/issues"
+    "url": "https://github.com/leonid-ionov/resume-generator/issues"
   },
-  "homepage": "https://neonrul.github.io/resume-generator",
+  "homepage": "https://leonid-ionov.github.io/resume-generator",
   "license": "MIT",
   "engines": {
     "node": ">=18.15.0"
@@ -25,62 +24,57 @@
     "resume",
     "CV",
     "form",
-    "react",
-    "vite"
+    "react"
   ],
   "scripts": {
-    "build": "vite build",
-    "dev": "vite",
-    "lint": "eslint src/**/*.ts src/**/*.tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint src/**/*.ts src/**/*.tsx --report-unused-disable-directives --max-warnings 0 --fix",
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "eslint src app --max-warnings 0",
+    "lint:fix": "eslint src app --max-warnings 0 --fix",
     "postinstall": "npm run prepare",
     "prepare": "husky install",
     "prettier": "prettier --check . --ignore-unknown --ignore-path .gitignore",
     "prettier:fix": "prettier --write . --ignore-unknown --ignore-path .gitignore",
-    "preview": "vite preview",
+    "start": "next start",
     "test": "vitest --run",
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "framer-motion": "^11.2.10",
+    "framer-motion": "^11.18.2",
     "jspdf": "^2.5.1",
-    "react": "^18.2.0",
-    "react-datetime": "^3.2.0",
-    "react-dom": "^18.2.0",
+    "next": "^15",
+    "react": "^19.3.1",
+    "react-datetime": "^3.3.1",
+    "react-dom": "^19.3.1",
     "react-easy-crop": "^5.0.5",
-    "react-hook-form": "^7.49.3",
-    "react-quill": "^2.0.0",
-    "react-router-dom": "^6.21.3",
+    "react-hook-form": "^7.90.0",
+    "react-quill-new": "^3.8.3",
     "sass": "^1.70.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^14.2.2",
+    "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest-image-snapshot": "^6.4.0",
-    "@types/jsdom": "^21.1.6",
     "@types/node": "^20.11.11",
-    "@types/react": "^18.2.48",
-    "@types/react-dom": "^18.2.18",
-    "@typescript-eslint/eslint-plugin": "^7.1.1",
-    "@typescript-eslint/parser": "^7.1.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "canvas": "^2.11.2",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
+    "canvas": "^3.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.10",
+    "eslint-config-prettier": "^10.1.8",
     "husky": "^9.0.11",
-    "jest-image-snapshot": "^6.4.0",
-    "jsdom": "^24.0.0",
+    "jest-image-snapshot": "^6.5.2",
+    "jsdom": "^26.1.0",
     "lint-staged": "^15.2.0",
     "mime": "^4.0.1",
     "prettier": "^3.2.5",
     "typescript": "^5.3.3",
-    "vite": "^5.0.12",
+    "typescript-eslint": "^8.63.0",
     "vitest": "^1.3.1"
   }
 }
