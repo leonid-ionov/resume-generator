@@ -26,7 +26,8 @@
 
 .title {
   @include Flex(center, space-between);
-  @include Montserrat-font(semiBold, 16px, 20px);
+  @include font-size(16px, 20px);
+  font-weight: 600;
   cursor: pointer;
   padding: spacing(1.25);
 

@@ -1,12 +1,15 @@
-@import '../../styles/_colors';
 @import '../../styles/_helpers';
 
 .Navbar {
   @include Flex(center);
+  position: sticky;
+  top: 0;
+  z-index: 10;
   width: 100%;
-  min-height: 76px;
-  background-color: $headerBackground;
-  padding: spacing(2, 5);
+  min-height: 64px;
+  padding: spacing(1.5) clamp(16px, 4vw, 40px);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-float);
 
   &_leftSection,
   &_rightSection {
@@ -19,6 +22,17 @@
   }
 
   &_text {
-    @include Montserrat-font(semiBold, 24px, 20px);
+    @include Flex(center);
+    gap: spacing(1);
+    @include font-size(18px, 1, -0.01em);
+    font-weight: 700;
+
+    &::before {
+      content: '';
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      background-color: var(--color-accent);
+    }
   }
 }
