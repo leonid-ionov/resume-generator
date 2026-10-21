@@ -37,7 +37,9 @@ describe('FormPage', () => {
     const appendChildSpy = vi.spyOn(document.body, 'appendChild');
     const removeChildSpy = vi.spyOn(document.body, 'removeChild');
     const createElementSpy = vi.spyOn(document, 'createElement');
-    const blobSpy = vi.spyOn(global, 'Blob').mockImplementation(() => mockBlob);
+    const blobSpy = vi.spyOn(global, 'Blob').mockImplementation(function () {
+      return mockBlob;
+    });
 
     const saveButton = getSaveButton();
     await userEvent.click(saveButton);
