@@ -17,7 +17,7 @@ describe('AppContextProvider', () => {
   test('Should build resume from a saved file even if its images are broken', async () => {
     const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(vi.fn());
     vi.mocked(convertToImageString).mockImplementation((image?: string | FileList) =>
-      image ? Promise.reject(new Error(`404: ${String(image)}`)) : Promise.resolve(BLANK_IMAGE)
+      image ? Promise.reject(new Error('404')) : Promise.resolve(BLANK_IMAGE)
     );
     render(
       <AppContextProvider>
