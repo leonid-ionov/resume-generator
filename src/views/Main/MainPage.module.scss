@@ -34,7 +34,7 @@
 .actions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: spacing(3);
+  gap: spacing(5);
 }
 
 .card {
@@ -47,11 +47,12 @@
   color: inherit;
   text-decoration: none;
   transition:
-    border-color 0.15s,
+    box-shadow 0.15s,
     transform 0.15s;
 
-  &:hover {
-    border-color: var(--color-text);
+  &:hover,
+  &:focus-visible {
+    box-shadow: var(--shadow-float);
     transform: translateY(-2px);
   }
 
@@ -78,11 +79,6 @@
     margin-top: auto;
     padding-top: spacing(1);
     font-weight: 600;
-  }
-
-  &__primary {
-    border-color: var(--color-accent);
-    box-shadow: inset 0 4px 0 var(--color-accent);
   }
 }
 

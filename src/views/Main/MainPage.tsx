@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import cn from 'classnames';
 import { TPages } from '../../types/TPages.ts';
 import styles from './MainPage.module.scss';
 import formPreview from '../../assets/images/formPreview.png';
@@ -26,7 +25,7 @@ export const MainPage: FC = () => (
         <p>Review how CV will look like before you start creating yours</p>
         <span className={styles.card_cta}>Open preview →</span>
       </Link>
-      <Link className={cn(styles.card, styles.card__primary)} href={TPages.FORM}>
+      <Link className={styles.card} href={TPages.FORM}>
         <img className={styles.card_image} src={formPreview} alt="" />
         <h2>Go to form</h2>
         <p>Create a new resume or update an existing one</p>
