@@ -2,13 +2,13 @@
 @import 'styles/_helpers';
 
 .controlLabel {
-  @include OpenSans-font(regular, 14px);
+  @include font-size(14px);
   display: block;
   margin-bottom: spacing(0.5);
 }
 
 .controlHelperText {
-  @include OpenSans-font(regular, 12px);
+  @include font-size(12px);
   display: block;
   margin-top: spacing(0.5);
 }

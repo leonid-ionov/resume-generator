@@ -1,7 +1,8 @@
 @import 'styles/_helpers';
 
 .FormPage {
-  font-family: 'Montserrat SemiBold', sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 600;
 
   &_title {
     @include Flex(center);

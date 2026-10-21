@@ -1,0 +1,27 @@
+/* Shared with order-book (src/index.css @theme); names follow Tailwind v4 namespaces. */
+:root {
+  --color-page: #fdf5e6;
+  --color-bg: #ffffff;
+  --color-panel: #eceff1;
+  --color-panel-hover: #b0bec5;
+  --color-border: #b0bec5;
+  --color-text: #1e1e20;
+  --color-muted: #78909c;
+  --color-accent: #ffcc80;
+  --color-ring: #4e4c67;
+  --color-danger: #ff5252;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+[data-theme='dark'] {
+  --color-page: #141416;
+  --color-bg: #1e1e20;
+  --color-panel: #26262a;
+  --color-panel-hover: #303035;
+  --color-border: #333337;
+  --color-text: #eceff1;
+  --color-muted: #78909c;
+  --color-accent: #ffcc80;
+  --color-ring: #ffcc80;
+}

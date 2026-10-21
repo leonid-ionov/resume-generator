@@ -1,42 +1,109 @@
 @import 'styles/_helpers';
 
 .mainPage {
-  @include Montserrat-font(regular, 16px, null, null, null);
   @include FlexColumn;
   gap: spacing(6);
+  width: 100%;
+  max-width: 960px;
+
+  h1 {
+    @include font-size(clamp(28px, 6vw, 40px), 1.15, -0.02em);
+    font-weight: 700;
+  }
 
   h2 {
-    @include Montserrat-font(semiBold, 32px, null, null, null);
+    @include font-size(20px, 1.3);
+    font-weight: 600;
   }
 
-  h3 {
-    @include Montserrat-font(semiBold, 24px, null, null, null);
+  p {
+    line-height: 1.6;
+  }
+}
+
+.hero {
+  @include FlexColumn;
+  gap: spacing(1);
+
+  p {
+    @include font-size(18px);
+    color: color-mix(in srgb, var(--color-text) 72%, transparent);
+  }
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: spacing(3);
+}
+
+.card {
+  @include FlexColumn;
+  gap: spacing(1);
+  padding: spacing(2);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-bg);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.15s,
+    transform 0.15s;
+
+  &:hover {
+    border-color: var(--color-text);
+    transform: translateY(-2px);
   }
 
-  &_textSection {
+  &:focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  &_image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: top;
+    margin-bottom: spacing(1);
+    border-radius: 6px;
+    background-color: var(--color-panel);
+  }
+
+  p {
+    color: color-mix(in srgb, var(--color-text) 72%, transparent);
+  }
+
+  &_cta {
+    margin-top: auto;
+    padding-top: spacing(1);
+    font-weight: 600;
+  }
+
+  &__primary {
+    border-color: var(--color-accent);
+    box-shadow: inset 0 4px 0 var(--color-accent);
+  }
+}
+
+.about {
+  @include FlexColumn;
+  gap: spacing(2);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: spacing(2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
     @include FlexColumn;
-    gap: spacing(1);
-  }
-
-  &_stepsSection {
-    @include Flex(null, space-around);
-
-    &_description {
-      @include FlexColumn(flex-end);
-      gap: spacing(4);
-      margin-top: spacing(3);
-    }
-
-    & .text {
-      @include Flex(center);
-    }
-    .icon {
-      width: 30px;
-      height: 30px;
-
-      &.right {
-        transform: rotate(180deg);
-      }
-    }
+    gap: spacing(0.5);
+    padding: spacing(2);
+    border-radius: 12px;
+    background-color: var(--color-panel);
   }
 }

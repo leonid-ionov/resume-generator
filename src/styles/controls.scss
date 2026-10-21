@@ -2,7 +2,7 @@
 @import 'styles/_colors';
 
 %control {
-  font-family: 'Montserrat Regular', sans-serif;
+  font-family: var(--font-sans);
   width: 100%;
   padding: spacing(1, 2);
   border: solid 2px $greyLight;
