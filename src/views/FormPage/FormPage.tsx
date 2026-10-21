@@ -1,7 +1,8 @@
 import { FC } from 'react';
+import { useFormContext } from 'react-hook-form';
 import useAppContext from '../../context/useAppContext.tsx';
 import Button from '../../components/Button/Button.tsx';
-import { IStampedFormData } from '../../types/formTypes.ts';
+import { IFormData, IStampedFormData } from '../../types/formTypes.ts';
 import { convertToImageString } from '../../utils/convertToImageString.ts';
 import { ResumeForm } from '../../features/ResumeForm/ResumeForm.tsx';
 import style from './FormPage.module.scss';
@@ -9,9 +10,12 @@ import FileInput from '../../components/Input/FileInput.tsx';
 import { VALIDATION_STRING } from '../../constants/formConstants.ts';
 import { ResumeFormProvider } from '../../features/ResumeForm/components/ResumeFormProvider/ResumeFormProvider.tsx';
 
-export const FormPage: FC = () => {
-  const { loadSavedFormData, formData } = useAppContext();
+const FormPageContent: FC = () => {
+  const { loadSavedFormData } = useAppContext();
+  const { getValues } = useFormContext<IFormData>();
   const handleSave = async () => {
+    // Save what is on screen, not the last submitted version
+    const formData = getValues();
     const { interests, photoLink, ...rest } = formData;
     const photo = await convertToImageString(photoLink.photo);
     const normalizedFormData = {
@@ -72,9 +76,13 @@ export const FormPage: FC = () => {
           fileLabel="Fill Form From Save"
         />
       </section>
-      <ResumeFormProvider>
-        <ResumeForm />
-      </ResumeFormProvider>
+      <ResumeForm />
     </section>
   );
 };
+
+export const FormPage: FC = () => (
+  <ResumeFormProvider>
+    <FormPageContent />
+  </ResumeFormProvider>
+);
