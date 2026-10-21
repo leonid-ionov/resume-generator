@@ -11,7 +11,7 @@ import { EducationForm } from './components/EducationForm/EducationForm.tsx';
 import { InterestsForm } from './components/InterestsForm/InterestsForm.tsx';
 import useAppContext from '../../context/useAppContext.tsx';
 
-// react-quill (used inside ExperienceForm) touches `document` at import time,
+// react-quill-new (used inside ExperienceForm) touches `document` at import time,
 // which breaks Next.js prerendering. Load it client-only.
 const ExperienceForm = dynamic(
   () => import('./components/ExperienceForm/ExperienceForm.tsx').then(m => m.ExperienceForm),

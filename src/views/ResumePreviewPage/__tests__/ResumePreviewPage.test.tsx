@@ -50,8 +50,8 @@ describe('ResumePreviewPage', () => {
     await waitFor(() => {
       expect(saveSpy).toHaveBeenCalledWith('John Doe Software Engineer CV.pdf', { returnPromise: true });
       expect(internalMock).toEqual({ pageSize: { width: 1224.1, height: 1720.1 }, scaleFactor: 1 });
-      expect(htmlSpy.mock.calls[0][0]).toMatchSnapshot();
     });
+    expect(htmlSpy.mock.calls[0][0]).toMatchSnapshot();
   });
 
   test('Should handle error during PDF generation gracefully', async () => {

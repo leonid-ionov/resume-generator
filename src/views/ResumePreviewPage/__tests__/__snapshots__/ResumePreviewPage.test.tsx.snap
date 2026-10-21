@@ -60,7 +60,6 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
                 alt="john.doe@example.com"
                 class="_ContactElement_icon_fd23c2"
                 data-id="icon"
-                src=""
               />
             </article>
             <article
@@ -75,7 +74,6 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
                 alt="+1 234 567 890"
                 class="_ContactElement_icon_fd23c2"
                 data-id="icon"
-                src=""
               />
             </article>
           </section>
@@ -539,7 +537,6 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] 
           <img
             alt="User photo"
             class="_PhotoSection_photo_063567"
-            src=""
           />
         </section>
       </div>
@@ -711,7 +708,6 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] 
               >
                 <img
                   alt="Icon for Navigating the High Seas interest"
-                  src=""
                 />
               </div>
               <p
@@ -728,7 +724,6 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] 
               >
                 <img
                   alt="Icon for Rum Tasting interest"
-                  src=""
                 />
               </div>
               <p
@@ -975,7 +970,6 @@ exports[`ResumePreviewPage > Should save resume as PDF when Save as PDF button i
             alt="john.doe@example.com"
             class="_ContactElement_icon_fd23c2"
             data-id="icon"
-            src=""
           />
         </article>
         <article
@@ -990,7 +984,6 @@ exports[`ResumePreviewPage > Should save resume as PDF when Save as PDF button i
             alt="+1 234 567 890"
             class="_ContactElement_icon_fd23c2"
             data-id="icon"
-            src=""
           />
         </article>
       </section>
