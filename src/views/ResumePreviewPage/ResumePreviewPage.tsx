@@ -1,11 +1,23 @@
 import { FC, useRef } from 'react';
 import useAppContext from '../../context/useAppContext.tsx';
 import { useSearchParams } from 'next/navigation';
-import { hiddenText, resumePreviewData } from '../../constants/resumePreviewData.tsx';
+import { resumePreviewData } from '../../constants/resumePreviewData.tsx';
 import ResumeTemplate from '../../features/ResumeTemplate/ResumeTemplate.tsx';
 import Button from '../../components/Button/Button.tsx';
 import { jsPDF } from 'jspdf';
 import styles from './ResumePreviewPage.module.scss';
+
+// Each script registers a font with jsPDF on load; jsPDF applies them when a new document is created
+const loadPdfFonts = () =>
+  Promise.all([
+    import('../../../scripts/Montserrat-Regular.js'),
+    import('../../../scripts/Montserrat-Medium.js'),
+    import('../../../scripts/Montserrat-SemiBold.js'),
+    import('../../../scripts/Montserrat-LightItalic.js'),
+    import('../../../scripts/OpenSans-Regular.js'),
+    import('../../../scripts/OpenSans-Bold.js'),
+    import('../../../scripts/OpenSans-Italic.js'),
+  ]);
 
 export const ResumePreviewPage: FC = () => {
   const searchParams = useSearchParams();
@@ -17,23 +29,24 @@ export const ResumePreviewPage: FC = () => {
   const handleSaveAsPDF = async () => {
     const content = templateRef.current;
     if (!content) return;
-    const pdf = new jsPDF('p', 'pt', 'a4');
-    pdf.internal.pageSize.width = 1224.1;
-    pdf.internal.pageSize.height = 1720.1;
-    pdf.internal.scaleFactor = 1;
+    const styleElem = document.createElement('style');
     try {
-      const styleElem = document.head.appendChild(document.createElement('style'));
+      await loadPdfFonts();
+      const pdf = new jsPDF('p', 'pt', 'a4');
+      pdf.internal.pageSize.width = 1224.1;
+      pdf.internal.pageSize.height = 1720.1;
+      pdf.internal.scaleFactor = 1;
       styleElem.innerHTML = 'li[data-id="list-item"]::before { margin-top: 6px; } img[data-id="icon"] { top: 4px; }';
-      const hiddenDiv = document.getElementById('hidden-text');
-      if (hiddenDiv) hiddenDiv.innerHTML = hiddenText;
+      document.head.appendChild(styleElem);
       await pdf.html(content, {
         callback: doc => {
           void doc.save(`${resumeData.userName} ${resumeData.desiredJob} CV.pdf`, { returnPromise: true });
         },
       });
-      document.head.removeChild(styleElem);
     } catch (error) {
       console.error('Error when save resume as pdf:', error);
+    } finally {
+      styleElem.remove();
     }
   };
 
