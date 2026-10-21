@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/leonid-ionov/resume-generator/issues"
   },
-  "homepage": "https://leonid-ionov.github.io/resume-generator",
+  "homepage": "https://resume-generator-seven-ebon.vercel.app",
   "license": "MIT",
   "engines": {
     "node": ">=18.15.0"
