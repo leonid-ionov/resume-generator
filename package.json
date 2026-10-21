@@ -6,16 +6,16 @@
   "type": "module",
   "author": {
     "name": "Leonid Ionov",
-    "url": "https://github.com/Neonrul"
+    "url": "https://github.com/leonid-ionov"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Neonrul/resume-generator"
+    "url": "https://github.com/leonid-ionov/resume-generator"
   },
   "bugs": {
-    "url": "https://github.com/Neonrul/resume-generator/issues"
+    "url": "https://github.com/leonid-ionov/resume-generator/issues"
   },
-  "homepage": "https://neonrul.github.io/resume-generator",
+  "homepage": "https://leonid-ionov.github.io/resume-generator",
   "license": "MIT",
   "engines": {
     "node": ">=18.15.0"
