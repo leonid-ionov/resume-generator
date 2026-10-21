@@ -1,13 +1,11 @@
 import { FC, PropsWithChildren, useRef } from 'react';
 import styles from './Accordion.module.scss';
-import cn from 'classnames';
 
 interface IAccordionProps extends PropsWithChildren {
   title: string;
-  isExpanded?: boolean;
 }
 
-export const Accordion: FC<IAccordionProps> = ({ title, children, isExpanded }) => {
+export const Accordion: FC<IAccordionProps> = ({ title, children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const toggleExpanded = () => {
@@ -17,7 +15,7 @@ export const Accordion: FC<IAccordionProps> = ({ title, children, isExpanded }) 
   };
 
   return (
-    <section ref={containerRef} className={cn(styles.container, { [styles.expanded]: !!isExpanded })}>
+    <section ref={containerRef} className={styles.container}>
       <p className={styles.title} onClick={toggleExpanded}>
         {title}
       </p>

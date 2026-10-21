@@ -1,7 +1,6 @@
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import next from 'eslint-config-next';
-import reactRefresh from 'eslint-plugin-react-refresh';
 import prettierConfig from 'eslint-config-prettier';
 
 export default tseslint.config(
@@ -21,7 +20,7 @@ export default tseslint.config(
     },
   },
   {
-    settings: { react: { version: '18.2' } },
+    settings: { react: { version: 'detect' } },
     rules: {
       'react/function-component-definition': 'off',
       'import/prefer-default-export': 'off',
@@ -33,17 +32,6 @@ export default tseslint.config(
       // (dimensions/markup), which would break the image-snapshot suite that must
       // stay green without updating snapshots.
       '@next/next/no-img-element': 'off',
-    },
-  },
-  {
-    // Next.js App Router files under app/ intentionally co-export non-component
-    // values (metadata, generateMetadata, viewport, etc.) alongside the default
-    // component, per framework convention - the Vite-era Fast Refresh rule below
-    // only applies to component modules under src/.
-    files: ['src/**/*.{ts,tsx}'],
-    plugins: { 'react-refresh': reactRefresh },
-    rules: {
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
   },
   {
