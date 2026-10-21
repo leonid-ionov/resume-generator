@@ -8,16 +8,12 @@ export default class MockFileList {
     }
   }
   get list(): FileList {
+    const files = Object.values(this.files);
     return {
       ...this.files,
-      length: Object.keys(this.files).length,
+      length: files.length,
       item: (index: number): File | null => this.files[index] || null,
-      *[Symbol.iterator]() {
-        for (let i = 0; i < this.length; i += 1) {
-          const file = this.item(i);
-          if (file) yield file;
-        }
-      },
+      [Symbol.iterator]: () => files[Symbol.iterator](),
     };
   }
 }

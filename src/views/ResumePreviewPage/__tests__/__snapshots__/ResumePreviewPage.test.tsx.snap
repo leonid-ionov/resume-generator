@@ -3,76 +3,76 @@
 exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
 <DocumentFragment>
   <section
-    class="_previewPage_6f8116"
+    class="_previewPage_73b67f"
   >
     <section
-      class="_previewPage_title_6f8116"
+      class="_previewPage_title_73b67f"
     >
       <h2>
         Resume Preview
       </h2>
        
       <button
-        class="_Button_f8f296"
+        class="_Button_ee73f7"
         type="button"
       >
         Save as PDF
       </button>
     </section>
     <div
-      class="_ResumePreview_a2badf"
+      class="_ResumePreview_418d46"
     >
       <div
-        class="_Row1_a2badf"
+        class="_Row1_418d46"
       >
         <div
-          class="_Row1_content_a2badf"
+          class="_Row1_content_418d46"
         >
           <section
-            class="_UserSection_07e01f"
+            class="_UserSection_e70a66"
           >
             <h2
-              class="_UserSection_name_07e01f"
+              class="_UserSection_name_e70a66"
             >
               John Doe
             </h2>
             <h3
-              class="_UserSection_job_07e01f"
+              class="_UserSection_job_e70a66"
             >
               Software Engineer
             </h3>
             <hr
-              class="_Divider_61b7e5 _Divider__white_61b7e5 _Divider__large_61b7e5"
+              class="_Divider_0145b9 _Divider__white_0145b9 _Divider__large_0145b9"
             />
           </section>
           <section
-            class="_ContactsSection_fd23c2"
+            class="_ContactsSection_ccdb9c"
           >
             <article
-              class="_ContactElement_fd23c2"
+              class="_ContactElement_ccdb9c"
             >
               <p
-                class="_ContactElement_info_fd23c2"
+                class="_ContactElement_info_ccdb9c"
               >
                 john.doe@example.com
               </p>
               <img
                 alt="john.doe@example.com"
-                class="_ContactElement_icon_fd23c2"
+                class="_ContactElement_icon_ccdb9c"
                 data-id="icon"
               />
             </article>
             <article
-              class="_ContactElement_fd23c2"
+              class="_ContactElement_ccdb9c"
             >
               <p
-                class="_ContactElement_info_fd23c2"
+                class="_ContactElement_info_ccdb9c"
               >
                 +1 234 567 890
               </p>
               <img
                 alt="+1 234 567 890"
-                class="_ContactElement_icon_fd23c2"
+                class="_ContactElement_icon_ccdb9c"
                 data-id="icon"
               />
             </article>
@@ -80,121 +80,121 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
         </div>
       </div>
       <div
-        class="_Row2_a2badf"
+        class="_Row2_418d46"
       >
         <section
-          class="_ProfileSection_cdaca7"
+          class="_ProfileSection_dc4f0f"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               Profile
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <article
-            class="_ProfileSection_profile_cdaca7"
+            class="_ProfileSection_profile_dc4f0f"
           >
             A highly skilled software engineer with 5 years of experience in web development.
           </article>
         </section>
         <section
-          class="_PhotoSection_063567"
+          class="_PhotoSection_1ccc8b"
         >
           <img
             alt="User photo"
-            class="_PhotoSection_photo_063567"
+            class="_PhotoSection_photo_1ccc8b"
             src="https://example.com/photo.jpg"
           />
         </section>
       </div>
       <div
-        class="_Row3_Col1_a2badf"
+        class="_Row3_Col1_418d46"
       >
         <section
-          class="_List_3f912c"
+          class="_List_5eb6a6"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               Work
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <ul
-            class="_List_unordered_3f912c"
+            class="_List_unordered_5eb6a6"
           >
             <li
-              class="_ListItem_7409ed"
+              class="_ListItem_360539"
               data-id="list-item"
             >
               <section
-                class="_ListItem_content_7409ed"
+                class="_ListItem_content_360539"
               >
                 <div
-                  class="_ListItem_title_7409ed"
+                  class="_ListItem_title_360539"
                 >
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     Frontend Developer
                   </p>
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     2019-05-01 - 2021-12-31
                   </p>
                 </div>
                 <p
-                  class="_ListItem_text_7409ed"
+                  class="_ListItem_text_360539"
                 >
                   Tech Corp
                 </p>
                 <div
-                  class="_Experience_description_293883"
+                  class="_Experience_description_12da0d"
                 >
                   Worked on various frontend projects using React and TypeScript.
                 </div>
               </section>
             </li>
             <li
-              class="_ListItem_7409ed"
+              class="_ListItem_360539"
               data-id="list-item"
             >
               <section
-                class="_ListItem_content_7409ed"
+                class="_ListItem_content_360539"
               >
                 <div
-                  class="_ListItem_title_7409ed"
+                  class="_ListItem_title_360539"
                 >
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     Backend Developer
                   </p>
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     2017-01-01 - 2019-04-30
                   </p>
                 </div>
                 <p
-                  class="_ListItem_text_7409ed"
+                  class="_ListItem_text_360539"
                 >
                   Innovate Solutions
                 </p>
                 <div
-                  class="_Experience_description_293883"
+                  class="_Experience_description_12da0d"
                 >
                   Developed backend services using Node.js and MongoDB.
                 </div>
@@ -203,51 +203,51 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
           </ul>
         </section>
         <section
-          class="_List_3f912c"
+          class="_List_5eb6a6"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               education
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <ul
-            class="_List_unordered_3f912c"
+            class="_List_unordered_5eb6a6"
           >
             <li
-              class="_ListItem_7409ed"
+              class="_ListItem_360539"
               data-id="list-item"
             >
               <section
-                class="_ListItem_content_7409ed"
+                class="_ListItem_content_360539"
               >
                 <div
-                  class="_ListItem_title_7409ed"
+                  class="_ListItem_title_360539"
                 >
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     Computer Science
                   </p>
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     2012-09-01-2016-06-30
                   </p>
                 </div>
                 <p
-                  class="_ListItem_text_7409ed"
+                  class="_ListItem_text_360539"
                 >
                   University of Technology
                 </p>
                 <p
-                  class="_Education_description_c4fdee"
+                  class="_Education_description_d696c6"
                 >
                   Focused on software development and data structures.
                 </p>
@@ -256,28 +256,28 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
           </ul>
         </section>
         <section
-          class="_InterestsSection_309d47"
+          class="_InterestsSection_c29c57"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               interests
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <section
-            class="_InterestsSection_row_309d47"
+            class="_InterestsSection_row_c29c57"
           >
             <div
-              class="_InterestsSection_item_309d47"
+              class="_InterestsSection_item_c29c57"
             >
               <div
-                class="_InterestsSection_iconContainer_309d47"
+                class="_InterestsSection_iconContainer_c29c57"
               >
                 <img
                   alt="Icon for Photography interest"
@@ -285,16 +285,16 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
                 />
               </div>
               <p
-                class="_InterestsSection_text_309d47"
+                class="_InterestsSection_text_c29c57"
               >
                 Photography
               </p>
             </div>
             <div
-              class="_InterestsSection_item_309d47"
+              class="_InterestsSection_item_c29c57"
             >
               <div
-                class="_InterestsSection_iconContainer_309d47"
+                class="_InterestsSection_iconContainer_c29c57"
               >
                 <img
                   alt="Icon for Traveling interest"
@@ -302,7 +302,7 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
                 />
               </div>
               <p
-                class="_InterestsSection_text_309d47"
+                class="_InterestsSection_text_c29c57"
               >
                 Traveling
               </p>
@@ -311,64 +311,64 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
         </section>
       </div>
       <div
-        class="_Row3_Col2_a2badf"
+        class="_Row3_Col2_418d46"
       >
         <section
-          class="_InfoSection_f489a1"
+          class="_InfoSection_12f6d6"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               info
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <section
-            class="_InfoSection_items_f489a1"
+            class="_InfoSection_items_12f6d6"
           >
             <div
-              class="_InfoItem_f489a1"
+              class="_InfoItem_12f6d6"
             >
               <p
-                class="_InfoItem_text_f489a1 _InfoItem_text__bold_f489a1"
+                class="_InfoItem_text_12f6d6 _InfoItem_text__bold_12f6d6"
               >
                 Date of Birth
               </p>
               <p
-                class="_InfoItem_text_f489a1"
+                class="_InfoItem_text_12f6d6"
               >
                 1990-01-01
               </p>
             </div>
             <div
-              class="_InfoItem_f489a1"
+              class="_InfoItem_12f6d6"
             >
               <p
-                class="_InfoItem_text_f489a1 _InfoItem_text__bold_f489a1"
+                class="_InfoItem_text_12f6d6 _InfoItem_text__bold_12f6d6"
               >
                 City
               </p>
               <p
-                class="_InfoItem_text_f489a1"
+                class="_InfoItem_text_12f6d6"
               >
                 New York
               </p>
             </div>
             <div
-              class="_InfoItem_f489a1"
+              class="_InfoItem_12f6d6"
             >
               <p
-                class="_InfoItem_text_f489a1 _InfoItem_text__bold_f489a1"
+                class="_InfoItem_text_12f6d6 _InfoItem_text__bold_12f6d6"
               >
                 Languages
               </p>
               <p
-                class="_InfoItem_text_f489a1"
+                class="_InfoItem_text_12f6d6"
               >
                 English, Spanish
               </p>
@@ -376,55 +376,55 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
           </section>
         </section>
         <section
-          class="_SkillsSection_8b53fd"
+          class="_SkillsSection_2e06af"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               skills
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <article
-            class="_SkillItem_8b53fd"
+            class="_SkillItem_2e06af"
           >
             <p
-              class="_SkillItem_name_8b53fd"
+              class="_SkillItem_name_2e06af"
             >
               JavaScript
             </p>
             <p
-              class="_SkillItem_description_8b53fd"
+              class="_SkillItem_description_2e06af"
             >
               ES6+
             </p>
             <div
-              class="_SkillLevel_8b53fd"
+              class="_SkillLevel_2e06af"
             >
               <div
-                class="_SkillLevel_fill_8b53fd"
+                class="_SkillLevel_fill_2e06af"
                 style="--skill-level: 90%%;"
               />
             </div>
           </article>
           <article
-            class="_SkillItem_8b53fd"
+            class="_SkillItem_2e06af"
           >
             <p
-              class="_SkillItem_name_8b53fd"
+              class="_SkillItem_name_2e06af"
             >
               React
             </p>
             <div
-              class="_SkillLevel_8b53fd"
+              class="_SkillLevel_2e06af"
             >
               <div
-                class="_SkillLevel_fill_8b53fd"
+                class="_SkillLevel_fill_2e06af"
                 style="--skill-level: 85%%;"
               />
             </div>
@@ -439,63 +439,63 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with form data 1`] = `
 exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] = `
 <DocumentFragment>
   <section
-    class="_previewPage_6f8116"
+    class="_previewPage_73b67f"
   >
     <div
-      class="_ResumePreview_a2badf"
+      class="_ResumePreview_418d46"
     >
       <div
-        class="_Row1_a2badf"
+        class="_Row1_418d46"
       >
         <div
-          class="_Row1_content_a2badf"
+          class="_Row1_content_418d46"
         >
           <section
-            class="_UserSection_07e01f"
+            class="_UserSection_e70a66"
           >
             <h2
-              class="_UserSection_name_07e01f"
+              class="_UserSection_name_e70a66"
             >
               Blackbeard
             </h2>
             <h3
-              class="_UserSection_job_07e01f"
+              class="_UserSection_job_e70a66"
             >
               Flight attendant
             </h3>
             <hr
-              class="_Divider_61b7e5 _Divider__white_61b7e5 _Divider__large_61b7e5"
+              class="_Divider_0145b9 _Divider__white_0145b9 _Divider__large_0145b9"
             />
           </section>
           <section
-            class="_ContactsSection_fd23c2"
+            class="_ContactsSection_ccdb9c"
           >
             <article
-              class="_ContactElement_fd23c2"
+              class="_ContactElement_ccdb9c"
             >
               <p
-                class="_ContactElement_info_fd23c2"
+                class="_ContactElement_info_ccdb9c"
               >
                 blackbeard@pirate.com
               </p>
               <img
                 alt="blackbeard@pirate.com"
-                class="_ContactElement_icon_fd23c2"
+                class="_ContactElement_icon_ccdb9c"
                 data-id="icon"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAB7ElEQVRIS7WV/VHCQBDFSQfaQehAKjBWoFQgdCAVKBWIFUgHQgXSgViB6UA6iO93s3dzXi4c/MHOvMmwedm3X3dUowtbdeH4o6JA13WNkrgXeNaWUKvnXthWVbU5luSggALf6MNn4aFQJUJTCSHas6yAgs/EfBWuhIOwFr4ta34jDh6jqhYSWaUKPQEFf7LgcHeWHUGzJv67XpAQ1hP5JyByLdKXZT5XRmReNJvTpxEn+o62OUsFIDXCWqS5J1kA5kHLAAGWcSBxPuRjXq38456ACLyE1Apk4dpiLfPB02pCS8RDmOprIVQfKoh6uVLwhQWnGkSxpbATECYZlgC7Ex8/ybzoQTIb+ab4YgHU2QxWzu12VDbt4ONg0TKEYFEXDuJfpwI/ctTC2O+0Puj5vIK15JeKfLCcL64AMn08V2AkgThO5zI3X65FYUBRi3r7nZwXl1RUQVbAH5jQ72S/nYgF8UOmYmwtsBgMfibsxZ2kM/BrGnpqg2a4bEbOdnI2mRdhUdKD5jcpbIaJsF1kRzDWlIP2xrZFhxBOa34qcpa7KtgcLMxiIPuT3KXLLhy6k6JlSEPXdXyj0o6tQL8Z3uDNmkui9IfDZtHboxafg5R4yl/mTB/dCo1QZ7OMDtrZAqXsS++LFZQClN7/AUg08xkhVUIqAAAAAElFTkSuQmCC"
               />
             </article>
             <article
-              class="_ContactElement_fd23c2"
+              class="_ContactElement_ccdb9c"
             >
               <p
-                class="_ContactElement_info_fd23c2"
+                class="_ContactElement_info_ccdb9c"
               >
                 +1 800 PIR-RATE
               </p>
               <img
                 alt="+1 800 PIR-RATE"
-                class="_ContactElement_icon_fd23c2"
+                class="_ContactElement_icon_ccdb9c"
                 data-id="icon"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAtklEQVRIS2NkoDFgxGb+////FYDi/UDsAMQCBNywASifyMjI+AGbOlwWzAcqTiDBcweAFjiSYsF7IlyOYh7QAqyOxeWD/yDduDQhmwwMTrxqRy1gGA0irIlgNBURTBmjQTSMgoiE+gBnyYu3NEWzYAKQ3wjE9UBcgG45WfUBmiGCoGoRWp3ep9SC/dD6GNkcmA9Argf5AhmQXGUqAHWD6mUHAvEAqugvADGo0n9AdJ1MSuQSUgsAoCigGX9D0bQAAAAASUVORK5CYII="
               />
@@ -504,120 +504,120 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] 
         </div>
       </div>
       <div
-        class="_Row2_a2badf"
+        class="_Row2_418d46"
       >
         <section
-          class="_ProfileSection_cdaca7"
+          class="_ProfileSection_dc4f0f"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               Profile
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <article
-            class="_ProfileSection_profile_cdaca7"
+            class="_ProfileSection_profile_dc4f0f"
           >
             Ahoy, ye scallywags! I be Blackbeard, the most fearsome pirate to sail the Seven Seas. I like me rum, I loves me ship and I sails under no flag but me own! With me trusty sword and cunning mind, I seek to carve me name into the annals of pirate legend.
           </article>
         </section>
         <section
-          class="_PhotoSection_063567"
+          class="_PhotoSection_1ccc8b"
         >
           <img
             alt="User photo"
-            class="_PhotoSection_photo_063567"
+            class="_PhotoSection_photo_1ccc8b"
           />
         </section>
       </div>
       <div
-        class="_Row3_Col1_a2badf"
+        class="_Row3_Col1_418d46"
       >
         <section
-          class="_List_3f912c"
+          class="_List_5eb6a6"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               Work
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <ul
-            class="_List_unordered_3f912c"
+            class="_List_unordered_5eb6a6"
           >
             <li
-              class="_ListItem_7409ed"
+              class="_ListItem_360539"
               data-id="list-item"
             >
               <section
-                class="_ListItem_content_7409ed"
+                class="_ListItem_content_360539"
               >
                 <div
-                  class="_ListItem_title_7409ed"
+                  class="_ListItem_title_360539"
                 >
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     Captain
                   </p>
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     1716 - 1718
                   </p>
                 </div>
                 <p
-                  class="_ListItem_text_7409ed"
+                  class="_ListItem_text_360539"
                 >
                   The Queen Anne's Revenge
                 </p>
                 <div
-                  class="_Experience_description_293883"
+                  class="_Experience_description_12da0d"
                 >
                   Commanding the most dread pirate ship ever, brought fear to hearts, and gold to me pockets! Led a fearsome crew, engaged in epic sea battles, and amassed a legendary treasure hoard. Known for strategic brilliance and ruthless tactics.
                 </div>
               </section>
             </li>
             <li
-              class="_ListItem_7409ed"
+              class="_ListItem_360539"
               data-id="list-item"
             >
               <section
-                class="_ListItem_content_7409ed"
+                class="_ListItem_content_360539"
               >
                 <div
-                  class="_ListItem_title_7409ed"
+                  class="_ListItem_title_360539"
                 >
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     First Mate
                   </p>
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     1700 - 1716
                   </p>
                 </div>
                 <p
-                  class="_ListItem_text_7409ed"
+                  class="_ListItem_text_360539"
                 >
                   The Jolly Roger
                 </p>
                 <div
-                  class="_Experience_description_293883"
+                  class="_Experience_description_12da0d"
                 >
                   Served under the infamous Captain Kidd, learning the ways of the pirate's life. Mastered the art of navigation and plundering.
                 </div>
@@ -626,51 +626,51 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] 
           </ul>
         </section>
         <section
-          class="_List_3f912c"
+          class="_List_5eb6a6"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               education
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <ul
-            class="_List_unordered_3f912c"
+            class="_List_unordered_5eb6a6"
           >
             <li
-              class="_ListItem_7409ed"
+              class="_ListItem_360539"
               data-id="list-item"
             >
               <section
-                class="_ListItem_content_7409ed"
+                class="_ListItem_content_360539"
               >
                 <div
-                  class="_ListItem_title_7409ed"
+                  class="_ListItem_title_360539"
                 >
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     Master of Nautical Studies
                   </p>
                   <p
-                    class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                    class="_ListItem_text_360539 _ListItem_text__bold_360539"
                   >
                     1690 - 1696
                   </p>
                 </div>
                 <p
-                  class="_ListItem_text_7409ed"
+                  class="_ListItem_text_360539"
                 >
                   Pirate Academy of the Seven Seas
                 </p>
                 <p
-                  class="_Education_description_c4fdee"
+                  class="_Education_description_d696c6"
                 >
                   Advanced Navigation, Looting Strategies, and Rum Connoisseurship
                 </p>
@@ -679,51 +679,51 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] 
           </ul>
         </section>
         <section
-          class="_InterestsSection_309d47"
+          class="_InterestsSection_c29c57"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               interests
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <section
-            class="_InterestsSection_row_309d47"
+            class="_InterestsSection_row_c29c57"
           >
             <div
-              class="_InterestsSection_item_309d47"
+              class="_InterestsSection_item_c29c57"
             >
               <div
-                class="_InterestsSection_iconContainer_309d47"
+                class="_InterestsSection_iconContainer_c29c57"
               >
                 <img
                   alt="Icon for Navigating the High Seas interest"
                 />
               </div>
               <p
-                class="_InterestsSection_text_309d47"
+                class="_InterestsSection_text_c29c57"
               >
                 Navigating the High Seas
               </p>
             </div>
             <div
-              class="_InterestsSection_item_309d47"
+              class="_InterestsSection_item_c29c57"
             >
               <div
-                class="_InterestsSection_iconContainer_309d47"
+                class="_InterestsSection_iconContainer_c29c57"
               >
                 <img
                   alt="Icon for Rum Tasting interest"
                 />
               </div>
               <p
-                class="_InterestsSection_text_309d47"
+                class="_InterestsSection_text_c29c57"
               >
                 Rum Tasting
               </p>
@@ -732,64 +732,64 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] 
         </section>
       </div>
       <div
-        class="_Row3_Col2_a2badf"
+        class="_Row3_Col2_418d46"
       >
         <section
-          class="_InfoSection_f489a1"
+          class="_InfoSection_12f6d6"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               info
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <section
-            class="_InfoSection_items_f489a1"
+            class="_InfoSection_items_12f6d6"
           >
             <div
-              class="_InfoItem_f489a1"
+              class="_InfoItem_12f6d6"
             >
               <p
-                class="_InfoItem_text_f489a1 _InfoItem_text__bold_f489a1"
+                class="_InfoItem_text_12f6d6 _InfoItem_text__bold_12f6d6"
               >
                 Date of Birth
               </p>
               <p
-                class="_InfoItem_text_f489a1"
+                class="_InfoItem_text_12f6d6"
               >
                 Somewhere in 1680
               </p>
             </div>
             <div
-              class="_InfoItem_f489a1"
+              class="_InfoItem_12f6d6"
             >
               <p
-                class="_InfoItem_text_f489a1 _InfoItem_text__bold_f489a1"
+                class="_InfoItem_text_12f6d6 _InfoItem_text__bold_12f6d6"
               >
                 City
               </p>
               <p
-                class="_InfoItem_text_f489a1"
+                class="_InfoItem_text_12f6d6"
               >
                 The High Seas
               </p>
             </div>
             <div
-              class="_InfoItem_f489a1"
+              class="_InfoItem_12f6d6"
             >
               <p
-                class="_InfoItem_text_f489a1 _InfoItem_text__bold_f489a1"
+                class="_InfoItem_text_12f6d6 _InfoItem_text__bold_12f6d6"
               >
                 Languages
               </p>
               <p
-                class="_InfoItem_text_f489a1"
+                class="_InfoItem_text_12f6d6"
               >
                 Pirate Speak, English
               </p>
@@ -797,118 +797,118 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] 
           </section>
         </section>
         <section
-          class="_SkillsSection_8b53fd"
+          class="_SkillsSection_2e06af"
         >
           <div
-            class="_SectionTitle_9f0387"
+            class="_SectionTitle_01a3cd"
           >
             <h4
-              class="_SectionTitle_title_9f0387"
+              class="_SectionTitle_title_01a3cd"
             >
               skills
             </h4>
             <hr
-              class="_Divider_61b7e5"
+              class="_Divider_0145b9"
             />
           </div>
           <article
-            class="_SkillItem_8b53fd"
+            class="_SkillItem_2e06af"
           >
             <p
-              class="_SkillItem_name_8b53fd"
+              class="_SkillItem_name_2e06af"
             >
               Swashbuckling
             </p>
             <div
-              class="_SkillLevel_8b53fd"
+              class="_SkillLevel_2e06af"
             >
               <div
-                class="_SkillLevel_fill_8b53fd"
+                class="_SkillLevel_fill_2e06af"
                 style="--skill-level: 80%;"
               />
             </div>
           </article>
           <article
-            class="_SkillItem_8b53fd"
+            class="_SkillItem_2e06af"
           >
             <p
-              class="_SkillItem_name_8b53fd"
+              class="_SkillItem_name_2e06af"
             >
               Buccaneering
             </p>
             <div
-              class="_SkillLevel_8b53fd"
+              class="_SkillLevel_2e06af"
             >
               <div
-                class="_SkillLevel_fill_8b53fd"
+                class="_SkillLevel_fill_2e06af"
                 style="--skill-level: 67%;"
               />
             </div>
           </article>
           <article
-            class="_SkillItem_8b53fd"
+            class="_SkillItem_2e06af"
           >
             <p
-              class="_SkillItem_name_8b53fd"
+              class="_SkillItem_name_2e06af"
             >
               Sea Shanties
             </p>
             <div
-              class="_SkillLevel_8b53fd"
+              class="_SkillLevel_2e06af"
             >
               <div
-                class="_SkillLevel_fill_8b53fd"
+                class="_SkillLevel_fill_2e06af"
                 style="--skill-level: 85%;"
               />
             </div>
           </article>
           <article
-            class="_SkillItem_8b53fd"
+            class="_SkillItem_2e06af"
           >
             <p
-              class="_SkillItem_name_8b53fd"
+              class="_SkillItem_name_2e06af"
             >
               Treasure Hunting
             </p>
             <div
-              class="_SkillLevel_8b53fd"
+              class="_SkillLevel_2e06af"
             >
               <div
-                class="_SkillLevel_fill_8b53fd"
+                class="_SkillLevel_fill_2e06af"
                 style="--skill-level: 95%;"
               />
             </div>
           </article>
           <article
-            class="_SkillItem_8b53fd"
+            class="_SkillItem_2e06af"
           >
             <p
-              class="_SkillItem_name_8b53fd"
+              class="_SkillItem_name_2e06af"
             >
               Sword Fighting
             </p>
             <div
-              class="_SkillLevel_8b53fd"
+              class="_SkillLevel_2e06af"
             >
               <div
-                class="_SkillLevel_fill_8b53fd"
+                class="_SkillLevel_fill_2e06af"
                 style="--skill-level: 90%;"
               />
             </div>
           </article>
           <article
-            class="_SkillItem_8b53fd"
+            class="_SkillItem_2e06af"
           >
             <p
-              class="_SkillItem_name_8b53fd"
+              class="_SkillItem_name_2e06af"
             >
               Jolly Roger Hoisting
             </p>
             <div
-              class="_SkillLevel_8b53fd"
+              class="_SkillLevel_2e06af"
             >
               <div
-                class="_SkillLevel_fill_8b53fd"
+                class="_SkillLevel_fill_2e06af"
                 style="--skill-level: 73%;"
               />
             </div>
@@ -922,59 +922,59 @@ exports[`ResumePreviewPage > Should render ResumeTemplate with preview data 1`] 
 
 exports[`ResumePreviewPage > Should save resume as PDF when Save as PDF button is clicked 1`] = `
 <div
-  class="_ResumePreview_a2badf"
+  class="_ResumePreview_418d46"
 >
   <div
-    class="_Row1_a2badf"
+    class="_Row1_418d46"
   >
     <div
-      class="_Row1_content_a2badf"
+      class="_Row1_content_418d46"
     >
       <section
-        class="_UserSection_07e01f"
+        class="_UserSection_e70a66"
       >
         <h2
-          class="_UserSection_name_07e01f"
+          class="_UserSection_name_e70a66"
         >
           John Doe
         </h2>
         <h3
-          class="_UserSection_job_07e01f"
+          class="_UserSection_job_e70a66"
         >
           Software Engineer
         </h3>
         <hr
-          class="_Divider_61b7e5 _Divider__white_61b7e5 _Divider__large_61b7e5"
+          class="_Divider_0145b9 _Divider__white_0145b9 _Divider__large_0145b9"
         />
       </section>
       <section
-        class="_ContactsSection_fd23c2"
+        class="_ContactsSection_ccdb9c"
       >
         <article
-          class="_ContactElement_fd23c2"
+          class="_ContactElement_ccdb9c"
         >
           <p
-            class="_ContactElement_info_fd23c2"
+            class="_ContactElement_info_ccdb9c"
           >
             john.doe@example.com
           </p>
           <img
             alt="john.doe@example.com"
-            class="_ContactElement_icon_fd23c2"
+            class="_ContactElement_icon_ccdb9c"
             data-id="icon"
           />
         </article>
         <article
-          class="_ContactElement_fd23c2"
+          class="_ContactElement_ccdb9c"
         >
           <p
-            class="_ContactElement_info_fd23c2"
+            class="_ContactElement_info_ccdb9c"
           >
             +1 234 567 890
           </p>
           <img
             alt="+1 234 567 890"
-            class="_ContactElement_icon_fd23c2"
+            class="_ContactElement_icon_ccdb9c"
             data-id="icon"
           />
         </article>
@@ -982,121 +982,121 @@ exports[`ResumePreviewPage > Should save resume as PDF when Save as PDF button i
     </div>
   </div>
   <div
-    class="_Row2_a2badf"
+    class="_Row2_418d46"
   >
     <section
-      class="_ProfileSection_cdaca7"
+      class="_ProfileSection_dc4f0f"
     >
       <div
-        class="_SectionTitle_9f0387"
+        class="_SectionTitle_01a3cd"
       >
         <h4
-          class="_SectionTitle_title_9f0387"
+          class="_SectionTitle_title_01a3cd"
         >
           Profile
         </h4>
         <hr
-          class="_Divider_61b7e5"
+          class="_Divider_0145b9"
         />
       </div>
       <article
-        class="_ProfileSection_profile_cdaca7"
+        class="_ProfileSection_profile_dc4f0f"
       >
         A highly skilled software engineer with 5 years of experience in web development.
       </article>
     </section>
     <section
-      class="_PhotoSection_063567"
+      class="_PhotoSection_1ccc8b"
     >
       <img
         alt="User photo"
-        class="_PhotoSection_photo_063567"
+        class="_PhotoSection_photo_1ccc8b"
         src="https://example.com/photo.jpg"
       />
     </section>
   </div>
   <div
-    class="_Row3_Col1_a2badf"
+    class="_Row3_Col1_418d46"
   >
     <section
-      class="_List_3f912c"
+      class="_List_5eb6a6"
     >
       <div
-        class="_SectionTitle_9f0387"
+        class="_SectionTitle_01a3cd"
       >
         <h4
-          class="_SectionTitle_title_9f0387"
+          class="_SectionTitle_title_01a3cd"
         >
           Work
         </h4>
         <hr
-          class="_Divider_61b7e5"
+          class="_Divider_0145b9"
         />
       </div>
       <ul
-        class="_List_unordered_3f912c"
+        class="_List_unordered_5eb6a6"
       >
         <li
-          class="_ListItem_7409ed"
+          class="_ListItem_360539"
           data-id="list-item"
         >
           <section
-            class="_ListItem_content_7409ed"
+            class="_ListItem_content_360539"
           >
             <div
-              class="_ListItem_title_7409ed"
+              class="_ListItem_title_360539"
             >
               <p
-                class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                class="_ListItem_text_360539 _ListItem_text__bold_360539"
               >
                 Frontend Developer
               </p>
               <p
-                class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                class="_ListItem_text_360539 _ListItem_text__bold_360539"
               >
                 2019-05-01 - 2021-12-31
               </p>
             </div>
             <p
-              class="_ListItem_text_7409ed"
+              class="_ListItem_text_360539"
             >
               Tech Corp
             </p>
             <div
-              class="_Experience_description_293883"
+              class="_Experience_description_12da0d"
             >
               Worked on various frontend projects using React and TypeScript.
             </div>
           </section>
         </li>
         <li
-          class="_ListItem_7409ed"
+          class="_ListItem_360539"
           data-id="list-item"
         >
           <section
-            class="_ListItem_content_7409ed"
+            class="_ListItem_content_360539"
           >
             <div
-              class="_ListItem_title_7409ed"
+              class="_ListItem_title_360539"
             >
               <p
-                class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                class="_ListItem_text_360539 _ListItem_text__bold_360539"
               >
                 Backend Developer
               </p>
               <p
-                class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                class="_ListItem_text_360539 _ListItem_text__bold_360539"
               >
                 2017-01-01 - 2019-04-30
               </p>
             </div>
             <p
-              class="_ListItem_text_7409ed"
+              class="_ListItem_text_360539"
             >
               Innovate Solutions
             </p>
             <div
-              class="_Experience_description_293883"
+              class="_Experience_description_12da0d"
             >
               Developed backend services using Node.js and MongoDB.
             </div>
@@ -1105,51 +1105,51 @@ exports[`ResumePreviewPage > Should save resume as PDF when Save as PDF button i
       </ul>
     </section>
     <section
-      class="_List_3f912c"
+      class="_List_5eb6a6"
     >
       <div
-        class="_SectionTitle_9f0387"
+        class="_SectionTitle_01a3cd"
       >
         <h4
-          class="_SectionTitle_title_9f0387"
+          class="_SectionTitle_title_01a3cd"
         >
           education
         </h4>
         <hr
-          class="_Divider_61b7e5"
+          class="_Divider_0145b9"
         />
       </div>
       <ul
-        class="_List_unordered_3f912c"
+        class="_List_unordered_5eb6a6"
       >
         <li
-          class="_ListItem_7409ed"
+          class="_ListItem_360539"
           data-id="list-item"
         >
           <section
-            class="_ListItem_content_7409ed"
+            class="_ListItem_content_360539"
           >
             <div
-              class="_ListItem_title_7409ed"
+              class="_ListItem_title_360539"
             >
               <p
-                class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                class="_ListItem_text_360539 _ListItem_text__bold_360539"
               >
                 Computer Science
               </p>
               <p
-                class="_ListItem_text_7409ed _ListItem_text__bold_7409ed"
+                class="_ListItem_text_360539 _ListItem_text__bold_360539"
               >
                 2012-09-01-2016-06-30
               </p>
             </div>
             <p
-              class="_ListItem_text_7409ed"
+              class="_ListItem_text_360539"
             >
               University of Technology
             </p>
             <p
-              class="_Education_description_c4fdee"
+              class="_Education_description_d696c6"
             >
               Focused on software development and data structures.
             </p>
@@ -1158,28 +1158,28 @@ exports[`ResumePreviewPage > Should save resume as PDF when Save as PDF button i
       </ul>
     </section>
     <section
-      class="_InterestsSection_309d47"
+      class="_InterestsSection_c29c57"
     >
       <div
-        class="_SectionTitle_9f0387"
+        class="_SectionTitle_01a3cd"
       >
         <h4
-          class="_SectionTitle_title_9f0387"
+          class="_SectionTitle_title_01a3cd"
         >
           interests
         </h4>
         <hr
-          class="_Divider_61b7e5"
+          class="_Divider_0145b9"
         />
       </div>
       <section
-        class="_InterestsSection_row_309d47"
+        class="_InterestsSection_row_c29c57"
       >
         <div
-          class="_InterestsSection_item_309d47"
+          class="_InterestsSection_item_c29c57"
         >
           <div
-            class="_InterestsSection_iconContainer_309d47"
+            class="_InterestsSection_iconContainer_c29c57"
           >
             <img
               alt="Icon for Photography interest"
@@ -1187,16 +1187,16 @@ exports[`ResumePreviewPage > Should save resume as PDF when Save as PDF button i
             />
           </div>
           <p
-            class="_InterestsSection_text_309d47"
+            class="_InterestsSection_text_c29c57"
           >
             Photography
           </p>
         </div>
         <div
-          class="_InterestsSection_item_309d47"
+          class="_InterestsSection_item_c29c57"
         >
           <div
-            class="_InterestsSection_iconContainer_309d47"
+            class="_InterestsSection_iconContainer_c29c57"
           >
             <img
               alt="Icon for Traveling interest"
@@ -1204,7 +1204,7 @@ exports[`ResumePreviewPage > Should save resume as PDF when Save as PDF button i
             />
           </div>
           <p
-            class="_InterestsSection_text_309d47"
+            class="_InterestsSection_text_c29c57"
           >
             Traveling
           </p>
@@ -1213,64 +1213,64 @@ exports[`ResumePreviewPage > Should save resume as PDF when Save as PDF button i
     </section>
   </div>
   <div
-    class="_Row3_Col2_a2badf"
+    class="_Row3_Col2_418d46"
   >
     <section
-      class="_InfoSection_f489a1"
+      class="_InfoSection_12f6d6"
     >
       <div
-        class="_SectionTitle_9f0387"
+        class="_SectionTitle_01a3cd"
       >
         <h4
-          class="_SectionTitle_title_9f0387"
+          class="_SectionTitle_title_01a3cd"
         >
           info
         </h4>
         <hr
-          class="_Divider_61b7e5"
+          class="_Divider_0145b9"
         />
       </div>
       <section
-        class="_InfoSection_items_f489a1"
+        class="_InfoSection_items_12f6d6"
       >
         <div
-          class="_InfoItem_f489a1"
+          class="_InfoItem_12f6d6"
         >
           <p
-            class="_InfoItem_text_f489a1 _InfoItem_text__bold_f489a1"
+            class="_InfoItem_text_12f6d6 _InfoItem_text__bold_12f6d6"
           >
             Date of Birth
           </p>
           <p
-            class="_InfoItem_text_f489a1"
+            class="_InfoItem_text_12f6d6"
           >
             1990-01-01
           </p>
         </div>
         <div
-          class="_InfoItem_f489a1"
+          class="_InfoItem_12f6d6"
         >
           <p
-            class="_InfoItem_text_f489a1 _InfoItem_text__bold_f489a1"
+            class="_InfoItem_text_12f6d6 _InfoItem_text__bold_12f6d6"
           >
             City
           </p>
           <p
-            class="_InfoItem_text_f489a1"
+            class="_InfoItem_text_12f6d6"
           >
             New York
           </p>
         </div>
         <div
-          class="_InfoItem_f489a1"
+          class="_InfoItem_12f6d6"
         >
           <p
-            class="_InfoItem_text_f489a1 _InfoItem_text__bold_f489a1"
+            class="_InfoItem_text_12f6d6 _InfoItem_text__bold_12f6d6"
           >
             Languages
           </p>
           <p
-            class="_InfoItem_text_f489a1"
+            class="_InfoItem_text_12f6d6"
           >
             English, Spanish
           </p>
@@ -1278,55 +1278,55 @@ exports[`ResumePreviewPage > Should save resume as PDF when Save as PDF button i
       </section>
     </section>
     <section
-      class="_SkillsSection_8b53fd"
+      class="_SkillsSection_2e06af"
     >
       <div
-        class="_SectionTitle_9f0387"
+        class="_SectionTitle_01a3cd"
       >
         <h4
-          class="_SectionTitle_title_9f0387"
+          class="_SectionTitle_title_01a3cd"
         >
           skills
         </h4>
         <hr
-          class="_Divider_61b7e5"
+          class="_Divider_0145b9"
         />
       </div>
       <article
-        class="_SkillItem_8b53fd"
+        class="_SkillItem_2e06af"
       >
         <p
-          class="_SkillItem_name_8b53fd"
+          class="_SkillItem_name_2e06af"
         >
           JavaScript
         </p>
         <p
-          class="_SkillItem_description_8b53fd"
+          class="_SkillItem_description_2e06af"
         >
           ES6+
         </p>
         <div
-          class="_SkillLevel_8b53fd"
+          class="_SkillLevel_2e06af"
         >
           <div
-            class="_SkillLevel_fill_8b53fd"
+            class="_SkillLevel_fill_2e06af"
             style="--skill-level: 90%%;"
           />
         </div>
       </article>
       <article
-        class="_SkillItem_8b53fd"
+        class="_SkillItem_2e06af"
       >
         <p
-          class="_SkillItem_name_8b53fd"
+          class="_SkillItem_name_2e06af"
         >
           React
         </p>
         <div
-          class="_SkillLevel_8b53fd"
+          class="_SkillLevel_2e06af"
         >
           <div
-            class="_SkillLevel_fill_8b53fd"
+            class="_SkillLevel_fill_2e06af"
             style="--skill-level: 85%%;"
           />
         </div>

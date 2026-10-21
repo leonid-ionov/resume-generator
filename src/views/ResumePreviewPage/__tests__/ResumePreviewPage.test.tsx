@@ -36,12 +36,14 @@ describe('ResumePreviewPage', () => {
     const htmlSpy = vi.fn();
     const internalMock = { pageSize: {} };
 
-    (jsPDF as typeof vi.Mock).mockImplementation(() => ({
-      html: htmlSpy.mockImplementation((_: string, options?: HTMLOptions) => {
-        if (options && options.callback) options.callback({ save: saveSpy } as jsPDF);
-      }),
-      internal: internalMock,
-    }));
+    (jsPDF as typeof vi.Mock).mockImplementation(function () {
+      return {
+        html: htmlSpy.mockImplementation((_: string, options?: HTMLOptions) => {
+          if (options && options.callback) options.callback({ save: saveSpy } as jsPDF);
+        }),
+        internal: internalMock,
+      };
+    });
 
     render(<ResumePreviewPage />);
     await vi.dynamicImportSettled();
@@ -58,10 +60,12 @@ describe('ResumePreviewPage', () => {
     const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(vi.fn());
     const mockError = new Error('PDF generation error');
 
-    (jsPDF as typeof vi.Mock).mockImplementation(() => ({
-      html: vi.fn().mockRejectedValue(mockError),
-      internal: { pageSize: {} },
-    }));
+    (jsPDF as typeof vi.Mock).mockImplementation(function () {
+      return {
+        html: vi.fn().mockRejectedValue(mockError),
+        internal: { pageSize: {} },
+      };
+    });
 
     render(<ResumePreviewPage />);
 
