@@ -54,7 +54,7 @@ describe('FormPage', () => {
 
     const downloadLink = appendChildSpy.mock.calls[0][0];
     expect(downloadLink.getAttribute('href')).toBe('mock-url');
-    expect(downloadLink.getAttribute('download')).toBe(`Resume Form ${mockFormData.userName}`);
+    expect(downloadLink.getAttribute('download')).toBe(`Resume Form ${mockFormData.userName}.json`);
   });
 
   test('Should load form data from json file', async () => {

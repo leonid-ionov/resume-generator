@@ -34,8 +34,8 @@ const FormPageContent: FC = () => {
 
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(blobFormData);
-    downloadLink.download = `Resume Form ${formData.userName}`;
-    downloadLink.target = 'blank';
+    downloadLink.download = `Resume Form ${formData.userName}.json`;
+    downloadLink.target = '_blank';
 
     document.body.appendChild(downloadLink);
     downloadLink.click();

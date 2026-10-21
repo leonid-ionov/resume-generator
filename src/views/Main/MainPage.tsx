@@ -14,7 +14,7 @@ export const MainPage: FC = () => {
     <section className={styles.mainPage}>
       <section className={styles.mainPage_textSection}>
         <h2>Welcome to Resume Generator</h2>
-        <p>Your tool for tool for quick and easy CV creation!</p>
+        <p>Your tool for quick and easy CV creation!</p>
       </section>
 
       <section className={styles.mainPage_stepsSection}>
