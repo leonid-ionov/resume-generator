@@ -2,17 +2,24 @@ import { FC, PropsWithChildren, useCallback, useMemo, useReducer } from 'react';
 import { AppContext, IAppContext } from './AppContext.tsx';
 import { TResumeData } from '../types/TResumeData.ts';
 import { IFormData } from '../types/formTypes.ts';
-import { initialFormData } from '../constants/formConstants.ts';
 import { resumePreviewData } from '../constants/resumePreviewData.tsx';
-import { convertToImageString } from '../utils/convertToImageString.ts';
+import { convertToImageString, IConvertOptions } from '../utils/convertToImageString.ts';
+import { BLANK_IMAGE, initialFormData } from '../constants/formConstants.ts';
 import { AppActionTypes, appReducer } from './AppReducer.ts';
+
+// A broken image (stale URL from an old save, unpicked icon) should not block the whole resume
+const convertOrBlank = (image?: string | FileList, options?: IConvertOptions) =>
+  convertToImageString(image, options).catch((error: unknown) => {
+    console.error('Error when converting image:', error);
+    return BLANK_IMAGE;
+  });
 
 const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data => {
   const { interests, experience, education, contacts, photoLink, dayOfBirth, city, languages, ...rest } = data;
   const parser = new DOMParser();
   return {
     ...rest,
-    photoLink: await convertToImageString(photoLink.photo, { size: { width: 416, height: 300 }, crop: photoLink.crop }),
+    photoLink: await convertOrBlank(photoLink.photo, { size: { width: 416, height: 300 }, crop: photoLink.crop }),
     info: [
       { type: 'dayOfBirth', value: dayOfBirth },
       { type: 'city', value: city },
@@ -33,13 +40,13 @@ const normalizeFormData: (data: IFormData) => Promise<TResumeData> = async data 
     contacts: await Promise.all(
       contacts.map(async contact => ({
         ...contact,
-        icon: await convertToImageString(contact.icon, { size: { width: 24, height: 24 }, color: 'white' }),
+        icon: await convertOrBlank(contact.icon, { size: { width: 24, height: 24 }, color: 'white' }),
       }))
     ),
     interests: await Promise.all(
       interests.map(async interest => ({
         ...interest,
-        icon: await convertToImageString(interest.icon, { size: { width: 60, height: 60 } }),
+        icon: await convertOrBlank(interest.icon, { size: { width: 60, height: 60 } }),
       }))
     ),
   };

@@ -14,13 +14,12 @@ const SelectComponent = forwardRef<HTMLSelectElement, ISelectProps>(
       <select
         id={name}
         name={name}
-        defaultValue={overProps.defaultValue ?? placeholder}
         className={cn(styles.selectControl, error && styles.selectControl_error)}
         {...overProps}
         ref={ref}
       >
         {placeholder && (
-          <option value={placeholder} className={styles.selectOption} disabled hidden>
+          <option value="" className={styles.selectOption} disabled hidden>
             {placeholder}
           </option>
         )}
