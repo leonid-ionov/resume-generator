@@ -8,13 +8,13 @@ import WebsiteIcon from '../assets/icons/website.svg';
 import FacebookIcon from '../assets/icons/facebook.svg';
 
 const IconsOptions: IIconOption[] = [
-  { label: 'Email', value: new URL(EmailIcon, import.meta.url).href },
-  { label: 'Phone', value: new URL(PhoneIcon, import.meta.url).href },
-  { label: 'GitHub', value: new URL(GithubIcon, import.meta.url).href },
-  { label: 'Instagram', value: new URL(InstagramIcon, import.meta.url).href },
-  { label: 'LinkedIn', value: new URL(LinkedinIcon, import.meta.url).href },
-  { label: 'Web site', value: new URL(WebsiteIcon, import.meta.url).href },
-  { label: 'Facebook', value: new URL(FacebookIcon, import.meta.url).href },
+  { label: 'Email', value: EmailIcon },
+  { label: 'Phone', value: PhoneIcon },
+  { label: 'GitHub', value: GithubIcon },
+  { label: 'Instagram', value: InstagramIcon },
+  { label: 'LinkedIn', value: LinkedinIcon },
+  { label: 'Web site', value: WebsiteIcon },
+  { label: 'Facebook', value: FacebookIcon },
 ];
 
 const initialFormData: IFormData = {
